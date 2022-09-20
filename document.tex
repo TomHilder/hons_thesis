@@ -1,0 +1,92 @@
+% Author = Thomas Liam Hilder
+% Date   = 20/09/2022
+
+% Setup
+\documentclass[11pt,a4paper,onecolumn]{report}
+
+\usepackage[margin=20mm]{geometry}
+
+
+% Packages
+\usepackage[T1]{fontenc} %Allows more exotic characters to be displayed properly (eg, Đ)
+\usepackage{lmodern} %Makes T1 not ugly on a PDF viewer.
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{esint}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{cancel}
+\usepackage{fancyhdr}
+\usepackage{tocbibind}
+\usepackage{enumitem}
+
+\settocbibname{References}
+
+\pagestyle{fancy}
+
+ % customise hyperlinks
+\hypersetup{allbordercolors=.9 .9 .9}
+
+% custom commands
+\renewcommand{\floatpagefraction}{.8}
+\newcommand{\fct}{\textcolor{purple}{CITATIONS }}
+\newcommand{\note}[1]{\textcolor{red}{Note: #1}}
+\newcommand{\pderiv}[2]{\left(\frac{\partial #1}{\partial #2}\right)}
+\newcommand{\VF}[1]{\mathbf{#1}}
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}
+\newcommand{\appropto}{\mathrel{\vcenter{
+  \offinterlineskip\halign{\hfil$##$\cr
+    \propto\cr\noalign{\kern2pt}\sim\cr\noalign{\kern-2pt}}}}}
+
+% Details
+\title{Measuring Protoplanets from their Spiral Wakes}
+\author{Thomas Hilder}
+\date{September 2022}
+
+% Document
+\begin{document}
+    
+    % TITLE PAGE
+    \input{chapters/titlepage}
+
+    % ABSTRACT
+    \input{chapters/abstract}
+
+    % PUBLICATIONS
+    \input{chapters/publications}
+
+    % ACKNOWLEDGEMENTS
+    \input{chapters/Acknowledgements}
+
+    % CONTENTS
+    \tableofcontents
+    \clearpage
+
+    \pagenumbering{arabic}
+
+    \chapter{Introduction}
+    \input{chapters/intro}
+
+    \chapter{The Planet-Disk Interaction}
+    \input{chapters/planetdisk}
+
+    \chapter{Semi-Analytic Models of Planet Wakes}
+    \input{chapters/wakesmodels}
+
+    \chapter{Mapping the Wake in HD 163296 with Kinematics}
+    \input{chapters/wakesmapping}
+
+    \chapter{Planet Mass Recovery with Bayesian Inference}
+    \input{chapters/fitting}
+
+    \chapter{Conclusion}
+    \input{chapters/conclusion.tex}
+
+    \bibliographystyle{mnras.bst}
+    \bibliography{disks.bib}
+
+\end{document}

@@ -1,0 +1,11 @@
+*.log
+*.out
+*.pdf
+*.toc
+*.blg
+*.aux
+*.bbl
+.DS_STORE
+*.gz
+*.fdb*
+*.fls
