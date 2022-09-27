@@ -27,6 +27,9 @@
 \settocbibname{References}
 
 \pagestyle{fancy}
+\cfoot{\thepage}
+\lhead[\leftmark]{}
+\rhead[]{\leftmark}
 
  % customise hyperlinks
 \hypersetup{allbordercolors=.9 .9 .9}
@@ -34,6 +37,7 @@
 % custom commands
 \renewcommand{\floatpagefraction}{.8}
 \newcommand{\fct}{\textcolor{purple}{CITATIONS }}
+\newcommand{\feqr}{\textcolor{purple}{EQ\_REF }}
 \newcommand{\note}[1]{\textcolor{red}{Note: #1}}
 \newcommand{\pderiv}[2]{\left(\frac{\partial #1}{\partial #2}\right)}
 \newcommand{\VF}[1]{\mathbf{#1}}
@@ -43,7 +47,7 @@
     \propto\cr\noalign{\kern2pt}\sim\cr\noalign{\kern-2pt}}}}}
 
 % Details
-\title{Measuring Protoplanets from their Spiral Wakes}
+\title{Measuring Young Planets from their Spiral Wakes}
 \author{Thomas Hilder}
 \date{September 2022}
 
