@@ -39,6 +39,7 @@
 \newcommand{\fct}{\textcolor{purple}{CITATIONS }}
 \newcommand{\feqr}{\textcolor{purple}{EQ\_REF }}
 \newcommand{\note}[1]{\textcolor{red}{Note: #1}}
+\newcommand{\sign}{\mathrm{sgn}\,}
 \newcommand{\pderiv}[2]{\left(\frac{\partial #1}{\partial #2}\right)}
 \newcommand{\VF}[1]{\mathbf{#1}}
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}
@@ -75,6 +76,9 @@
     \chapter{Introduction}
     \input{chapters/intro}
 
+    \chapter{Protoplanetary Disks}
+    \input{chapters/disks}
+
     \chapter{The Planet-Disk Interaction}
     \input{chapters/planetdisk}
 
@@ -88,7 +92,10 @@
     \input{chapters/fitting}
 
     \chapter{Conclusion}
-    \input{chapters/conclusion.tex}
+    \input{chapters/conclusion}
+
+    \appendix
+    \input{chapters/appendix}
 
     \bibliographystyle{mnras.bst}
     \bibliography{disks.bib}

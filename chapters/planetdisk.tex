@@ -1,164 +1,4 @@
-\section{Accretion Disk Physics}
 
-\note{define differential rotation as per Binney and Tremaine}
-
-Consider a test particle orbiting in a Newtonian point mass potential. Its angular velocity $\Omega$ is given by
-\begin{align}
-    \Omega = \Omega_{\rm K} \equiv \sqrt{\frac{G M_*}{r^3}}, \label{eq:point_pot}
-\end{align}
-where $M_*$ is the central mass, $r$ is the orbital radius, $G$ is Newton's constant and $\Omega_{\rm K}$ signifies Keplerian rotation. 
-Thus the orbital speed is a decreasing function of radius $v_\phi = r \Omega_{\rm K} \propto r^{-1/2}$.
-Additionally, the specific angular momentum $h$ of the particle is given by
-\begin{align}
-    h = r \Omega^2 = \sqrt{G M_* r}, \label{eq:ang_mom}
-\end{align}
-and so we see that $h$ is an increasing function of radius as $h \propto r^{1/2}$.
-Together the above quantities constitute a key feature of accretion disks; shearing stresses between annuli of material orbiting at slightly different radii, as well as other instabilities, allow for angular momentum transport within the disk. 
-This means inner material may lose its angular momentum to the outer disk and accrete onto the star. 
-Alternatively, the whole disk may lose angular momentum to its environment, for example through magnetised outflows that induce a torque on the disk.
-
-\subsection{Fluid equations} \label{sec:fluid_eqns}
-
-The structure and evolution of accretion disks are governed by the viscous and compressible continuity and momentum equations given by \citep[eg.][]{landau1987}
-\begin{align}
-    \partial_t \rho + \nabla \cdot (\rho \VF{v}) &= 0, \label{eq:fluid_cont} \\
-    \partial_t \VF{v} + (\VF{v} \cdot \nabla) \VF{v} &= \frac{1}{\rho} \left( \nabla \cdot \VF{T} - \nabla P  \right) - \nabla \Phi_*, \label{eq:fluid_mom}
-\end{align}
-where $\rho, P$ and $\VF{v}$ are the fluid density, pressure and velocity respectively, $\VF{T}$ is the viscous stress tensor and $\Phi_*$ is the gravitational potential of the central point mass, which is assumed to dominate over the gravity of the disk. 
-Following the review by \citet{papaloizou1995}, we find the corresponding equations of continuity and momentum that describe the evolution of a thin accretion disk.
-Rewriting the continuity equation in cylindrical coordinates and expanding we find
-\begin{align}
-    \partial_t \rho + \nabla \cdot (\rho \VF{v}) &= \partial_t \rho + \frac{1}{r} \partial_r (r \rho v_r) + \frac{1}{r} \partial_\phi (\rho v_\phi) + \partial_z (\rho v_z) = 0.
-\end{align}
-Integrating this over all $\phi$ and $z$ gives
-\begin{align}
-    0 &= \int_0^{2\pi} \int_{-\infty}^\infty \left\{ \partial_t \rho + \frac{1}{r} \partial_r (r \rho v_r) + \frac{1}{r} \partial_\phi (\rho v_\phi) + \partial_z (\rho v_z) \right\} \dif{z} \dif{\phi} \\
-    &= \partial_t \int_0^{2\pi} \int_{-\infty}^\infty \rho \dif{z} \dif{\phi} + \frac{1}{r} \partial_r \int_0^{2\pi} \int_{-\infty}^\infty r \rho v_r \dif{z} \dif{\phi}, \label{eq:int_cont}
-\end{align}
-where the third term vanishes and we neglect the fourth term assuming that $v_z \simeq 0$.
-Carrying out the integration by assuming $v_r$ is independent of $\phi$ and $z$, equation \ref{eq:int_cont} becomes
-\begin{align}
-    \partial_t \Sigma + \frac{1}{r} \partial_r (r \Sigma v_r) = 0, \label{eq:1d_cont}
-\end{align}
-where we assume $\rho$ is independent of $\phi$, and the surface density $\Sigma$ is defined by 
-\begin{align}
-    \Sigma = \int_{-\infty}^\infty \rho \dif{z}.
-\end{align} 
-Equation \ref{eq:1d_cont} expresses that the total mass of the disk is conserved, even as material moves between adjacent annuli. 
-
-Taking the $\phi$ component of the momentum equation gives
-\begin{align}
-    \partial_t v_\phi + (\VF{v} \cdot \nabla) v_\phi &= \frac{1}{\rho} \left( [\nabla \cdot \VF{T}]_\phi - \nabla_\phi P  \right) - \nabla_\phi \Phi_*.
-\end{align}
-From equation \ref{eq:point_pot} we see that $\nabla_\phi \Phi_* = 0$. If we assume that the disk is axisymmetric such that $v_\phi=r \Omega(r)$ then we find $\partial_t v_\phi = 0$ and $\nabla_\phi P=0$. 
-The $\phi$ components of the remaining terms are given by \citep[eg.][]{armitage2022}
-\begin{align}
-    [(v \cdot \nabla) \VF{v}]_\phi &= v_r \frac{dv_\phi}{dr} + \frac{v_\phi v_r}{r}, \\
-    [\nabla \cdot \VF{T}]_\phi &= \frac{1}{r^2} \partial_r (r^2 T_{r\phi}) + \partial_z T_{\phi z},
-\end{align}
-giving us
-\begin{align}
-    v_r \frac{dv_\phi}{dr} + \frac{v_\phi v_r}{r} &= \frac{1}{r^2 \rho} \, \partial_r (r^2 T_{r\phi}) + \frac{1}{\rho} \partial_z T_{\phi z}, \\
-    \rho v_r \frac{dh}{dr} &= \frac{1}{r} \partial_r (r^2 T_{r\phi}) + r \partial_z T_{\phi z},
-\end{align}
-where in the second line we have used equation \ref{eq:ang_mom} and multiplied through by  $r \rho$. Integrating over all $\phi$ and $z$, and assuming that $T_{\phi z}$ vanishes as $z\rightarrow\pm\infty$, we obtain 
-\begin{align}
-    2\pi \frac{dh}{dr} r v_r \Sigma &= \partial_r \left( r^2 \int_0^{2\pi} \int_{-\infty}^\infty T_{r\phi} \dif{z} \dif{\phi} \right). \label{eq:z_van}
-\end{align}
-For a thin disk the $r\phi$ component of the viscous stress tensor is simply $\mu r \, d\Omega/dr$ where $\mu$ is the viscosity \citep[see review by][]{papaloizou1995}. 
-Let us define the kinematic viscosity $\nu$ as 
-\begin{align}
-    \nu = \frac{1}{2 \pi \Sigma} \int_0^{2\pi} \int_{-\infty}^\infty \mu \dif{z} \dif{\phi}.
-\end{align}
-Thus equation \ref{eq:z_van} becomes
-\begin{align}
-    \Sigma v_r \frac{dh}{dr} &= \frac{1}{r} \partial_r \left( \Sigma r^3 \nu \frac{d\Omega}{dr} \right), \label{eq:1d_angmom}
-\end{align}
-which expresses that the total angular momentum of the fluid disk is conserved, under our various assumptions.
-
-\subsection{Vertical density structure}
-
-We may derive the vertical structure of the disk following the seminal review by \citet{pringle1981}. Taking the $z$ component of the momentum equation \ref{eq:fluid_mom}, again assuming $v_z \simeq 0$, giving
-\begin{align}
-    \frac{1}{\rho} \partial_z P = \partial_z \Phi_*,
-\end{align}
-ie. vertical hydrostatic equilibrium. 
-Taking the pressure to be dominated by gas and assuming the disk is vertically isothermal with equation of state $P=c_s^2 \rho$ (which may not be a good approximation for protoplanetary disks, see \citet{pinte2018} and \citet{calahan2021}, for example) we find
-\begin{align}
-    \frac{c_s^2}{\rho} \partial_z \rho = - \frac{G M_* z}{\left(r^2 + z^2\right)^{3/2}} \simeq - \Omega_{\rm K}^2 z.
-\end{align}
-The approximate equality in the above applies assuming $z \ll r$. 
-Solving this yields
-\begin{align}
-    \rho(r,z) &= \rho_0(r) \exp{\left( -\frac{z^2}{2 H^2} \right)}, \label{eq:vertical_rho}
-\end{align}
-where $\rho_0(r)$ is the density in the mid-plane at $z=0$, and we define the disk scale height $H = c_s/\Omega_{\rm K}$.
-We may also find the relation between $\Sigma$ and $\rho$ by integrating equation \ref{eq:vertical_rho} over all $z$, yielding
-\begin{align}
-    \rho_0(r) = \frac{1}{\sqrt{2\pi} H} \Sigma(r).
-\end{align}
-
-\subsection{Rotation}
-
-Taking the radial component of the momentum equation \ref{eq:fluid_mom}, neglecting viscosity, assuming $v_r \ll v_\phi$, and again taking the disk rotation to be axisymmetric
-\begin{align}
-    \frac{v_\phi^2}{r} &= \frac{G M_* r}{\left( r^2 + z^2  \right)^{3/2}} + \frac{1}{\rho} \partial_r P \simeq \frac{G M_*}{ r^2} + \frac{1}{\rho} \partial_r P, 
-\end{align}
-again in the second equality using $z \ll r$. Now, dividing each side by $r$ and using $c_s^2=dP/d\rho$
-\begin{align}
-    \Omega^2 &= \Omega_{\rm K}^2 + \left( \frac{c_s^2}{r^2} \right) \frac{r}{\rho} \frac{d \rho}{dr}, \\
-    &= \Omega_{\rm K} \left[ 1 + \left(\frac{H}{r}\right)^2 \frac{d \ln{\rho}}{d \ln{r}} \right]^{1/2} . \label{eq:rotation}
-\end{align}
-Thus we find Keplerian rotation to be a good approximation for disks if $H/r \ll 1$, in regions where $z \ll r$. Additionally, the correction term $d\ln{\rho}/d\ln{r}$ is negative in most astrophysical disks since the density usually decreases with radius, and so the true rotation is sub-Keplerian.
-
-\subsection{Disk flaring}
-
-An accretion disk is said to be flared if its aspect ratio $H/r$ increases with radius so that
-\begin{align}
-    \frac{H}{r} \propto r^\gamma, \quad \gamma > 0.
-\end{align}
-That is, the scale height of the disk increases with radius faster than just linearly so $H \propto r^{1+\gamma}$. 
-A ``flat" disk has an aspect ratio independent of scale height, $\gamma=0$.
-The physical condition for flaring is given by the effective temperature profile of the disk, which we can see by considering that for an ideal gas $c_s^2 \propto T_{\rm eff}$ \citep[eg.][]{pringle2007}, and so
-\begin{align}
-    \frac{H}{r} &= \frac{c_s}{r \Omega_{\rm K}} \propto \frac{T_{\rm eff}^{1/2}}{r^{-1/2}}.
-\end{align}
-Thus we see that whether a disk is flared depends on its temperature profile. 
-It can be shown that all disks irradiated by a central object are flared \citep{kenyon1987}. 
-Indeed, \citet{chiang1997} modelled passive disks around young stars and found approximately $T_{\rm eff} \appropto r^{-1/2}$, which yields $\gamma \simeq 1/4$. 
-From equation \ref{eq:rotation}, we see that a consequence of aspect ratio increasing with radius is that the flow becomes increasingly sub-Keplerian in the outer disk.
-
-\subsection{Viscous evolution}
-
-%\begin{figure}
-%    \centering
-%    \includegraphics[width = 0.8\textwidth]{figures/armitage_ringspread.png}
-%    \caption{The evolution of a ring of gas centred initially at $r=r_0$ according to equation \ref{eq:1d_evol}, as derived by \citet{lynden-bell1974}. Each curve is plotted from $\tau=0.008$ to $\tau=0.512$ with interval 0.084, where $\tau$ is dimensionless time \citep[figure from lecture notes by][]{armitage2022}. The diffusive nature of the evolution is clearly evident, with the overdense ring spreading out over time.}
-%    \label{fig:ring_spreading}
-%\end{figure}
-
-Combining the mass and angular momentum conservation equations \ref{eq:1d_cont} and \ref{eq:1d_angmom}, and substituting the Keplerian forms for $\Omega$ and $h$ in equations \ref{eq:point_pot} and \ref{eq:ang_mom}, we find
-\begin{align}
-    \partial_t \Sigma &= \frac{3}{r} \partial_r \left[ \sqrt{r} \partial_r \left( \nu \sqrt{r} \Sigma  \right)  \right] \label{eq:1d_evol},
-\end{align}
-which is the surface density evolution equation for a thin, Keplerian disk. 
-This is a partial differential equation, in the form of the 1D diffusion equation.
-The diffusive property of the evolution equation is evident in the so-called ring spreading solution derived by \citet{lynden-bell1974} for the case where $\nu$ is constant, as shown in Figure %\ref{fig:ring_spreading}. 
-We see that the solution involves the diffusion of a lot of mass to lower radii, while small amounts of mass carry the angular momentum away to very large radii.
-
-In our analysis here and in section \ref{sec:fluid_eqns} we have implicitly used the effective viscous theory of accretion disks, where although angular momentum may physically be transferred by the magnerotational instability \citep{sano2000}, self-gravity \citep{kratter2016}, turbulent eddies \citep{klahr2003}, or other mechanisms, we assume that all of these can be captured considering the problem in terms of a fluid viscosity ($\nu$ in equation \ref{eq:1d_evol}).
-Therefore, in order to model disk evolution, we must know how to determine the value of the viscosity $\nu$.
-\citet{shakura1973} argued that it is physically consistent to parametrise the viscosity in terms of some constant $\alpha \lesssim 1$ as
-\begin{align}
-    \nu = \frac{2}{3} \alpha c_s H.
-\end{align}
-This is known as the $\alpha$-prescription. If $\nu \propto r^\beta$ for some constant $\beta$, then the surface density of a viscous accretion disk is given by \citep{lynden-bell1974}
-\begin{align}
-    \Sigma(r) = (2 - \beta) \frac{M_d}{2 \pi r_c^2} \left( \frac{r}{r_c} \right)^{-\beta} \exp{\left[ - \left(\frac{r}{r_c}\right)^{2-\beta} \right]},
-\end{align}
-which is an exponentially tapered power law. That is, the density drops approximately as a power law in $-\beta$ with radius for $r < r_c$, and for $r > r_c$ the exponential decay terms dominates. If we use the $\alpha$-prescription and the above definition for $\gamma$ then $\beta=2\gamma+\frac{3}{2}$. 
-More commonly this is parametrised in terms of the effective temperature profile $T_{\rm eff} \propto r^{-q}$ for some constant $q$, giving $\beta = \frac{3}{2} - q$ \citep{hartmann1998}. 
-If $q=1/2$ as in \citet{chiang1997}, then $\beta=1$.
 
 \section{Spiral Density Waves}
 
@@ -175,7 +15,7 @@ We now introduce the following concepts:
     While it seems that leading arms may indeed be physically realised in the universe \citep[eg.][]{vaisanen2008}, they are at minimum very rare. 
     We will be concerned only with trailing spirals in this thesis.
 %    \item The \textit{pattern speed} $\Omega_\mathrm{p}$: In the Lin-Shu hypothesis the spiral structure is a fixed pattern that rotates rigidly. 
-%    The angular speed of rotation of these spirals according to some intertial observer is known as the pattern speed $\Omega_\mathrm{p}$. 
+%    The angular speed of rotation of these spirals according to some inertial observer is known as the pattern speed $\Omega_\mathrm{p}$. 
 %    More generally, the pattern speed is well defined so long as the spirals constitute a steady state solution in some rigidly rotating frame. 
 %    As we will see, this is the case for the spiral wake generated by a perturbing planet on a circular orbit, in which case the pattern speed is simply equal to the orbital rotation of the planet
 \end{enumerate}
@@ -188,16 +28,16 @@ where $C$ is a constant real number and $f$ is known as the \textit{shape functi
 \begin{align}
     k(r,t) \equiv \partial_r f(r,t).
 \end{align}
-For a counterclockwise rotating disk we have $m>0$ and so $k>0$ corresponds to trailing arms while $k<0$ gives leading arms. 
+For a counter-clockwise rotating disk we have $m>0$ and so $k>0$ corresponds to trailing arms while $k<0$ gives leading arms. 
 The opposite is true for clockwise rotating disks with $m<0$. 
-We will always assume both $k$ and $m$ are positive, corresponding to tailing arms in a counterclockwise rotating disk. 
+We will always assume both $k$ and $m$ are positive, corresponding to tailing arms in a counter-clockwise rotating disk. 
 The pitch angle of a spiral arm is given by
 \begin{align}
     \mathrm{cot}\,\alpha = \left| r \partial_r \phi \right|,
 \end{align}
 where $r \partial_r \phi$ is evaluated along the curve that defines the spiral. In terms of the parameterisation \ref{eq:spiral_para} we have $\partial_r[m\phi+f(r,t)] = m \partial_r \phi + k = 0$ giving
 \begin{align}
-    \alpha = \arctan \left( \frac{m}{kr} \right).
+    \alpha = \arctan \left( \frac{m}{kr} \right). \label{eq:pitchangle}
 \end{align}
 
 \subsection{No Leading Spirals}
@@ -212,9 +52,7 @@ In the following section we will see that the perturbations driven by a gravitat
 
 \section{The Linear Disk Response}
 
-We examine the linear behaviour of a gas disk perturbed by an embedded gravitating body on a circular orbit.
-
-\subsection{WKB Dispersion Relation}
+\note{need a connecting sentence here to explain that we are eventually looking for the respone from a perturbing gravitating body.}
 
 The 2D inviscid equations of momentum and continuity expressed in terms of surface density are given by 
 \begin{align}
@@ -282,16 +120,16 @@ where each $m$ component of the perturbation has $m$-fold symmetry and $a_m(r)$ 
 The physical perturbation is obtained by taking the real component $\mathrm{Re}(\delta a)$.
 Substituting the summands of \ref{eq:pert_sum_form} in place of the perturbations in our linearised equations yields
 \begin{align}
-    u_m (r) &= \frac{i}{\Delta} \left[ (\omega - m \Omega) \partial_r (\Phi_m + h_m) - \frac{2 m \Omega}{r} (\Phi_m + h_m) \right] \label{eq:lin_u_m} \\
-    v_m (r) &= - \frac{1}{\Delta} \left[ 2B \partial_r (\Phi_m + h_m) + \frac{m(\omega - m \Omega)}{r} (\Phi_m + h_m) \right] \label{eq:lin_v_m} \\
+    u_m (r) &= \frac{i}{\Delta_m} \left[ (\omega - m \Omega) \partial_r (\Phi_m + h_m) - \frac{2 m \Omega}{r} (\Phi_m + h_m) \right] \label{eq:lin_u_m} \\
+    v_m (r) &= - \frac{1}{\Delta_m} \left[ 2B \partial_r (\Phi_m + h_m) + \frac{m(\omega - m \Omega)}{r} (\Phi_m + h_m) \right] \label{eq:lin_v_m} \\
     \Sigma_m (r) &= \frac{1}{r(\omega - m \Omega)} \left[ m \Sigma_0 v_m -i \partial_r (r u_m \Sigma_0) \right] \label{eq:lin_cont_m},
 \end{align}
 where
 \begin{align}
-    \Delta \equiv \kappa^2 - (\omega - m \Omega)^2.
+    \Delta_m \equiv \kappa^2 - (\omega - m \Omega)^2. \label{eq:def_delta_m}
 \end{align}
 Finally, we must linearise the equation of state.
-Taking equation \ref{eq:enthalpy} and expanding in $\delta \Sigma_m / \Sigma_0$
+Taking equation \ref{eq:enthalpy} and expanding in $\delta \Sigma / \Sigma_0$
 \begin{align}
     h_0 + \delta h = \frac{\gamma}{\gamma - 1} K \Sigma_0^{\gamma - 1}(1 + \frac{\delta\Sigma}{\Sigma_0})^{\gamma-1} = \frac{\gamma}{\gamma - 1} K \Sigma_0^{\gamma - 1} + \gamma K \Sigma_0^{\gamma-1} \frac{\delta\Sigma}{\Sigma_0} + \mathcal{O}(\left(\delta\Sigma / \Sigma_0\right)^2).
 \end{align}
@@ -303,19 +141,284 @@ where $c_0$ is the unperturbed sound speed.
 
 With equations \ref{eq:lin_u_m}, \ref{eq:lin_v_m}, \ref{eq:lin_cont_m} and \ref{eq:lin_EOS_m} we have four constraints on the five state variables $\Sigma_m, \Phi_m, h_m, v_m$ and $u_m$.
 We therefore now have a system of equations describing the \textit{linear response} of the disk $\Sigma_m$ for the azimuthal wave mode $m$, to the potential component $\Phi_m$.
-By summing over all modes, we can calculate the global response of the disk to some imposed gravitational potential.
+By summing over all modes, we can calculate the \textit{global} response of the disk to some imposed gravitational potential.
+This however, cannot be done analytically.
 
-\subsubsection{Tightly-Wound Density Waves}
+\subsection{Tightly-Wound Density Waves}
 
-We now apply the WKB approximation, which consists of assuming that 
+We now apply \textit{WKB approximation}, which will allow to find \textit{local} analytic solutions.
+For spiral density waves this is equivalent to assuming that the spirals are \textit{tightly-wound} and thus is also called the \textit{tight-winding approximation}.
+For a spiral with shape function $f$ let $\lambda_r$ be the radial separation between adjacent arms for fixed $\phi$, such that
+\begin{align}
+    2\pi = \left| f(r+\lambda_r, t) - f(r,t) \right|.
+\end{align}
+If we assume that the spirals are indeed tightly-wound such that $\alpha\rightarrow 0$, then we have that $f(r+\lambda_r,t)=f(r,t) + \lambda_r \partial_r f |_{r,t}$. 
+Recalling that $\partial_r f |_{r,t}$ is none other than the radial wavenumber $k$, we find
+\begin{align}
+    2 \pi &= \left| f(r,t) + \lambda_r \partial_r f |_{r,t} - f(r,t) \right| \\
+    &= \lambda_r | k | \\
+    \Rightarrow \lambda_r &= \frac{2 \pi}{|k|},
+\end{align}
+and so we find that the radial wavenumber $r$ has the usual relationship with the radial wavelength $\lambda_r$ for tightly-wound spiral arms. 
+Substituting equation \ref{eq:pitchangle} gives
+\begin{align}
+    \frac{2 \pi}{|rk|} &=  \frac{\tan \alpha}{m},
+\end{align}
+and so an equivalent condition for the tight-winding approximation is that $|rk| \gg 2 \pi$. 
+This equivalency however does not hold for very large $m$ since the right-hand side above can then approach zero regardless of $\alpha$, and is also invalid for $m = 0$ ie. purely radial perturbations.
+
+\subsection{Perturbed Potential under WKB}
+
+We can write the perturbed spiral surface density for some mode $m$ in a form similar to \ref{eq:pert_sum_form} where we instead separate the rapid variations in density moving from one arm to another, and the slower variation while moving along a particular arm
+\begin{align}
+    \delta \Sigma_m = \Sigma_m \exp \left[ i \left( m \phi + f(r,t)  \right)  \right]. \label{eq:sigma_WKB}
+\end{align}
+To determine the disk response we must determine the gravitational potential due to this perturbed surface density, which is done by solving Poisson's equation
+\begin{align}
+    \nabla^2 \delta \Phi_m = 4 \pi G \delta \Sigma_m \delta(z), \label{eq:poisson_pert}
+\end{align}
+where $\delta(z)$ is the Dirac delta since we are working in 2D. 
+The solution under the WKB approximation is \fct
+\begin{align}
+    \delta \Phi_m &= - \frac{2 \pi G}{|k|} \Sigma_m \exp \left[ i \left( m \phi + f(r,t)  \right)  \right] \\
+    \Rightarrow \Phi_m &= - \frac{2 \pi G}{|k|} \Sigma_m. \label{eq:phi_m_sigma_m}
+\end{align}
+
+\subsection{The Lin-Shu Dispersion Relation} \label{sec:linshu}
+
+We now rewrite each coefficient $a_m(r)$ for each term $\delta a_m$ of some perturbed quantity $\delta a$ as
+\begin{align}
+    a_m(r) = A_m(r) \exp \left[ i f(r) \right] = A_m(r) \exp \left[ i \int^r k(r') \, dr' \right], \label{eq:WKB_form}
+\end{align}
+where, similarly to \ref{eq:sigma_WKB}, $F(r)$ is a slowly varying function of radius and the exponential encapsulates more rapid variations. 
+The radial derivative of $a_m$ is then
+\begin{align}
+    \partial_r a_m(r) = \left( \partial_r A_m + ikA_m  \right) \exp \left[ i \int^r k(r') \, dr' \right].
+\end{align}
+As shown in appendix \ref{appendix:asymptotic_deriv}, the WKB approximation implies that we may neglect the first term giving
+\begin{align}
+    \partial_r a_m(r) = ikA_m \exp \left[ i \int^r k(r') \, dr' \right] + \mathcal{O}\left(\frac{1}{|kr|}\right) \approx ik a_m(r). \label{eq:app_radial_deriv}
+\end{align}
+Thus assuming the form \ref{eq:WKB_form} for the quantities in equations \ref{eq:lin_u_m} - \ref{eq:lin_cont_m} and applying the WKB approximation yields
+\begin{align}
+    u_m(r) &= - \frac{k(\omega-m\Omega)}{\Delta_m} (\Phi_m + h_m) \label{eq:u_m_disp} \\
+    v_m(r) &= - \frac{2ikB}{\Delta_m} (\Phi_m + h_m) \label{eq:v_m_disp} \\
+    \Sigma_m(r) &= \frac{k \Sigma_0}{\omega-m\Omega} u_m, \label{eq:sigma_m_disp}
+\end{align}
+where the error is for all cases $\mathcal{O}(1/|kr|)$, as we have approximated the radial derivatives by \ref{eq:app_radial_deriv} and dropped terms proportional to $1/r$ in favour of terms proportional to $k$.
+Finally, we may combine equations \ref{eq:lin_EOS_m}, \ref{eq:phi_m_sigma_m}, \ref{eq:u_m_disp} and \ref{eq:sigma_m_disp} to find the dispersion relation for tightly-wound density waves in a rotating gas disk
+\begin{align}
+    \left( \omega - m \Omega  \right)^2 &= \kappa^2 - 2 \pi G |k| \Sigma_0 + c_0^2 k^2. \label{eq:lin_shu_disp}
+\end{align}
+This result is known as the \textit{Lin-Shu Dispersion Relation} \citep{lin1964}.
+
+\subsection{Stability}
+
+If the right-hand side of the Lin-Shu dispersion relation \ref{eq:lin_shu_disp} is negative, that is $(\omega - m \Omega)^2 < 0$, then $\omega$ will become imaginary resulting in the exponential growth of the density perturbation $\delta \Sigma$.
+By requiring that $(\omega - m \Omega)^2 > 0$ for all possible $k$, the disk stability criterion $Q$ is derived \citep{toomre1964}
+\begin{align}
+    Q(r) \equiv \frac{c_0 \kappa}{\pi G \Sigma} > 1.
+\end{align}
+Disk regions where $Q(r) < 1$ are subject to local unstable growth for certain values of $k$.
+This may result in the fragmentation of the disk, and may be a pathway to the formation of giant planets \fct.
+Planet formation through this mechanism is known as the Gravitational Instability model \fct, and it is similar in spirit to star formation through the Jeans instability \citep{jeans1902}.
+
 
 \subsection{Lindblad Resonances}
 
-Mention the lindblad resonance condition in the previous section related to $\Delta$
+Let $(r,\phi)$ be polar coordinates centred on some star with mass $M_{\rm p}$.
+We place a planet of mass $M_{\rm p} \ll M_\star$ on a circular orbit with radius $r_{\rm p}$ around the star.
+The angular velocity of the planet $\Omega_{\rm p}$ will be given by 
+\begin{align}
+    \Omega_{\rm p}^2 = \Omega_{\rm K}(r_{\rm p}) = \frac{G M_\star}{r_{\rm p}^3} = \frac{1}{r_{\rm p}} \left( \frac{d\Phi_\star}{dr} \right) _{r_{\rm p}},
+\end{align}
+where $\Phi_\star$ is the gravitational potential for a point mass
+\begin{align}
+    \Phi_\star = - \frac{G m_\star}{r}.
+\end{align}
+Similarly, the angular velocity of some other test particle on a circular orbit (neglecting the influence of the planet) will be
+\begin{align}
+    \Omega_0^2 = \frac{1}{r} \frac{d\Phi_\star}{dr}.
+\end{align}
+Now consider the problem in a rotating frame such that the planet is always at $\phi=0$, which will remove the time dependence from the planet potential. 
+The corresponding transformation will be given by $\phi \rightarrow \phi - \Omega_{\rm p} t$.
+The Lagrangian for a test particle in such a frame is given by 
+\begin{align}
+    \mathcal{L} = \frac{1}{2} \left[ \dot{r}^2 + r^2 \left( \dot{\phi} + \Omega_{\rm p}  \right)^2 \right] - \Phi (r, \phi),
+\end{align}
+where $\Phi (r,\phi) = \Phi_\star (r) + \Phi_{\rm p} (r, \phi)$ is the total potential from both the star and planet.
+From the Euler-Lagrange equations we find the equations of motion to be
+\begin{align}
+    \ddot{r} &= r \left( \dot{\phi} + \Omega_{\rm p} \right)^2 - \partial_r \Phi \label{eq:EOM_rad} \\
+    r^2 \ddot{\phi} &= - 2 r \dot{r} \left( \dot{\phi} + \Omega_{\rm p}  \right) - \partial_\phi \Phi. \label{eq:EOM_az}
+\end{align}
+We now perform a perturbation study using the change of variables $r(t) \rightarrow r + \delta r (t)$  and $\phi (t) \rightarrow \phi (t) + \delta \phi (t)$ where we assume that $\delta r \ll r$ and $\delta \phi \ll \phi$.
+We will similarly assume that $\Phi_{\rm p} \ll \Phi_\star$.
+Thus the derivatives transform to first order as
+\begin{align}
+    \partial_r &\rightarrow \partial_r + \delta r \partial_r^2 r \\
+    \partial_\phi &\rightarrow \partial_\phi + \delta \phi \partial_r^2 \phi.
+\end{align}
+The zeroth order terms of \ref{eq:EOM_rad} and \ref{eq:EOM_az} give 
+\begin{align}
+    r \left( \dot{\phi} + \Omega_{\rm p}  \right)^2 &= \frac{d\Phi_\star}{dr} , \\
+    \ddot{\phi} &= 0
+\end{align}
+which is just the usual equations for centripetal acceleration. 
+They are solved simply by associating $\dot{\phi}$ appropriately with $\Omega$ by considering the transformation to the rotating frame, yielding
+\begin{align}
+    \dot {\phi} &= \Omega - \Omega_{\rm p} \\
+    \Rightarrow \phi &= \left( \Omega - \Omega_{\rm p} \right) t,
+\end{align}
+where the constant of integration is set to zero without loss of generality.
+We are now free to consider in isolation the first order terms of \ref{eq:EOM_rad} and \ref{eq:EOM_az}, which reduce to 
+\begin{align}
+    \ddot{\delta r} + \left( \frac{d^2\Phi_\star}{dr^2} - \Omega^2 \right) \delta r &= 2 r \Omega \dot{\delta \phi} - \partial_r \Phi_{\rm p} \label{eq:lin_rad_lindblad} \\
+    \ddot{\phi} + \frac{2 \Omega}{r} \dot{\delta r} &= - \frac{1}{r^2} \partial_\phi \Phi_{\rm p}. \label{eq:lin_az_lindblad}
+\end{align}
+We will now specify a form for the planet potential $\Phi_{\rm p}$.
+Starting with the usual point mass potential centred on the planet we have
+\begin{align}
+    \Phi_{\rm p} (r,\phi) &= -\frac{G M_{\rm p}}{|\bf{r} - \bf{r_{\rm p}}|} \\
+    &= -\frac{G M_{\rm p}}{\sqrt{(r_{\rm p} - r \cos \phi)^2 + (r \sin \phi)^2}} \\
+    &= -\frac{G M_{\rm p}}{\sqrt{r^2 - 2 r r_{\rm p} \cos \phi + r_{\rm p}^2}} \\
+    &= -\frac{G M_{\rm p}}{r_{\rm p}} \left[ \mathcal{R}^2 - 2 \mathcal{R} \cos \phi + 1\right]^{-\frac{1}{2}},
+\end{align}
+where $\mathcal{R} = r / r_{\rm p}$.
+To investigate the influence of this potential perturbing our test particles we will decompose it using a Fourier series.
+The potential must by invariant under $\phi \rightarrow -\phi$ as well as $2 \pi$ periodic in $\phi$, motivating the form
+\begin{align}
+    \Phi_{\rm p}(r,\phi) = \sum_{m=0}^\infty \Phi_m (r,\phi) = \sum_{m=0}^\infty V_m (r) \cos (m \phi) \label{eq:fourier_planet}
+\end{align}
+where in our case the Fourier coefficients are given by 
+\begin{align}
+    V_m (r) &= - \frac{2}{\pi} \frac{G M_{\rm p}}{r_{\rm p}} \int_0^\pi  \left( \mathcal{R}^2 - 2 \mathcal{R} \cos \phi + 1\right)^{-\frac{1}{2}} \cos (m \phi) \, d\phi \\
+    &= \frac{\delta_{m0} - 2}{2} \frac{G M_{\rm p}}{r_{\rm p}} \, b_{1/2}^m (\mathcal{R}),
+\end{align}
+where $b_{1/2}^m (\mathcal{R})$ are the Laplace coefficients defined in \citet{brouwer1961} \note{maybe add a footnote about how this form also ignores the indirect potential term but this is typically done even in detailed calculations for instance Bae and Zhu 2018 and Miranda and Rafikov} 2019.
+Here we are primarily concerned with the \textit{form} of the decomposition \ref{eq:fourier_planet}, and it should be noted that this form is quite general and can represent a variety of potentials including the bars often found in spiral galaxies.
+Next we will substitute a single Fourier component in place of the planet potential to determine the response for \textit{each individual component}.
+Note that we will also ignore the contribution of $\delta \phi$ to $\Phi_{\rm p}$, assuming that $\phi$ corresponds to the zeroth order solution where $\phi = (\Omega - \Omega_{\rm p}) t$. 
+
+From equation \ref{eq:fourier_planet} we find the following derivatives
+\begin{align}
+    \partial_r \Phi_m (r, \phi) &= \frac{dV_m(r)}{dr} \cos (m \phi) \\
+    \partial_\phi \Phi_m (r, \phi) &= - m V_m(r) \sin (m \phi),
+\end{align}
+and so equation \ref{eq:lin_az_lindblad} becomes
+\begin{align}
+    \ddot{\phi} = - \frac{2 \Omega}{r} \dot{\delta r} + \frac{m V_m}{r^2} \sin \left( m [ \Omega - \Omega_{\rm p}] t\right),
+\end{align}
+and integrating gives
+\begin{align}
+    \dot{\phi} = - \frac{2 \Omega}{r} \delta r - \frac{V_m}{(\Omega - \Omega_{\rm p}) r^2} \cos \left( m [ \Omega - \Omega_{\rm p}] t \right).
+\end{align}
+Substituting this into \ref{eq:lin_rad_lindblad} yields
+\begin{align}
+    \ddot{\delta r} + \kappa^2 \delta r = \Psi_m(r) \cos (m [ \Omega - \Omega_{\rm p}] t), \label{eq:lindblad_forcing}
+\end{align}
+where
+\begin{align}
+    \kappa^2 \equiv \frac{d^2 \Phi_\star}{dr^2} + 3 \Omega^2 = r \frac{d \Omega^2}{dr} + 4 \Omega^2
+\end{align}
+is the usual epicyclic frequency already introduced. In addition, we define the forcing function $\Psi_m(r)$ as
+\begin{align}
+    \Psi_m(r) \equiv - \left( \frac{dV_m}{dr}+ \frac{2 \Omega}{(\Omega - \Omega_{\rm p})r} V_m \right).
+\end{align}
+Equation \ref{eq:lindblad_forcing} is a second order, inhomogeneous differential equation in the form of a driven harmonic oscillator.
+The general solution $g(t)$ is given by 
+\begin{align}
+    g(t) = A_1 \mathcal{H}(t) + A_2 \mathcal{P}(t),
+\end{align}
+where $\mathcal{H}(t)$ is the solution to the homogeneous equation where the right-hand side is zero, $\mathcal{P}(t)$ is a particular solution to the inhomogeneous equation, and $A_1$ and $A_2$ are the amplitudes of each.
+Physically, $A_1 \mathcal{H}(t)$ corresponds to the "free" solution in the absence of forcing by the planet potential, and a non-zero value of $A_1$ results in particle orbits that are not closed.
+$A_2 \mathcal{P}(t)$ corresponds to the driven solution and is what we are interested in here.
+We solve for the driven solution using the ansatz $\delta r (t) = A \cos (m [\Omega - \Omega_{\rm p}]t)$, with the result that the amplitude of the response to the planet forcing is given by 
+\begin{align}
+    A = \frac{\Psi_m (r)}{\Delta_m},
+\end{align}
+where $\Delta_m$ is as defined in equation \ref{eq:def_delta_m}, and we have $\omega = m \Omega_{\rm p} $.
+From this, we see that the forcing amplitude $A$ becomes very large as $\Delta_m \rightarrow 0$.
+$\Delta_m = 0$ is therefore the condition for a \textit{Lindblad Resonance}; it determines the region where the response to periodic forcing by a particular component of the planet potential is greatest.
+This is also the condition where the Lin-Shu dispersion relation breaks down as equations \ref{eq:lin_u_m} and \ref{eq:lin_v_m} become singular.
+
+From equation \ref{eq:rotation}, we have that for material in a gas disk $\kappa = \Omega \approx \Omega_{\rm K}$.
+Thus disk material is most effectively excited by the planet potential component $\Phi_m$ in the region where
+\begin{align}
+    \Omega_{\rm K}^2 = m^2 (\Omega_{\rm K} - \Omega_{\rm p})^2.
+\end{align}
+By substituting equation \ref{eq:point_pot} we obtain the \textit{Lindblad radii}
+\begin{align}
+    r_{\rm L}^\pm(m) = \left( 1 \pm \frac{1}{m} \right)^\frac{2}{3} r_{\rm p}, \label{eq:lind_loc}
+\end{align}
+which are the positions of the $m$th Lindblad resonances, where $r_{\rm L}^-$ is interior to the planets orbit and $r_{\rm L}^+$ is exterior to the planets orbit.
+The Lindblad resonances are spatially segregated but become densely packed as they approach $r_{\rm p}$ for large $m$, as shown in figure \note{add figure}.
+This segregation allows us to consider each resonance location as driven by only the $m$th component of the planet potential.
+This breaks down for large $m$ as the resonances are no longer clearly separated.
+
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth]{figures/lindblad_two_panel.pdf}
+    \caption{\note{add caption}}
+    \label{fig:lindblad}
+\end{figure}
 
 \subsection{The Planet Wake}
 
-\note{remember that the equation defining the lines of contant phase for the spirals is identical to that derived in 2.2, and so the pitch angle equation holds.}
+\note{add context: \citet{ogilvie2002}. We are not exactly following original derivation instead we want form of wake given in \citet{rafikov2002a}.}
+
+Similarly to in section \ref{sec:linshu}, we can write linear wave quantities in a 2D gas disk as 
+\begin{align}
+    \delta a_m = A_m(r) \exp{i \Theta_m},
+\end{align}
+where the amplitude $A_m(r)$ varies slowly with radius and the phase
+\begin{align}
+    \Theta_m = \int^r k(r') \, dr' + m (\phi - \Omega_p t),
+\end{align}
+varies rapidly with radius. 
+Again only the real component is physically relevant, and we have written $\omega = m \Omega_p$ as we are assuming the waves are generated by an embedded planet.
+To investigate the shape of the spiral wake we will look for lines of constant phase that are defined by the condition $\frac{d\Theta_m}{dr} = 0$ and so 
+\begin{align}
+    \frac{d\phi}{dr} = - \frac{k}{m}. \label{eq:spiral_km}
+\end{align}
+This is the same as the relation used to find the pitch angle of the spiral shape in equation \ref{eq:pitchangle}.
+Assuming Keplerian rotation such that $\kappa=\Omega=\Omega_{\rm K}$, we can find $k$ from the Lin-Shu Dispersion relation \ref{eq:lin_shu_disp}
+\begin{align}
+    k^2 &= \frac{m^2 \left( \Omega - \Omega_{\rm p} \right)^2 - \kappa^2}{c^2} \\
+    &= \frac{m^2 \Omega_{\rm K}^2}{c^2} \frac{1}{r_{\rm p}^3} \left[ r^{3/2} - \left( r_{\rm L}^+ \right)^{3/2} \right] \left[ r^{3/2} - \left( r_{\rm L}^- \right)^{3/2} \right].
+\end{align}
+The tidal forcing of the planet results in density waves launched at the Lindblad resonances, with those launched at $r_{\rm L}^-$ and $r_{\rm L}^+$ propagating inwards and outwards through the disk respectively \citep{goldreich1978,goldreich1979}.
+Placing ourselves in the frame where the planet is stationary at $\phi = 0$, we can find the phase of the spiral waves simply by integrating equation \ref{eq:spiral_km} giving
+\begin{align}
+    \phi_m (r) = \phi_m(r_{\rm L}^\pm) - \int_{r_{\rm L}^\pm}^r \frac{k(r')}{m} \, dr', \label{eq:phase}
+\end{align}
+which consists of a constant offset $\phi_m(r_{\rm L}^\pm)$ which gives the azimuthal launching location, plus a term that varies with radius.
+For the waves launched at the Lindblad resonances, the constant offset term can be found from the asymptotic behaviour of the Airy function \citep{ward1986}. 
+For the $n$th arm of the $mth$ mode, where $n = 0, 1, ..., m-1$ the offset is given by 
+\begin{align}
+    \phi_{m,n}(r) = - \sign (r - r_{\rm p}) \frac{\pi}{4m} + 2 \pi\frac{n}{m}.
+\end{align}
+Now considering the $n=0$ arm, we see from the above that it launches closest to $\phi=0$ and thus closest to the planet.
+For large $m$, we find that the constant offset term $\phi_{m,0}(r)$ becomes independent of $m$.
+In addition, we have that $r_{\rm L}^\pm \rightarrow r_{\rm p}$ as $m \rightarrow \infty$.
+This results in the formation of a coherent, one-armed spiral wave centred on the planet, as \ref{eq:phase} reduces to 
+\begin{align}
+    \phi(r) = - \int_{r_{\rm p}}^ r \frac{\Omega(r') - \Omega_{\rm p}}{c(r')} \, dr'. \label{eq:planet_wake}
+\end{align}
+This result was first found by \citep{ogilvie2002}, although they wrote it in a different form. 
+They dubbed the resultant spiral wave the planet "wake" in analogy with the Kelvin wedge produced by a ship moving through water.
+The form shown above was first found in \citet{rafikov2002a}.
+\note{add a figure showing shape}
+
+\citep{ogilvie2002} also calculated the degree to which the constructive interference along the line defined by \ref{eq:planet_wake} fails.
+To do this they calculated the relative error $\Delta_m$ in the phase for each $m$ caused by the approximation we have performed above.
+Note that this is not the same quantity as we defined in \ref{eq:def_delta_m}.
+Figure \note{add figure} shows $\Delta_m$ in both the outer and inner disk, for multiple values of $m$.
+We see that in general, the approximation improves for larger $m$ as we would expect.
+Additionally, the behaviour in the inner and outer disk is very different.
+\citet{ogilvie2002} found that $\Delta_m \sim \mathrm{constant}$ as $r \rightarrow \infty$, while $\Delta_m$ diverges as $\rightarrow$ 0.
+Thus the accuracy of the one-armed wake shape \ref{eq:planet_wake} is in general better in the outer disk than the inner disk, and also depends on the importance of each mode.
+If the wave is dominated by large $m$ then \ref{eq:planet_wake} holds everywhere except for very small disk radii, while always failing if dominated by $m=1$ or $2$.
 
 \subsection{Additional Spiral Arms}
 
