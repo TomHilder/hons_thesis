@@ -18,7 +18,7 @@ Together the above quantities constitute a key feature of accretion disks; shear
 This means inner material may lose its angular momentum to the outer disk and accrete onto the star. 
 Alternatively, the whole disk may lose angular momentum to its environment, for example through magnetised outflows that induce a torque on the disk.
 
-\subsection{Fluid equations} \label{sec:fluid_eqns}
+\subsection{Fluid Equations} \label{sec:fluid_eqns}
 
 The structure and evolution of accretion disks are governed by the viscous and compressible continuity and momentum equations given by \citep[eg.][]{landau1987}
 \begin{align}
@@ -77,7 +77,11 @@ Thus equation \ref{eq:z_van} becomes
 \end{align}
 which expresses that the total angular momentum of the fluid disk is conserved, under our various assumptions.
 
-\subsection{Vertical density structure}
+\section{Theoretical Structure}
+
+\note{add some stuff here}
+
+\subsection{Vertical Density Structure}
 
 We may derive the vertical structure of the disk following the seminal review by \citet{pringle1981}. Taking the $z$ component of the momentum equation \ref{eq:fluid_mom}, again assuming $v_z \simeq 0$, giving
 \begin{align}
@@ -129,7 +133,7 @@ It can be shown that all disks irradiated by a central object are flared \citep{
 Indeed, \citet{chiang1997} modelled passive disks around young stars and found approximately $T_{\rm eff} \appropto r^{-1/2}$, which yields $\gamma \simeq 1/4$. 
 From equation \ref{eq:rotation}, we see that a consequence of aspect ratio increasing with radius is that the flow becomes increasingly sub-Keplerian in the outer disk.
 
-\subsection{Viscous evolution}
+\section{Viscous evolution}
 
 %\begin{figure}
 %    \centering
@@ -160,3 +164,58 @@ This is known as the $\alpha$-prescription. If $\nu \propto r^\beta$ for some co
 which is an exponentially tapered power law. That is, the density drops approximately as a power law in $-\beta$ with radius for $r < r_c$, and for $r > r_c$ the exponential decay terms dominates. If we use the $\alpha$-prescription and the above definition for $\gamma$ then $\beta=2\gamma+\frac{3}{2}$. 
 More commonly this is parametrised in terms of the effective temperature profile $T_{\rm eff} \propto r^{-q}$ for some constant $q$, giving $\beta = \frac{3}{2} - q$ \citep{hartmann1998}. 
 If $q=1/2$ as in \citet{chiang1997}, then $\beta=1$.
+
+\section{Observed Structure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.99\textwidth]{figures/cartoon_overview.pdf}
+    \caption{A cross section schematic of a typical protoplanetary disk. The location of gas is shown in grey while dust grains and larger solids are shown in purple. Labels on the left outline key observational tracers of disk structure while the labels on the right identify those features. The figure is intended as a rough outline and is not to scale \citep[see review by][]{andrews2020}. The pressure support of the gas results in a thick disk extended in the vertical direction, while the large dust grains settle to a thin layer in the mid-plane.}
+    \label{fig:struct_cartoon}
+\end{figure}
+
+In the absence of any mechanism driving substructure a protoplanetary disk around a single star should have a structure as depicted in Figure \ref{fig:struct_cartoon}. 
+The disk consists of two main components, gas and dust, where dust refers to any solid material. 
+The gas component exhibits the expected flared structure \citep{kenyon1987}. 
+The dust does not feel any pressure, but small grains couple strongly to the gas while large grains do not. 
+As a result, the large grains settle to the mid-plane, while the smaller grains trace the gas structure \citep{nakagawa1986}.
+The dust structure of the disk may be probed observationally through infrared scattered light as well as thermal continuum emission \citep{almapartnership2015,andrews2016,ansdell2016}. 
+Molecular emission lines allow for measurements of the gas distribution \citep{vandermarel2015,ansdell2016,zhang2021}, kinematics \citep{perez2015,pinte2018a,teague2018,pinte2019,yu2021,calcino2022} and temperature \citep{pinte2018,calahan2021}.
+
+%Bitsch paper. DSHARP papers. MAPS papers. 
+
+%We will now outline the modern understanding of the structure and properties of protoplanetary disks as determined through observations, and how the observational constraints effect the theoretical picture presented in section \ref{sec:acc_disks}. 
+%Figure \ref{fig:struct_cartoon} shows a rough cross-section illustration of a disk and outlines key properties as well as the observational tracers of those properties. 
+%Disks consist of two main components, gas and dust (where by dust we mean any solids). 
+%Observations of infrared light scattered off the surface of the disk as well as thermal continuum emission are tracers of the dust structure \fct, while molecular emission lines allow for measurements of the gas distribution \fct, kinematics \citep{perez2015,pinte2018a,teague2018,pinte2019,calcino2022,yu2021} and temperature \citep{pinte2018,calahan2021}.
+
+The size of disks is typically defined by some radius within which most of the luminosity is contained, usually chosen as 90\% \citep[eg.][]{andrews2018a}. 
+This varies for different tracers and so for example $R_\mathrm{mm}$, the radius within which most of the mm emission is contained, is in general different to $R_\mathrm{CO}$, the corresponding radius for line emission of molecular carbon monoxide (CO). 
+Furthermore, since mm emission traces the dust component of the disk while CO emission traces the gas, their disk sizes are proxies for the size of the dust and gas disks respectively.
+Medium resolution surveys, resolved to tens of AU, using ALMA of almost 200 disks suggest dust disk sizes in the range $R_\mathrm{mm} \simeq 10 - 250$ AU \citep{tripathi2017,andrews2018a,hendler2020}. 
+This is also compatible with that found from higher resolution surveys of around 30 disks resolved spatially to approximately $5$ AU \citep{long2018,huang2018b}.
+Studies probing the gas component have found sizes in the range $100-500$ AU, with a few extending to even greater radii \citep{ansdell2018,zhang2021}. 
+Observations of cyanide (CN) emission lines with ALMA have also found evidence for compact gas disks with sizes $\lesssim 15$ AU \citep{vanterwisga2019}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.7\textwidth]{figures/disk_mass.pdf}
+    \caption{Cumulative mass distributions for disks found in various nearby young stellar regions. The shaded regions represent the $1\sigma$ confidence intervals \citep{vanterwisga2019}. Plotted in red is the dust mass of the MMSN \citep{weidenschilling1977b}. According to this analysis, very few of the disks in the sample have enough mass to create the planets of the solar system.}
+    \label{fig:disk_masses}
+\end{figure}
+
+The total disk mass $M_\mathrm{d}$ is split into two components, the total gas mass $M_\mathrm{g}$ and the total dust (solids) mass $M_\mathrm{s}$, such that $M_\mathrm{d} = M_\mathrm{g} + M_\mathrm{s}$. 
+Measurements of these values constrain the possible bodies that are able to be created from a disk as it evolves into the future. 
+The so-called Minimum Mass Solar Nebula (MMSN) is the supposed disk that the solar system formed from, with enough mass to create the planets \citep{weidenschilling1977b,hayashi1981}. 
+Modern measurements for the MMSN give $M_\mathrm{s} \gtrsim 40 \, M_\oplus$, $M_\mathrm{g} \gtrsim 3000 \, M_\oplus$, where $M_\oplus$ is an Earth mass \citep[see review by][]{andrews2020}.
+If protoplanetary disks are the sites of planet formation, one would then expect that measurements of disk masses would yield values comparable to or larger than the MMSN.
+Figure \ref{fig:disk_masses} compares the distribution of dust disk masses $M_\mathrm{s}$ ($M_\mathrm{dust}$ in the figure) found in the regions of Ophiuchus, Lupus, Upper Scorpius, Chamaeleon I, $\sigma$ Ori, IC 348 and Taurus \citep[and references therin]{cieza2019}.
+We see that even in the youngest regions less than 20\% of the disks contain a dust component surpassing the MMSN value of $M_\mathrm{s}\gtrsim 40 \, M_\oplus$.
+This finding is seemingly incompatible with the known population of exoplanets, and is known as the missing mass problem.
+However, if it is the case the planets have \textit{already formed} in protoplanetary disks, then the apparent contradiction is resolved.
+This case was put forward by \citet{greaves2010}.
+They argued that planets must begin forming in the protostellar stage of star formation, since massive disks are more common.
+This stage occurs when the central star is still embedded in an envelope, and occurs prior to the protoplanetary stage.
+Comparisons of the constraints imposed by disk mass measurements and the properties of known exoplanets show that either planet formation is incredibly efficient in the early protoplanetary stage, or it begins in the embedded phase \citep{najita2014,manara2018,Tychoniec2020}.
+
+Alternatively, it is possible that the derived dust disk masses suffer from systematic underestimation. \citet{zhu2019} argued that if disks are not optically thin, as assumed in calculations of disk mass from continuum observations, then the true dust mass may be a factor of 2 or more larger.
