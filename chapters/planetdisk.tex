@@ -223,6 +223,9 @@ Disk regions where $Q(r) < 1$ are subject to local unstable growth for certain v
 This may result in the fragmentation of the disk, and may be a pathway to the formation of giant planets \fct.
 Planet formation through this mechanism is known as the Gravitational Instability model \fct, and it is similar in spirit to star formation through the Jeans instability \citep{jeans1902}.
 
+\section{Planet Forcing}
+
+\note{add connection paragraph maybe}
 
 \subsection{Lindblad Resonances}
 
@@ -356,7 +359,7 @@ The Lindblad resonances are spatially segregated but become densely packed as th
 This segregation allows us to consider each resonance location as driven by only the $m$th component of the planet potential.
 This breaks down for large $m$ as the resonances are no longer clearly separated.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width = 0.9\textwidth]{figures/lindblad_two_panel.pdf}
     \caption{\note{add caption}}
@@ -388,7 +391,15 @@ Assuming Keplerian rotation such that $\kappa=\Omega=\Omega_{\rm K}$, we can fin
     &= \frac{m^2 \Omega_{\rm K}^2}{c^2} \frac{1}{r_{\rm p}^3} \left[ r^{3/2} - \left( r_{\rm L}^+ \right)^{3/2} \right] \left[ r^{3/2} - \left( r_{\rm L}^- \right)^{3/2} \right].
 \end{align}
 The tidal forcing of the planet results in density waves launched at the Lindblad resonances, with those launched at $r_{\rm L}^-$ and $r_{\rm L}^+$ propagating inwards and outwards through the disk respectively \citep{goldreich1978,goldreich1979}.
-Placing ourselves in the frame where the planet is stationary at $\phi = 0$, we can find the phase of the spiral waves simply by integrating equation \ref{eq:spiral_km} giving
+Figure \ref{fig:wakes_m3} shows the shape of the $m=3$ spiral waves generated at the $r_{\rm L}^\pm (m=3)$ Lindblad resonances as they propagate inwards and outwards through the disk.
+The shape of these spirals is calculated as follows.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.9\textwidth]{figures/wakes_m3.pdf}
+    \caption{\note{add caption}}
+    \label{fig:wakes_m3}
+\end{figure}
+Placing ourselves in the frame where the planet is stationary at $\phi = 0$, we can find the phase of the spiral waves simply by integrating equation \ref{eq:spiral_km} giving \citep{bae2018a}
 \begin{align}
     \phi_m (r) = \phi_m(r_{\rm L}^\pm) - \int_{r_{\rm L}^\pm}^r \frac{k(r')}{m} \, dr', \label{eq:phase}
 \end{align}
@@ -396,31 +407,87 @@ which consists of a constant offset $\phi_m(r_{\rm L}^\pm)$ which gives the azim
 For the waves launched at the Lindblad resonances, the constant offset term can be found from the asymptotic behaviour of the Airy function \citep{ward1986}. 
 For the $n$th arm of the $mth$ mode, where $n = 0, 1, ..., m-1$ the offset is given by 
 \begin{align}
-    \phi_{m,n}(r) = - \sign (r - r_{\rm p}) \frac{\pi}{4m} + 2 \pi\frac{n}{m}.
+    \phi_{m,n}(r_{\rm L}^\pm) = - \sign (r_{\rm L}^\pm - r_{\rm p}) \frac{\pi}{4m} + 2 \pi\frac{n}{m}. \label{eq:spiral_offset}
 \end{align}
 Now considering the $n=0$ arm, we see from the above that it launches closest to $\phi=0$ and thus closest to the planet.
 For large $m$, we find that the constant offset term $\phi_{m,0}(r)$ becomes independent of $m$.
 In addition, we have that $r_{\rm L}^\pm \rightarrow r_{\rm p}$ as $m \rightarrow \infty$.
-This results in the formation of a coherent, one-armed spiral wave centred on the planet, as \ref{eq:phase} reduces to 
+This results in the formation of a coherent, one-armed spiral wave centred on the planet, as \ref{eq:phase} and \ref{eq:spiral_offset} reduces to
 \begin{align}
-    \phi(r) = - \int_{r_{\rm p}}^ r \frac{\Omega(r') - \Omega_{\rm p}}{c(r')} \, dr'. \label{eq:planet_wake}
+    \phi_{\infty,0}(r) = - \int_{r_{\rm p}}^ r \frac{\Omega(r') - \Omega_{\rm p}}{c(r')} \, dr'. \label{eq:planet_wake}
 \end{align}
-This result was first found by \citep{ogilvie2002}, although they wrote it in a different form. 
+Because the $n=0$ waves launch almost in phase nearby the planet, as seen in figure \ref{fig:planet_wake}, the planet wake is always centred on the planet location. 
+The above result was first found by \citet{ogilvie2002}, although they wrote it in a different form. 
 They dubbed the resultant spiral wave the planet "wake" in analogy with the Kelvin wedge produced by a ship moving through water.
 The form shown above was first found in \citet{rafikov2002a}.
-\note{add a figure showing shape}
 
-\citep{ogilvie2002} also calculated the degree to which the constructive interference along the line defined by \ref{eq:planet_wake} fails.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{figures/planet_wake_shape.pdf}
+    \caption{\note{add caption}}
+    \label{fig:planet_wake}
+\end{figure}
+
+Ogilvie and Lubow also calculated the degree to which the constructive interference along $\phi_{\infty,0}$ fails.
 To do this they calculated the relative error $\Delta_m$ in the phase for each $m$ caused by the approximation we have performed above.
 Note that this is not the same quantity as we defined in \ref{eq:def_delta_m}.
 Figure \note{add figure} shows $\Delta_m$ in both the outer and inner disk, for multiple values of $m$.
-We see that in general, the approximation improves for larger $m$ as we would expect.
+We see that in general, the approximation improves for larger $m$.
 Additionally, the behaviour in the inner and outer disk is very different.
-\citet{ogilvie2002} found that $\Delta_m \sim \mathrm{constant}$ as $r \rightarrow \infty$, while $\Delta_m$ diverges as $\rightarrow$ 0.
+Ogilvie and Lubow found that $\Delta_m \sim \mathrm{constant}$ as $r \rightarrow \infty$, while $\Delta_m$ diverges as $r \rightarrow$ 0, and that for any fixed $r$ that $\Delta_m \rightarrow 0$ as $m \rightarrow \infty$.
 Thus the accuracy of the one-armed wake shape \ref{eq:planet_wake} is in general better in the outer disk than the inner disk, and also depends on the importance of each mode.
-If the wave is dominated by large $m$ then \ref{eq:planet_wake} holds everywhere except for very small disk radii, while always failing if dominated by $m=1$ or $2$.
+If the wave is dominated by large $m$ then \ref{eq:planet_wake} holds everywhere except for very small disk radii, while always failing if dominated by $m=1$ or $2$ \citep{ogilvie2002}.
+The dominating azimuthal mode for tidal forcing by a planet is $m_{\rm D} \approx 1/2 \left( H/r \right)_{\rm p}^{-1}$ \citep{goldreich1980}, and so for candidate planetary companions in observed disks $m_{\rm D} \gtrsim 5$ \fct. 
+The coherent planet wake picture should therefore hold well except for at small disk radii.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Delta_m_inner.jpeg}
+        %\caption{$y=x$}
+        \label{fig:delta_m_inner}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Delta_m_outer.jpeg}
+        %\caption{$y=3sinx$}
+        \label{fig:delta_m_outer}
+    \end{subfigure}
+       \caption{\note{add caption}}
+       \label{fig:delta_m}
+\end{figure}
 
 \subsection{Additional Spiral Arms}
+
+In addition to constructive interference of the $n=0$ components causing the planet wake, it is possible for additional spiral arms to form.
+These \textit{secondary} and \textit{tertiary} spiral arms (where the planet wake described in the previous section is the \textit{primary} arm) were first seen in numerical calculations \fct and were not very well understood in the context of linear density wave theory until quite recently \citep{bae2018a,miranda2019a}.
+Unlike the primary, these spirals are not centred on the planet position, and are instead generated some distance away in the inner disk.
+
+Figure \note{add figure} shows the phase of the $n=1$ and $n=2$ components in the inner disk.
+We see that unlike for the $n=0$ case, the waves are not launched in the vicinity of the planet, or nearby each other.
+However the overall behaviour of the constant offset launching term \ref{eq:spiral_offset} is the same for non-zero $n$, namely that it becomes smaller as $m$ increases and so the launching phases become closer for larger $m$.
+Furthermore, the modes become more tightly wound as $m$ increases, with the second term of \ref{eq:phase} also losing its $m$ dependence for very large values.
+These effects allow the larger $m$ modes launched closer to the planet to catch up to the low $m$ modes.
+\citet{bae2018a} first performed this analysis and proposed that this catching up effect is responsible for the generation of secondary and tertiary spirals.
+This also provides a natural explanation as to why the additional arms are not centred on the planet, as the interference only becomes coherent after the large $m$ modes have caught up in phase.
+Bae and Zhu also found that this effect does not operate in the outer disk, as the difference in phase between small and large $m$ modes becomes constant instead of decreasing.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.95\textwidth]{figures/inner_n_1_and_2.pdf}
+    \caption{\note{add caption}}
+    \label{fig:additional_arms}
+\end{figure}
+
+\citet{miranda2019a} built upon this work through numerical calculations and showed that the formation of additional arms in the inner disk is a robust prediction of the linear theory.
+They did this by taking into account the global mode structure outside of the WKB approximation as used in \citet{bae2018a}, and calculated both the phase and amplitude of each mode.
+They found that their results in general supported the picture of additional arms resultant from coincident phases, but that taking into account the amplitude information changes the level of correspondence and can be important, especially for the tertiary and higher order arms (those formed by $n>2$).
+
+In this work we will be concerned primarily with the waves generated by the planet in the outer disk and so our models will not include any of the additional arms in the inner disk, only the primary planet wake.
+
+\subsection{Linear}
 
 \section{Non-Linear Wake Evolution}
 
