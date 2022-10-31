@@ -54,7 +54,7 @@ In the following section we will see that the perturbations driven by a gravitat
 
 \note{need a connecting sentence here to explain that we are eventually looking for the respone from a perturbing gravitating body.}
 
-The 2D inviscid equations of momentum and continuity expressed in terms of surface density are given by 
+The 2D inviscid equations of momentum and continuity expressed in terms of surface density are given by \citep{landau1959}
 \begin{align}
     &\partial_t u + u \partial_r u + \frac{v}{r} \partial_\phi u - \frac{v^2}{r} = - \partial_r \Phi - \frac{1}{\Sigma} \partial_r P, \label{eq:mom_eq_u} \\ 
     &\partial_t v + u \partial_r v + \frac{v}{r} \partial_\phi v - \frac{uv}{r} = - \frac{1}{r} \partial_\phi \Phi - \frac{1}{r\Sigma} \partial_\phi P, \label{eq:mom_eq_v} \\
@@ -90,10 +90,10 @@ respectively.
 We now perform a linear perturbation study; we assume that the spiral waves in the disk constitute only a small perturbation from some background steady-state, and that the background state is axisymmetric.
 We rewrite the quantities $\Sigma,\Phi,h,u,v$ as a combination of the background value (denoted by subscript 0) and a small perturbation  (denoted by $\delta$)
 \begin{align}
-    \Sigma &= \Sigma_0 + \delta\Sigma \label{eq:pertsig} \\
-    \Phi &= \Phi_0 + \delta\Phi \label{eq:pertphi} \\
-    h &= h_0 + \delta h \label{eq:perth} \\
-    v &= v_0 + \delta v \label{eq:pertv} \\ 
+    \Sigma &= \Sigma_0 + \delta\Sigma, \label{eq:pertsig} \\
+    \Phi &= \Phi_0 + \delta\Phi, \label{eq:pertphi} \\
+    h &= h_0 + \delta h, \label{eq:perth} \\
+    v &= v_0 + \delta v, \label{eq:pertv} \\ 
     u &= \delta u, \label{eq:pertu}
 \end{align}
 where we note that $u_0=0$ since we assume no radial motion in the background state.
@@ -104,7 +104,7 @@ From equations \ref{eq:mom_eq_u} and \ref{eq:mom_u_RHS}, and making use of the a
 which is the 2D equivalent of equation \ref{eq:rotation}. 
 Substituting \ref{eq:pertsig}-\ref{eq:pertu} into equations \ref{eq:mom_eq_u}, \ref{eq:mom_eq_v}, \ref{eq:mom_u_RHS}, \ref{eq:mom_v_RHS}, discarding second order terms, and subtracting equation \ref{eq:pertback} yields the linearised equations of motion 
 \begin{align}
-    \partial_t \delta u + \Omega \partial_\phi \delta u - 2 \Omega \delta v &= - \partial_r \left( \delta \Phi + \delta h  \right) \label{eq:mom_u_lin} \\
+    \partial_t \delta u + \Omega \partial_\phi \delta u - 2 \Omega \delta v &= - \partial_r \left( \delta \Phi + \delta h  \right), \label{eq:mom_u_lin} \\
     \partial_t \delta v + \Omega \partial_\phi \delta v - 2 B \delta u &= - \frac{1}{r} \partial_\phi \left( \delta \Phi + \delta h  \right), \label{eq:mom_v_lin}
 \end{align}
 where we have also substituted $v_0=\Omega r$ and the second Oort constant $B = -r \partial_r \Omega / 2 -\Omega$, which is related to the epicyclic frequency as $\kappa^2 = -4 B \Omega$. 
@@ -120,8 +120,8 @@ where each $m$ component of the perturbation has $m$-fold symmetry and $a_m(r)$ 
 The physical perturbation is obtained by taking the real component $\mathrm{Re}(\delta a)$.
 Substituting the summands of \ref{eq:pert_sum_form} in place of the perturbations in our linearised equations yields
 \begin{align}
-    u_m (r) &= \frac{i}{\Delta_m} \left[ (\omega - m \Omega) \partial_r (\Phi_m + h_m) - \frac{2 m \Omega}{r} (\Phi_m + h_m) \right] \label{eq:lin_u_m} \\
-    v_m (r) &= - \frac{1}{\Delta_m} \left[ 2B \partial_r (\Phi_m + h_m) + \frac{m(\omega - m \Omega)}{r} (\Phi_m + h_m) \right] \label{eq:lin_v_m} \\
+    u_m (r) &= \frac{i}{\Delta_m} \left[ (\omega - m \Omega) \partial_r (\Phi_m + h_m) - \frac{2 m \Omega}{r} (\Phi_m + h_m) \right] \label{eq:lin_u_m}, \\
+    v_m (r) &= - \frac{1}{\Delta_m} \left[ 2B \partial_r (\Phi_m + h_m) + \frac{m(\omega - m \Omega)}{r} (\Phi_m + h_m) \right] \label{eq:lin_v_m}, \\
     \Sigma_m (r) &= \frac{1}{r(\omega - m \Omega)} \left[ m \Sigma_0 v_m -i \partial_r (r u_m \Sigma_0) \right] \label{eq:lin_cont_m},
 \end{align}
 where
@@ -155,8 +155,8 @@ For a spiral with shape function $f$ let $\lambda_r$ be the radial separation be
 If we assume that the spirals are indeed tightly-wound such that $\alpha\rightarrow 0$, then we have that $f(r+\lambda_r,t)=f(r,t) + \lambda_r \partial_r f |_{r,t}$. 
 Recalling that $\partial_r f |_{r,t}$ is none other than the radial wavenumber $k$, we find
 \begin{align}
-    2 \pi &= \left| f(r,t) + \lambda_r \partial_r f |_{r,t} - f(r,t) \right| \\
-    &= \lambda_r | k | \\
+    2 \pi &= \left| f(r,t) + \lambda_r \partial_r f |_{r,t} - f(r,t) \right|, \\
+    &= \lambda_r | k |, \\
     \Rightarrow \lambda_r &= \frac{2 \pi}{|k|},
 \end{align}
 and so we find that the radial wavenumber $r$ has the usual relationship with the radial wavelength $\lambda_r$ for tightly-wound spiral arms. 
@@ -180,7 +180,7 @@ To determine the disk response we must determine the gravitational potential due
 where $\delta(z)$ is the Dirac delta since we are working in 2D. 
 The solution under the WKB approximation is \fct
 \begin{align}
-    \delta \Phi_m &= - \frac{2 \pi G}{|k|} \Sigma_m \exp \left[ i \left( m \phi + f(r,t)  \right)  \right] \\
+    \delta \Phi_m &= - \frac{2 \pi G}{|k|} \Sigma_m \exp \left[ i \left( m \phi + f(r,t)  \right)  \right], \\
     \Rightarrow \Phi_m &= - \frac{2 \pi G}{|k|} \Sigma_m. \label{eq:phi_m_sigma_m}
 \end{align}
 
@@ -201,8 +201,8 @@ As shown in appendix \ref{appendix:asymptotic_deriv}, the WKB approximation impl
 \end{align}
 Thus assuming the form \ref{eq:WKB_form} for the quantities in equations \ref{eq:lin_u_m} - \ref{eq:lin_cont_m} and applying the WKB approximation yields
 \begin{align}
-    u_m(r) &= - \frac{k(\omega-m\Omega)}{\Delta_m} (\Phi_m + h_m) \label{eq:u_m_disp} \\
-    v_m(r) &= - \frac{2ikB}{\Delta_m} (\Phi_m + h_m) \label{eq:v_m_disp} \\
+    u_m(r) &= - \frac{k(\omega-m\Omega)}{\Delta_m} (\Phi_m + h_m), \label{eq:u_m_disp} \\
+    v_m(r) &= - \frac{2ikB}{\Delta_m} (\Phi_m + h_m), \label{eq:v_m_disp} \\
     \Sigma_m(r) &= \frac{k \Sigma_0}{\omega-m\Omega} u_m, \label{eq:sigma_m_disp}
 \end{align}
 where the error is for all cases $\mathcal{O}(1/|kr|)$, as we have approximated the radial derivatives by \ref{eq:app_radial_deriv} and dropped terms proportional to $1/r$ in favour of terms proportional to $k$.
@@ -252,50 +252,50 @@ The Lagrangian for a test particle in such a frame is given by
 where $\Phi (r,\phi) = \Phi_\star (r) + \Phi_{\rm p} (r, \phi)$ is the total potential from both the star and planet.
 From the Euler-Lagrange equations we find the equations of motion to be
 \begin{align}
-    \ddot{r} &= r \left( \dot{\phi} + \Omega_{\rm p} \right)^2 - \partial_r \Phi \label{eq:EOM_rad} \\
+    \ddot{r} &= r \left( \dot{\phi} + \Omega_{\rm p} \right)^2 - \partial_r \Phi, \label{eq:EOM_rad} \\
     r^2 \ddot{\phi} &= - 2 r \dot{r} \left( \dot{\phi} + \Omega_{\rm p}  \right) - \partial_\phi \Phi. \label{eq:EOM_az}
 \end{align}
 We now perform a perturbation study using the change of variables $r(t) \rightarrow r + \delta r (t)$  and $\phi (t) \rightarrow \phi (t) + \delta \phi (t)$ where we assume that $\delta r \ll r$ and $\delta \phi \ll \phi$.
 We will similarly assume that $\Phi_{\rm p} \ll \Phi_\star$.
 Thus the derivatives transform to first order as
 \begin{align}
-    \partial_r &\rightarrow \partial_r + \delta r \partial_r^2 r \\
+    \partial_r &\rightarrow \partial_r + \delta r \partial_r^2 r, \\
     \partial_\phi &\rightarrow \partial_\phi + \delta \phi \partial_r^2 \phi.
 \end{align}
 The zeroth order terms of \ref{eq:EOM_rad} and \ref{eq:EOM_az} give 
 \begin{align}
     r \left( \dot{\phi} + \Omega_{\rm p}  \right)^2 &= \frac{d\Phi_\star}{dr} , \\
-    \ddot{\phi} &= 0
+    \ddot{\phi} &= 0,
 \end{align}
 which is just the usual equations for centripetal acceleration. 
 They are solved simply by associating $\dot{\phi}$ appropriately with $\Omega$ by considering the transformation to the rotating frame, yielding
 \begin{align}
-    \dot {\phi} &= \Omega - \Omega_{\rm p} \\
+    \dot {\phi} &= \Omega - \Omega_{\rm p}, \\
     \Rightarrow \phi &= \left( \Omega - \Omega_{\rm p} \right) t,
 \end{align}
 where the constant of integration is set to zero without loss of generality.
 We are now free to consider in isolation the first order terms of \ref{eq:EOM_rad} and \ref{eq:EOM_az}, which reduce to 
 \begin{align}
-    \ddot{\delta r} + \left( \frac{d^2\Phi_\star}{dr^2} - \Omega^2 \right) \delta r &= 2 r \Omega \dot{\delta \phi} - \partial_r \Phi_{\rm p} \label{eq:lin_rad_lindblad} \\
+    \ddot{\delta r} + \left( \frac{d^2\Phi_\star}{dr^2} - \Omega^2 \right) \delta r &= 2 r \Omega \dot{\delta \phi} - \partial_r \Phi_{\rm p}, \label{eq:lin_rad_lindblad} \\
     \ddot{\phi} + \frac{2 \Omega}{r} \dot{\delta r} &= - \frac{1}{r^2} \partial_\phi \Phi_{\rm p}. \label{eq:lin_az_lindblad}
 \end{align}
 We will now specify a form for the planet potential $\Phi_{\rm p}$.
 Starting with the usual point mass potential centred on the planet we have
 \begin{align}
-    \Phi_{\rm p} (r,\phi) &= -\frac{G M_{\rm p}}{|\bf{r} - \bf{r_{\rm p}}|} \\
-    &= -\frac{G M_{\rm p}}{\sqrt{(r_{\rm p} - r \cos \phi)^2 + (r \sin \phi)^2}} \\
-    &= -\frac{G M_{\rm p}}{\sqrt{r^2 - 2 r r_{\rm p} \cos \phi + r_{\rm p}^2}} \\
+    \Phi_{\rm p} (r,\phi) &= -\frac{G M_{\rm p}}{|\bf{r} - \bf{r_{\rm p}}|}, \\
+    &= -\frac{G M_{\rm p}}{\sqrt{(r_{\rm p} - r \cos \phi)^2 + (r \sin \phi)^2}}, \\
+    &= -\frac{G M_{\rm p}}{\sqrt{r^2 - 2 r r_{\rm p} \cos \phi + r_{\rm p}^2}}, \\
     &= -\frac{G M_{\rm p}}{r_{\rm p}} \left[ \mathcal{R}^2 - 2 \mathcal{R} \cos \phi + 1\right]^{-\frac{1}{2}},
 \end{align}
 where $\mathcal{R} = r / r_{\rm p}$.
 To investigate the influence of this potential perturbing our test particles we will decompose it using a Fourier series.
 The potential must by invariant under $\phi \rightarrow -\phi$ as well as $2 \pi$ periodic in $\phi$, motivating the form
 \begin{align}
-    \Phi_{\rm p}(r,\phi) = \sum_{m=0}^\infty \Phi_m (r,\phi) = \sum_{m=0}^\infty V_m (r) \cos (m \phi) \label{eq:fourier_planet}
+    \Phi_{\rm p}(r,\phi) = \sum_{m=0}^\infty \Phi_m (r,\phi) = \sum_{m=0}^\infty V_m (r) \cos (m \phi), \label{eq:fourier_planet}
 \end{align}
 where in our case the Fourier coefficients are given by 
 \begin{align}
-    V_m (r) &= - \frac{2}{\pi} \frac{G M_{\rm p}}{r_{\rm p}} \int_0^\pi  \left( \mathcal{R}^2 - 2 \mathcal{R} \cos \phi + 1\right)^{-\frac{1}{2}} \cos (m \phi) \, d\phi \\
+    V_m (r) &= - \frac{2}{\pi} \frac{G M_{\rm p}}{r_{\rm p}} \int_0^\pi  \left( \mathcal{R}^2 - 2 \mathcal{R} \cos \phi + 1\right)^{-\frac{1}{2}} \cos (m \phi) \, d\phi, \\
     &= \frac{\delta_{m0} - 2}{2} \frac{G M_{\rm p}}{r_{\rm p}} \, b_{1/2}^m (\mathcal{R}),
 \end{align}
 where $b_{1/2}^m (\mathcal{R})$ are the Laplace coefficients defined in \citet{brouwer1961} \note{maybe add a footnote about how this form also ignores the indirect potential term but this is typically done even in detailed calculations for instance Bae and Zhu 2018 and Miranda and Rafikov} 2019.
@@ -330,7 +330,7 @@ Substituting this into \ref{eq:lin_rad_lindblad} yields
 \end{align}
 where
 \begin{align}
-    \kappa^2 \equiv \frac{d^2 \Phi_\star}{dr^2} + 3 \Omega^2 = r \frac{d \Omega^2}{dr} + 4 \Omega^2
+    \kappa^2 \equiv \frac{d^2 \Phi_\star}{dr^2} + 3 \Omega^2 = r \frac{d \Omega^2}{dr} + 4 \Omega^2,
 \end{align}
 is the usual epicyclic frequency already introduced. In addition, we define the forcing function $\Psi_m(r)$ as
 \begin{align}
@@ -363,9 +363,11 @@ By substituting equation \ref{eq:point_pot} we obtain the \textit{Lindblad radii
     r_{\rm L}^\pm(m) = \left( 1 \pm \frac{1}{m} \right)^\frac{2}{3} r_{\rm p}, \label{eq:lind_loc}
 \end{align}
 which are the positions of the $m$th Lindblad resonances, where $r_{\rm L}^-$ is interior to the planets orbit and $r_{\rm L}^+$ is exterior to the planets orbit.
-The Lindblad resonances are spatially segregated but become densely packed as they approach $r_{\rm p}$ for large $m$, as shown in figure \note{add figure}.
+The Lindblad resonances are spatially segregated but become densely packed as they approach $r_{\rm p}$ for large $m$, as shown in figure \ref{fig:lindblad}.
 This segregation allows us to consider each resonance location as driven by only the $m$th component of the planet potential.
 This breaks down for large $m$ as the resonances are no longer clearly separated.
+
+\note{maybe add something about resonance shifting from pressure terms.}
 
 \begin{figure}
     \centering
@@ -395,7 +397,7 @@ To investigate the shape of the spiral wake we will look for lines of constant p
 This is the same as the relation used to find the pitch angle of the spiral shape in equation \ref{eq:pitchangle}.
 Assuming Keplerian rotation such that $\kappa=\Omega=\Omega_{\rm K}$, we can find $k$ from the Lin-Shu Dispersion relation \ref{eq:lin_shu_disp}
 \begin{align}
-    k^2 &= \frac{m^2 \left( \Omega - \Omega_{\rm p} \right)^2 - \kappa^2}{c^2} \\
+    k^2 &= \frac{m^2 \left( \Omega - \Omega_{\rm p} \right)^2 - \kappa^2}{c^2}, \\
     &= \frac{m^2 \Omega_{\rm K}^2}{c^2} \frac{1}{r_{\rm p}^3} \left[ r^{3/2} - \left( r_{\rm L}^+ \right)^{3/2} \right] \left[ r^{3/2} - \left( r_{\rm L}^- \right)^{3/2} \right].
 \end{align}
 The tidal forcing of the planet results in density waves launched at the Lindblad resonances, with those launched at $r_{\rm L}^-$ and $r_{\rm L}^+$ propagating inwards and outwards through the disk respectively \citep{goldreich1978,goldreich1979}.
@@ -505,9 +507,12 @@ Historically the interest was first in calculating the Lindblad torque and not t
 \citet{goodman2001} included these phases to solve directly for the shape of the wake.
 Their approach for calculating the wake structure splits the problem into two separate regimes: 
 \begin{enumerate}
-    \item Linear wake \textit{generation}: Provided that $M_{\rm p}$ is not too large (\note{add reference to later part}), the disturbance of the planet is weak enough that the wake can be calculated from linear theory.
+    \item Linear wake \textit{generation}: Provided that $M_{\rm p}$ is not too large ($\gtrsim M_1$ defined in equation \ref{eq:char_mass}), the disturbance of the planet is weak enough that the wake can be calculated from linear theory.
     \item Non-linear wake \textit{propagation}: As the wave travels away from the planet it steepens into a shock and non-linear behaviour becomes important.  
 \end{enumerate}
+This approach is agnostic to the rotation, density and sound speed profiles of the disk, assuming only that they are functions of radius.
+It is assumed that the disk is both locally polytropic (see section \ref{sec:velocity_perts}), and inviscid, as well as non-self-gravitating.
+
 It should be noted that the used of the language "generation" and "propagation" are slightly misleading.
 The solution that we will calculate is steady-state and has no time dependence.
 In a physical sense the language is correct; waves are excited nearby the planet before propagating out into the disk.
@@ -518,10 +523,10 @@ The remainder of this section is dedicated to outlining the linear wake generati
 
 Above we stated that nearby the planet the disturbance is weak enough that linear theory is sufficient to describe wake generation provided the planet is not too large.
 This certainly seems counter-intuitive at first glance, should the disturbance not be largest in the direct vicinity of the planet?
-This is explained by the fact that a stationary perturber cannot excite density waves in a subsonic flow \citep{landau1987}.
-Thus no waves are generated within some characteristic distance from the planet, known as the \textit{torque cut-off} \citep{goldreich1980}.
+This is explained by the fact that a stationary perturber cannot excite density waves in a subsonic flow \citep{landau1959}.
+Thus no waves are generated within some characteristic distance from the planet, an effect known as the \textit{torque cut-off} \citep{goldreich1980}.
 In a Keplerian disk this distance is $2H_{\rm p}/3$.
-The Lindblad resonances within this region, where $m$ is large, therefore contribute minimally to the torque.
+The Lindblad resonances within this region, where $m$ is large, are suppressed and therefore contribute minimally to the torque.
 In addition the resonances with very low $m$ are not effectively excited due to their distance from the planet.
 Indeed the dominant mode is of order $(H_{\rm p} / r_{\rm p})^{-1}$, as mentioned in section \ref{sec:planetwake}.
 The resonances excited most efficiently are therefore located a few $H_{\rm p}$ from the planet, far enough to justify the linear approach.
@@ -530,24 +535,28 @@ The rest of this subsection directly follows \citet{goodman2001}.
 The linear calculation is performed in the \textit{sheared-sheet approximation} \citep{hill1878}.
 These involves defining pseudo-cartesian coordinates centred on the planet location
 \begin{align}
-    x &= r - r_{\rm p} \\
-    y &= r_{\rm p} \left( \phi - \phi_{\rm p} ,\right)
+    x &= r - r_{\rm p}, \\
+    y &= r_{\rm p} \left( \phi - \phi_{\rm p} \right),
 \end{align}
 where $\phi_{\rm p}$ is the azimuthal location of the planet.
 The differential rotation of the disk is then expanded to lowest order in $x/r_{\rm p}$, which reduces the azimuthal component of the flow to
 \begin{align}
     v_0 = 2 A x; \qquad 2A \equiv r \left. \frac{d \Omega}{dr} \right|_{r_{\rm p}},
 \end{align}
-where the shear $A$ and rotation $\Omega$ rates are treated as constant (that does \textit{not} make the above derivative zero), as well as the vorticity $B=A+\Omega$.
+where the shear $A$ and rotation $\Omega$ rates are treated as constant (that does \textit{not} make the above derivative zero), as is the vorticity $B \equiv A+\Omega$.
 The unperturbed surface density $\Sigma_{\rm p}$ and sound speed $c_{\rm p}$ are also assumed to be constant.
 
-We adopt as a length unit the mach-1 length $l$, which is the distance from the planet where the flow becomes supersonic.
-This requires that $v_0 = 2|Ax| > c_{\rm p}$ and so $l \equiv c_{\rm p} / |2A|$ . For the planet mass we adopt the unit
+We adopt as a length unit the mach-1 length $l_{\rm p}$, which is the distance from the planet where the flow becomes supersonic.
+This requires that $v_0 = 2|Ax| > c_{\rm p}$ and so 
 \begin{align}
-    M_1 \equiv \frac{c_0^3}{|2A|G}.
+    l_{\rm p} \equiv c_{\rm p} / |2A|. \label{eq:mach1_len}
+\end{align}
+For the planet mass we adopt the unit
+\begin{align}
+    M_1 \equiv \frac{c_0^3}{|2A|G}. \label{eq:char_mass}
 \end{align}
 For a Keplerian disk $M_1$ is equal to the \textit{thermal mass} defined in equation \ref{eq:thermalmass}.
-For $M_{\rm p} \gtrsim M_1$ the Roche lobe of the planet will become larger than $l$, causing the linear approximation to fail.
+For $M_{\rm p} \gtrsim M_1$ the Roche lobe of the planet will become larger than $l_{\rm p}$, causing the linear approximation to fail.
 This is also the gap opening condition for an inviscid disk as discussed in section \ref{sec:gap_opening}.
 For the linear regime the amplitude of the wake is directly proportional to the planet mass, and so it is sufficient to carry out the calculation only once and scale it appropriately as needed.
 
@@ -565,14 +574,143 @@ where
 is a psuedo-time variable, $k=\sqrt{k_x^2 + k_y^2}$ is the instantaneous wavenumber, and $\hat{\Phi}_{\rm p}=-2\pi G M_{\rm p} / k$ is the Fourier transform of the planet potential.
 This system of ordinary differential equations, combined with the initial condition that $\hat{v}=0$ as $\tau \rightarrow - \infty$, constitute a determined system where the unique solution provides the density and velocity perturbations along the wake after Fourier transforming back to coordinate space.
 
-
 \section{Non-Linear Planet Wake Evolution}
 
-\subsection{The Burger's Equation}
+This section follows closely \citet{rafikov2002a}.
+After the wake is generated, it propagates away from the planet.
+In the absence of damping
+At distances $\gg l$ the contribution of the planet potential becomes negligible.
+However unlike in the sheared sheet, we must now consider the evolution of $\Sigma$ and $c$ with radius, as well as the global geometry of the disk.
 
-\subsection{Angular Momentum Flux}
+Rewriting the 2D inviscid fluid equations \ref{eq:mom_eq_u}-\ref{eq:cont_2d} in a rotating frame such that the planet is stationary at $\phi=\phi_{\rm p}$, and $\phi$ is defined such that $\Omega>0$, we obtain \citep{landau1959}
+\begin{align}
+    &v_r \partial_r v_r + \frac{v_\phi}{r} \partial_\phi v_r - \frac{v_\phi^2}{r} = - \partial_r \Phi - \frac{1}{\Sigma} \partial_r P + 2 \Omega_{\rm p} v_\phi + \Omega_{\rm p}^2 r, \label{eq:mom_eq_u_pl} \\ 
+    &v_r \partial_r v_\phi + \frac{v}{r} \partial_\phi v_\phi - \frac{v_r v_\phi}{r} = - \frac{1}{r} \partial_\phi \Phi - \frac{1}{r\Sigma} \partial_\phi P - 2 \Omega_{\rm p} v_r, \label{eq:mom_eq_v_pl} \\
+    &\frac{1}{r} \partial_r (r \Sigma v_r) + \frac{1}{r} \partial_\phi (\Sigma v_\phi) = 0,
+    \label{eq:cont_2d_pl}
+\end{align}
+where we have also dropped all time dependence, and $\Phi=\Phi_\star$ since we are neglecting the planet potential.
+
+We now perform a perturbative study including weak non-linear behaviour.
+We rewrite the velocities as 
+\begin{align}
+    v_r = u; \quad v_\phi = v_0(r) + v,
+\end{align}
+where
+\begin{align}
+    v_0(r) = r \Delta \Omega \equiv r \left( \Omega - \Omega_{\rm p} \right).
+\end{align}
+$u$ and $v$ are thus the radial and azimuthal velocity perturbations.
+We assume that the shock formed is weak (we will refer to this as the \textit{weak shock approximation}) such that $|u|,|v| \ll |v_0|$, and that $\Delta \Omega$ is not too small since we are considering the region away from the planet.
+In addition, the WKB approximation is applied such that $v \ll u$ and $\partial_\phi \ll r \partial_r$ as shown in the appendix of \citet{rafikov2002a}.
+With the above considerations, equations \ref{eq:mom_eq_u_pl} - \ref{eq:cont_2d_pl} are transformed to 
+\begin{align}
+    &\Delta \Omega \partial_\phi u + u \partial_r u - 2 \Omega v = - \frac{1}{\Sigma} \left( \partial_r P - \partial_r P_0  \right) + \frac{v^2}{r}, \label{eq:weak_pert_1} \\
+    &\Delta \Omega \partial_\phi v + u \partial_r v + 2Bu = - \frac{1}{r} \left( \frac{1}{\Sigma} \partial_\phi P +u v \right), \label{eq:weak_pert_2} \\
+    &\Delta \Omega \partial_\phi \Sigma + u \partial_r \Sigma + \Sigma \partial_r u = - \frac{1}{r} \left( \Sigma u + v \partial_\phi \Sigma + \Sigma \partial_\phi v \right). \label{eq:weak_pert_3}
+\end{align}
+We have kept terms up to second order in $u$ and $v$.
+The radial coordinate $\xi$ is now introduced, consisting of an integral transformation that essential encodes the differential rotation of the disk and simplifies the spatial propagation of the wake (note the similarity to equation \ref{eq:planet_wake}).
+It is defined by
+\begin{align}
+    \xi = \int_{r_{\rm p}}^ r \left[ \Omega(r') - \Omega_{\rm p} \right] \, dr',
+\end{align}
+and results in the transformation of the equations \ref{eq:weak_pert_1} - \ref{eq:weak_pert_3} to
+\begin{align}
+    &\partial_\phi u + u \partial_\xi u + \frac{1}{\Sigma} \partial_\xi P - \frac{1}{\Sigma_0} \partial_\xi P_0 = \frac{1}{\Delta \Omega r} \left( 2 \Omega r v + v^2 \right), \label{eq:phi_xi_u} \\
+    &\partial_\phi v + u \partial_\xi v + \frac{c^2}{\Delta \Omega r \Sigma} \partial_\phi \Sigma = - \frac{1}{\Delta \Omega r} \left( 2 B r u +uv \right), \label{eq:phi_xi_v} \\
+    &\partial_\phi \Sigma + u \partial_\xi \Sigma + \Sigma \partial_\xi u = -\frac{1}{\Delta \Omega r} \left( \Sigma u + v \partial_\phi \Sigma + \Sigma \partial_\phi v \right). \label{eq:phi_xi_sigma}
+\end{align}
+The left-hand side of the equations above are similar to the usual system of equations that describe the motion of a one-dimensional isentropic gas \citep{landau1959}, except that we have an azimuthal coordinate $\phi$ in place of the time coordinate $t$ and the $\xi$ coordinate in place of the spatial coordinate $x$.
+We exploit this similarity to simplify the above equations using the \textit{method of characteristics}.
+the 1D isentropic gas flow system possesses two \textit{Riemann invariants} that are each conserved along a curve in the $xt$ plane.
+These curves are called the \textit{characteristics}.
+This is reviewed briefly in appendix \ref{appendix:isentropic_riemann}.
+In our case the non-zero right-hand sides of the equations causes the Riemann invariants $R_\pm$ to no longer be conserved exactly along each of the characteristics $C_\pm$.
+Instead, $R_\pm$ evolve in a predictable manner.
+Following similar analysis to that in appendix \ref{appendix:isentropic_riemann}, we find that equations \ref{eq:phi_xi_u} and \ref{eq:phi_xi_sigma} reduce to 
+\begin{align}
+    \begin{split}
+        \left[ \partial_\phi + (u \pm c) \partial_\xi \right] R_\pm = - &\left( \frac{1}{\Sigma} \partial_\xi P - \frac{1}{\Sigma_0} \partial_\xi P_0 - c\partial_\xi \frac{2c}{\gamma-1} \pm cu \frac{\partial_\xi \Sigma}{\Sigma} \mp u \partial_\xi \frac{2c}{\gamma-1} \right) \\
+        &+ \frac{1}{\Delta \Omega r} \left( 2\Omega r v + v^2 \mp cu \mp cv \partial_\phi \ln \Sigma \mp c \partial_\phi v \right),
+    \end{split}
+\end{align}
+where the Riemann invariants are
+\begin{align}
+    R_\pm = u \pm \frac{2c}{\gamma-1},
+\end{align}
+and the characteristics are
+\begin{align}
+    C_\pm : \, \frac{d\xi}{d\phi} = u \pm c.
+\end{align}
+The $C_-$ characteristic follows the planet wake, while the $C_+$ characteristic crosses it \citep{goodman2001}.
+Therefore $C_-$ is always in the perturbed region while $C_+$ is predominantly in the unperturbed region.
+By assuming that the wake-crossings effect the value of $R_+$ minimally and approximating its value as constant, we find that
+\begin{align}
+    R_+ = \frac{2 c_0}{\gamma - 1},
+\end{align}
+everywhere.
+Since we are assuming $R_+$ is exactly conserved this implies
+\begin{align}
+    u = \frac{2(c_0 - c)}{\gamma -1},
+\end{align}
+and so 
+\begin{align}
+    R_- = \frac{2(c_0 - 2c)}{\gamma -1}.
+\end{align}
+Based on these results it is possible to show that the system further reduces to a simple partial differential equation, the inviscid Burger's equation \citep[see appendix A of][]{rafikov2002a}
+\begin{align}
+    \partial_t - \chi \partial_\eta \chi = 0,
+\end{align}
+where $\chi$ is a remapping of the surface density perturbation defined as 
+\begin{align}
+    \chi &\equiv \frac{\gamma +1}{2} \frac{\Sigma - \Sigma_0}{\Sigma_0} g(r), \label{eq:chi} \\
+    {\rm where} \quad g(r) &\equiv \frac{2^{1/4}}{r_{\rm p} c_{\rm p} \Sigma_{\rm p}^{1/2}} \sqrt{\frac{r \Sigma_0 c_0^3}{|\Omega - \Omega_{\rm p}|}}, \label{eq:g}
+\end{align}
+and the coordinates $t$ and $\eta$ are defined as
+\begin{align}
+    t &\equiv - \frac{r_{\rm p}}{l_{\rm p}} \int_{r_{\rm p}}^r \frac{\Omega(r') - \Omega_{\rm p}}{c_0(r') g(r')} \, dr', \label{eq:t} \\
+    \eta &\equiv \frac{r_{\rm p}}{l_{\rm p}} \left( \phi - \phi_{\rm p} + \int_{r_{\rm p}}^r \frac{\Omega(r') - \Omega_{\rm p}}{c_0(r')} \, dr'  \right)
+\end{align}
+where $l_{\rm p}$ is the mach-1 length \ref{eq:mach1_len} and $\phi_{\rm p}$ is the azimuthal coordinate of the planet.
+The $\eta$ coordinate can be written in a clearer form by comparing the third term with equation \ref{eq:planet_wake}:
+\begin{align}
+    \eta &\equiv \frac{r_{\rm p}}{l_{\rm p}} \left( \phi - \phi_{\rm wake} \right), \\
+    \rm{where} \quad \phi_{\rm wake} &\equiv \phi_{\rm p} - \int_{r_{\rm p}}^r \frac{\Omega(r') - \Omega_{\rm p}}{c_0(r')} dr'.
+\end{align}
+%To interpret these results we compare the characteristics with the planet wake.
+%If we place the planet in our coordinates at azimuth $\phi_{\rm p}$, then from \ref{eq:planet_wake} the wake shape is given by 
+%\begin{align}
+%    \phi_{\rm wake} = \phi_{\rm p} - \int_{r_{\rm p}}^r \frac{\Omega(r') - \Omega_{\rm p}}{c_0(r')} \, dr'. \label{eq:wake_shape_rafikov}
+%\end{align}
+%In terms of $\xi$ this becomes
+%\begin{align}
+%    \phi_{\rm wake} &= \phi_{\rm p} - \int_{0}^\xi \frac{1}{c_0(\xi')} \, d\xi', \\
+%    \Rightarrow \left. \frac{d \xi}{d \phi} \right|_{\rm wake} &= -c_0,
+%\end{align}
+%and so we see that $C_-$ follows the wake while $C_+$ crosses it.
+
+\subsection{N-wave Formation}
+
+\begin{itemize}
+    \item Burger's equation generically produces shocks from smooth waveforms
+    \item Two shocks: N-wave.
+    \item Shocking distance
+    \item Conservation of area under graph
+    \item Plot of numerical solution
+    \item Behaviour of AMF
+\end{itemize}
+
+\subsection{Asymptotic Solution}
+
+\begin{itemize}
+    \item Asymptotic solution for N-wave found by Bollati 
+    \item How this leads to scaling relations with planet mass
+\end{itemize}
 
 \section{Gap Opening} \label{sec:gap_opening}
+
+\note{from lit review. needs rewording.}
 
 For sufficiently large planets, the spiral waves launched by the planet form into shocks and exchange angular momentum with the disk. 
 This results in the removal of material from the orbit vicinity and thus an annular gap is created in the gas \citep{lin1979,goldreich1979,goldreich1980}. 

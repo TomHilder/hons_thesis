@@ -16,3 +16,51 @@ Taking the limit of $F'$ we find
     &= a_N.
 \end{align}
 Thus $F'$ is asymptotically of order $\mathcal{O}(1)$ for any value of $a_N$.
+
+\chapter{1D Isentropic Gas} \label{appendix:isentropic_riemann}
+
+Here we derive the Riemann invariants and characteristics for one dimensional isentropic gas flow, following \citet{landau1987}.
+The Euler and continuity equations are in this case
+\begin{align}
+    \partial_t P + v \partial_x P + \rho c^2 \partial_x v &= 0, \label{eq:1D_isen_1} \\
+    \partial_t v + v \partial_x v + \rho^{-1} \partial_x P &=0, \label{eq:1D_isen_2}
+\end{align}
+where we have replaced the time derivative of density with that of pressure using
+\begin{align}
+    \partial_t \rho = \partial_P \rho \, \partial_t P = c^{-2} \partial_t P.
+\end{align}
+Dividing equation \ref{eq:1D_isen_1} by $\pm \rho c$ and adding the result to equation \ref{eq:1D_isen_2} yields
+\begin{align}
+    \partial_t v \pm \frac{1}{\rho c} \partial_t P + \left( \partial_x v \pm \frac{1}{\rho c} \partial_x P \right) v \pm \left( \partial_x v \pm \frac{1}{\rho c} \partial_x P \right) c &= 0, \\
+    \Rightarrow  \partial_t v \pm \frac{1}{\rho c} \partial_t P + \left( \partial_x v \pm \frac{1}{\rho c} \partial_x P \right) \left( v \pm c \right) &= 0.
+\end{align}
+We define two unknown functions called \textit{Riemann Invariants} as
+\begin{align}
+    J_\pm = v \pm \int \frac{1}{\rho c} \, dP = v \pm \int \frac{c}{\rho} \, d\rho.
+\end{align}
+For an isentropic flow $\rho$ and $c$ are always definite functions of $P$.
+If the equation of state is polytropic $P = K \rho^\gamma$ then $c^2 = \gamma K \rho^{\gamma-1}$ giving
+\begin{align}
+    \int \frac{c}{\rho} \, d\rho = \sqrt{\gamma K} \int \rho^{(\gamma-3)/2} \, d\rho = \frac{2 c}{\gamma -1}.
+\end{align}
+Thus the Riemann invariants in this case are simply
+\begin{align}
+    J_\pm = v \pm \frac{2 c}{\gamma -1}.
+\end{align}
+We can rewrite equations \ref{eq:1D_isen_1} and \ref{eq:1D_isen_2} in terms of $J_\pm$ as
+\begin{align}
+    \left[ \partial_t + \left( v \pm c \right) \partial_x \right] J_\pm = 0. \label{eq:1d_isen_riemann_eq}
+\end{align}
+Now finding the total differential of $J_\pm$ and substituting \ref{eq:1d_isen_riemann_eq} gives
+\begin{align}
+    d J_\pm &= \partial_t J_\pm \, dt + \partial_x J_\pm \, dx \\
+    &= \partial_t J_\pm \, dt - \frac{1}{v \pm c} \partial_t J_\pm \, dx. \label{eq:riemann_dif}
+\end{align}
+Consider two curves $C_\pm$, defined as 
+\begin{align}
+    C_\pm: \, \frac{dx}{dt} = u \pm c.
+\end{align}
+Substituting these into our equation for the total differential of the Riemann invariants $dJ_\pm$ in \ref{eq:riemann_dif} gives the result that $dJ_+ = 0$ along $C_+$, and $dJ_- = 0$ along $C_-$.
+Thus we see that the Riemann invariants $J_+$ and $J_-$ are constant along $C_+$ and $C_-$ respectively.
+$C_\pm$ are known as \textit{characteristics}.
+Additionally, the operators $\partial_t + (v \pm c)\partial_x$ are simply the differentiation operators along the characteristics.
