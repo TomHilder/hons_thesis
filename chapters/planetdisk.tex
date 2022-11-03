@@ -574,14 +574,15 @@ where
 is a psuedo-time variable, $k=\sqrt{k_x^2 + k_y^2}$ is the instantaneous wavenumber, and $\hat{\Phi}_{\rm p}=-2\pi G M_{\rm p} / k$ is the Fourier transform of the planet potential.
 This system of ordinary differential equations, combined with the initial condition that $\hat{v}=0$ as $\tau \rightarrow - \infty$, constitute a determined system where the unique solution provides the density and velocity perturbations along the wake after Fourier transforming back to coordinate space.
 
-\section{Non-Linear Planet Wake Evolution}
+\section{Non-Linear Planet Wake Evolution} \label{sec:nonlinear_evolution}
 
-This section follows closely \citet{rafikov2002a}.
+\citet{goodman2001} first studied the non-linear evolution of the planet wake, neglecting both the disk geometry and variations in density and sound speed, while \citet{rafikov2002a} updated the analysis to include these effects.
+We are obviously interested in accounting for these aspects and so we will largely follow \citet{rafikov2002a} in this section, but we will endeavour to make it clear when a result is originally from \citet{goodman2001}.
+
 After the wake is generated, it propagates away from the planet.
 In the absence of damping
 At distances $\gg l$ the contribution of the planet potential becomes negligible.
 However unlike in the sheared sheet, we must now consider the evolution of $\Sigma$ and $c$ with radius, as well as the global geometry of the disk.
-
 Rewriting the 2D inviscid fluid equations \ref{eq:mom_eq_u}-\ref{eq:cont_2d} in a rotating frame such that the planet is stationary at $\phi=\phi_{\rm p}$, and $\phi$ is defined such that $\Omega>0$, we obtain \citep{landau1959}
 \begin{align}
     &v_r \partial_r v_r + \frac{v_\phi}{r} \partial_\phi v_r - \frac{v_\phi^2}{r} = - \partial_r \Phi - \frac{1}{\Sigma} \partial_r P + 2 \Omega_{\rm p} v_\phi + \Omega_{\rm p}^2 r, \label{eq:mom_eq_u_pl} \\ 
@@ -601,7 +602,8 @@ where
     v_0(r) = r \Delta \Omega \equiv r \left( \Omega - \Omega_{\rm p} \right).
 \end{align}
 $u$ and $v$ are thus the radial and azimuthal velocity perturbations.
-We assume that the shock formed is weak (we will refer to this as the \textit{weak shock approximation}) such that $|u|,|v| \ll |v_0|$, and that $\Delta \Omega$ is not too small since we are considering the region away from the planet.
+We assume that the shock formed is weak (we will refer to this as the \textit{weak shock approximation}) such that $|u|,|v| \ll |v_0|$. 
+$\Delta \Omega \neq 0$ since we are working in region away from the planet.
 In addition, the WKB approximation is applied such that $v \ll u$ and $\partial_\phi \ll r \partial_r$ as shown in the appendix of \citet{rafikov2002a}.
 With the above considerations, equations \ref{eq:mom_eq_u_pl} - \ref{eq:cont_2d_pl} are transformed to 
 \begin{align}
@@ -660,7 +662,7 @@ and so
 \end{align}
 Based on these results it is possible to show that the system further reduces to a simple partial differential equation, the inviscid Burger's equation \citep[see appendix A of][]{rafikov2002a}
 \begin{align}
-    \partial_t - \chi \partial_\eta \chi = 0,
+    \partial_t \chi - \chi \partial_\eta \chi = 0, \label{eq:burgers}
 \end{align}
 where $\chi$ is a remapping of the surface density perturbation defined as 
 \begin{align}
@@ -669,14 +671,14 @@ where $\chi$ is a remapping of the surface density perturbation defined as
 \end{align}
 and the coordinates $t$ and $\eta$ are defined as
 \begin{align}
-    t &\equiv - \frac{r_{\rm p}}{l_{\rm p}} \int_{r_{\rm p}}^r \frac{\Omega(r') - \Omega_{\rm p}}{c_0(r') g(r')} \, dr', \label{eq:t} \\
-    \eta &\equiv \frac{r_{\rm p}}{l_{\rm p}} \left( \phi - \phi_{\rm p} + \int_{r_{\rm p}}^r \frac{\Omega(r') - \Omega_{\rm p}}{c_0(r')} \, dr'  \right)
+    t(r) &\equiv - \frac{r_{\rm p}}{l_{\rm p}} \int_{r_{\rm p}}^r \frac{\Omega(r') - \Omega_{\rm p}}{c_0(r') g(r')} \, dr', \label{eq:t} \\
+    \eta(r,\phi) &\equiv \frac{r_{\rm p}}{l_{\rm p}} \left( \phi - \phi_{\rm p} + \int_{r_{\rm p}}^r \frac{\Omega(r') - \Omega_{\rm p}}{c_0(r')} \, dr'  \right) \label{eq:eta}
 \end{align}
 where $l_{\rm p}$ is the mach-1 length \ref{eq:mach1_len} and $\phi_{\rm p}$ is the azimuthal coordinate of the planet.
 The $\eta$ coordinate can be written in a clearer form by comparing the third term with equation \ref{eq:planet_wake}:
 \begin{align}
-    \eta &\equiv \frac{r_{\rm p}}{l_{\rm p}} \left( \phi - \phi_{\rm wake} \right), \\
-    \rm{where} \quad \phi_{\rm wake} &\equiv \phi_{\rm p} - \int_{r_{\rm p}}^r \frac{\Omega(r') - \Omega_{\rm p}}{c_0(r')} dr'.
+    \eta(r,\phi) &\equiv \frac{r_{\rm p}}{l_{\rm p}} \left( \phi - \phi_{\rm wake} \right), \\
+    \rm{where} \quad \phi_{\rm wake} &\equiv \phi_{\rm p} - \int_{r_{\rm p}}^r \frac{\Omega(r') - \Omega_{\rm p}}{c_0(r')} dr'. \label{eq:phi_wake}
 \end{align}
 %To interpret these results we compare the characteristics with the planet wake.
 %If we place the planet in our coordinates at azimuth $\phi_{\rm p}$, then from \ref{eq:planet_wake} the wake shape is given by 
@@ -690,23 +692,107 @@ The $\eta$ coordinate can be written in a clearer form by comparing the third te
 %\end{align}
 %and so we see that $C_-$ follows the wake while $C_+$ crosses it.
 
-\subsection{N-wave Formation}
+\subsection{Wave Dissipation}
 
-\begin{itemize}
-    \item Burger's equation generically produces shocks from smooth waveforms
-    \item Two shocks: N-wave.
-    \item Shocking distance
-    \item Conservation of area under graph
-    \item Plot of numerical solution
-    \item Behaviour of AMF
-\end{itemize}
+Burger's equation generically produces shocks from smooth waveforms due to the crossing of characteristics \citep{whitham1999}.
+Figure \ref{fig:wake_profiles_GR01} shows the evolution of the wave profile taken at different $t$ values.
+We see that at the edge of the linear regime the waveform is initially smooth.
+As the wake evolves away from the planet its amplitude decays but areas above and below $\chi=0$ steepen and form two shocks, one moving in the $+\eta$ direction and one moving in the $-\eta$ direction.
+The resultant waveform is called an \textit{N-wave} \citep{landau1959}.
+\citet{goodman2001} found numerically that the shock forms at 
+\begin{align}
+    t_{\rm shock} = t_0 + 0.79 \left( \frac{M_{\rm p}}{M_1} \right)^{-1},
+\end{align}
+and so more massive planets produce a shock closer to the planet.
 
-\subsection{Asymptotic Solution}
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.55\textwidth]{figures/wake_profiles_GR01.pdf}
+    \caption{Evolution of the wake profile under the Burger's equation \ref{eq:burgers} from \citep{goodman2001}.
+    They solved the equation using a second order advection scheme with initial conditions taken from the linear regime at a distance of 2$l_{\rm p}$ from the planet, corresponding to $t=t_0$.
+    $\chi$ profiles are shown at slices in $t$ as a function of $\eta$.
+    These profiles were taken at $t-t_0 = 0, 4, 16, 64, 256$ in order of greatest to lowest amplitude.}
+    \label{fig:wake_profiles_GR01}
+\end{figure}
 
-\begin{itemize}
-    \item Asymptotic solution for N-wave found by Bollati 
-    \item How this leads to scaling relations with planet mass
-\end{itemize}
+After the shock is formed the wave becomes dissipative;
+its amplitude begins to decay as angular momentum is deposited into the disk.
+Prior to shock formation the \textit{angular momentum flux} (AMF), the amount of angular momentum transported along the wake, is perfectly conserved.
+The AMF $f_J$ can be calculated as \citep{rafikov2002a}
+\begin{align}
+    f_J(r) = \frac{c_0^3(r) r}{\Delta\Omega(r)\Sigma_0(r)} \int_0^{2\pi} \left( \Sigma - \Sigma_0 \right)^2 \, d\phi,
+\end{align}
+which we can rewrite as a function of $t$ using the transformations \ref{eq:chi}-\ref{eq:eta} giving
+\begin{align}
+    f_J(t) &= \frac{2^{3/2} c_{\rm p}^3 r_{\rm p} \Sigma_{\rm p}}{(\gamma + 1)^2 |2 A(r_{\rm p})|} \Phi(t), \\
+    \rm{where} \quad \Phi(t) &= \oint \chi^2(t,\eta) \, d\eta 
+\end{align}
+is the dimensionless AMF, which we will always write as a function of $t$ to avoid confusion with the potential.
+After shock formation the resultant dissipation results in the non-conservation of the AMF, as shown in figure \ref{fig:AMF}.
+
+Recently \citet{cimerman2021} performed a numerical study to validate the weakly non-linear wake evolution theory.
+They compared the Burger's equation evolution with hydrodynamical simulations performed with the grid code \textsc{athena++} \citep{stone2020}.
+They found that the transformation to $t,\eta,\chi$ space performs well for a range of planet masses, but also that Burger's equation actually overestimates the wave damping.
+This effect however was less severe for larger planet masses.
+They also found that it is relatively straightforward to calibrate the theory to account for this discrepancy.
+See in particular sections 5.1, 5.2 and 8.1 of \citet{cimerman2021} for greater detail.
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.75\textwidth]{figures/AMF_burgers.pdf}
+    \caption{Behaviour of the dimensionless AMF $\Phi(t)$ in the non-linear regime as a function of $t$ using $M_{\rm p} = M_1$ \citep[solid line;][]{rafikov2002a}.
+    Before the shock is formed at approximately $t-t_0=1$ we see that $\Phi(t)$ is conserved, while decaying steadily after the shock is formed.
+    The dashed line demonstrates that the AMF asymptotically scales as $\Phi(t) \propto t^{-1/2}$.
+    }
+    \label{fig:AMF}
+\end{figure}
+
+\subsection{Asymptotic Planet Mass Scaling}
+
+While the AMF is no longer conserved in the dissipative wake evolution regime, Burger's equation does encode a the perfect conservation of a quantity both before and after shock formation, which is the area under the curve $\chi$ \citep{landau1959,whitham1999}.
+We will show that physically this corresponds to conservation of mass in the disk.
+The area $\mathcal{A}$ under the curve at a "time" $t$ is given by
+\begin{align}
+    \mathcal{A} = \oint \chi \, d\eta = \frac{(\gamma + 1)g(r)r_{\rm p}}{2 \Sigma_0 l_{\rm p}} \int_0^{2\pi}  \left( \Sigma - \Sigma_0 \right) \, d\phi, 
+\end{align}
+where in the second equality we have used transformations \ref{eq:chi} and \ref{eq:eta}.
+The second integral in the above must evaluate to zero by physical argument, since the perturbed density profile must have the same mass as the unperturbed profile $\int_0^{2 \pi} \Sigma \, d\phi = \int_0^{2 \pi} \Sigma_0 \, d\phi$.
+Therefore the conservative properties of Burgers equation, that $\frac{d\mathcal{A}}{dt}=0$, ensures that the mass of each annulus in the disk is unchanged by the density perturbation.
+
+Using this area conservation property \citet{bollati2021} derived an asymptotic solution for the N-wave profile of the planet wake in the limit of $t\rightarrow\infty$:
+\begin{align}
+    \chi(t, \eta) \sim \begin{dcases}
+        \frac{\rm{sgn}\left(r - r_{\rm p}\right) \eta + \tilde{\eta}}{t - t_0} \quad &\rm{if} \, \eta \in \left[\eta_-, \eta_+ \right], \\
+        0 \quad &\rm{else},
+    \end{dcases}
+\end{align}
+where $\tilde{\eta} \simeq 2.96$ is the value of $\eta$ where the N-wave intersects the $\eta$-axis.
+Additionally
+\begin{align} 
+    \eta_\pm &= - \rm{sgn}(r - r_{\rm p}) \tilde{\eta} \pm \sqrt{2 \mathcal{A} (t - t_0)}, \\
+    \rm{where} \quad \mathcal{A} &= |C_0| \frac{\gamma + 1}{2^{3/4}} \frac{M_{\rm p}}{M_1},
+\end{align}
+and $C_0 \simeq -0.4$ is a numerically determined constant \citep{bollati2020}.
+
+From this asymptotic solution one may determine a scaling relation for the planet mass in terms of only the distance the wake has propagated from the planet $t-t_0$ and the width of the wake $\eta_+ - \eta_-$, given by 
+\begin{align}
+    \frac{M_{\rm p}}{M_1} \propto \frac{\left( \eta_+ - \eta_- \right)^2}{t - t_0}. \label{eq:Mp_propto}
+\end{align}
+This scaling relation tells us the fundamental information that must be determined in order to constrain a planet mass from its wake observationally.
+We see that we must know the reference mass $M_1$, as well as the transformations $t(r)$ and $\eta(r,\phi)$.
+From this we may use equations \ref{eq:char_mass}, \ref{eq:t} and \ref{eq:eta} to produce a full list of basic quantities of the disk and planet system that must be determined:
+\begin{enumerate}
+    \item The rotation profile of the disk $\Omega(r)$ (although Keplerian is likely a good approximation),
+    \item The unperturbed sound speed profile $c_0(r)$ OR the pressure scale height $H(r)$,
+    \item The unperturbed surface density profile $\Sigma_0(r)$,
+    \item The planet orbital radius $r_{\rm p}$,
+    \item The planet azimuth $\phi_{\rm p}$.
+\end{enumerate}
+However, we note that from equation \ref{eq:phi_wake} that $c_0(r)$, $r_{\rm p}$ and $\phi_{\rm p}$ are all determined by the shape of the wake.
+Therefore if we assume a disk to be Keplerian and fit the wake shape, all that remains is to determine $\Sigma_0$ and then $M_{\rm p}$ will be determined.
+The most straightforward way to constrain this is through determining the size of the perturbation in $\chi$ which depends on $g(r)$ and so on $\Sigma_0$.
+While at this stage it is not clear on how to extract the information from observations, this at least shows that the planet mass is determined entirely by the wake shape and amplitude.
+
+Finally, while it is possible to calculate the scale factor for the proportionality relation \ref{eq:Mp_propto} from theory, the work of \citet{cimerman2021} suggests that this is better done through comparison with hydrodynamical simulations.
 
 \section{Gap Opening} \label{sec:gap_opening}
 

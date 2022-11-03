@@ -37,19 +37,125 @@ Existing scientific publications focusing on detecting the kinematic signatures 
 
 \textsc{wakeflow} relies on the following scientific Python packages: \textsc{numpy} \citep{harris2020}, \textsc{matplotlib} \citep{hunter2007}, \textsc{scipy} \citep{virtanen2020} and \textsc{astropy} \citep{astropycollaboration2022}.
 
-\section{Disk Structure} \label{sec:diskstruct}
+\section{Semi-Analytic Solution Algorithm}
 
-\section{Wake Formation} 
+Outline the wakeflow algorithm for generating a model:
+\begin{enumerate}
+    \item Generate grid geometry. Interface with \textsc{mcfost if desired}.
+    \item Calculate the unperturbed disk.
+    \item Read in linear perturbations, scale, interpolate onto global grid geometry interpreting $y$ as an arc length in $\phi$. Mapped onto an annulus. Annulus is an update, more honestly displays results from shearing sheet approximation, minimises discontinuity in solution. Also, it is perfectly acceptable to extend the box vertically further since it is the position of the Lindblad resonances that matter ultimately for the linear regime not the planet itself (sort of).
+    \item Extract initial conditions using \textbf{exact} transformations instead of approximate ones in \citet{bollati2021} to minimise discontinuity in solution.
+    \item Solve Burger's equation until $t_{\rm f}=300$ using vectorised Godunov solver and adaptive time stepping.
+    \item Get $\chi(r,\phi)$. Transformations are vectorised and the whole solution is interpolated in one go. Asymptotic regime and planet annulus are masked.
+    \item Perturbations are calculated from $\chi$ using updated velocity mapping
+\end{enumerate}
 
-\subsection{The Shearing Sheet Approximation}
+\section{Theoretical and Numerical Considerations} 
 
-\section{Wake Propagation} 
+\note{Add something about how we are basically going into more detail for the steps in the algorithm and explaining the specific applications of or improvements to the stuff that been done before.}
 
-\subsection{Power Law Disks}
+\subsection{Unperturbed Disk Structure} \label{sec:diskstruct}
+
+Here we outline the unperturbed disk model used in \textsc{wakeflow} onto which the perturbations are added.
+
+\subsubsection{Temperature}
+
+We assume that the sound speed $c$ obeys a simple radial power law 
+\begin{align}
+    c \propto r^{-q},
+\end{align}
+where $q$ is some real number. Thus the disk temperature scales as 
+\begin{align}
+    T \propto c^2 \propto r^{-2q}.
+\end{align}
+The constant of proportionality for these relations in determined by the user specified value of the disk aspect ratio $H/r$ at $r=r_{\rm ref}$
+
+\subsubsection{Density}
+
+We use a density structure derived by assuming that the disk is in vertical hydrostatic equilibrium \citep{pringle1981}, but unlike in \ref{eq:vertical_rho} we will not assume that $z\ll r$.
+The density $\rho$ is given by 
+\begin{align}
+    \rho(r,z) \propto \left( \frac{r}{r_{\rm ref}} \right)^{-p} \exp{\left( \frac{G M_\star}{c^2} \left[ \frac{1}{\sqrt{r^2 + z^2}} - \frac{1}{r} \right] \right)},
+\end{align}
+where $p$ is some real number. 
+The constant of proportionality is set directly by the user, or calculated by \textsc{mcfost} based on the total gas mass.
+
+Very commonly the density profile is parameterised in terms of the surface density $\Sigma$, not the actual density $\rho$ as above.
+If the surface density is parameterised as $\Sigma \propto r^{-\delta}$ where $\delta$ is some real number, then equation \ref{eq:surf_dens_to_dens} gives the approximate relation 
+\begin{align}
+    p \simeq \frac{3}{2} - q + \delta,
+\end{align}
+which can be used to convert between density parameterisations.
+This conversion is only approximate in our context, since is does assume that $z \ll r$ and our density profile does not.
+However this turns out not to matter since $\delta$ will only show up in the $t(r)$ mapping which we will assume is the same for all $z$.
+
+\subsubsection{Velocities}
+
+The radial and vertical motions in the unperturbed disk are set to zero. 
+The rotation is derived assuming radial force balance \citep[eg.][]{nelson2013} and is given by 
+\begin{align}
+    \Omega(r,z) = \Omega_{\rm K} \left[ - \left(p + 2q\right) \left( \frac{H}{r} \right)^2 + \left( 1-2q \right) + \frac{2qr}{\sqrt{r^2 + z^2}}\right]^{1/2},
+\end{align}
+where $\Omega_{\rm K}$ is as defined in equation \ref{eq:point_pot}.
+
+\subsection{Transformations}
+
+\note{Something about we give the transformations used in mapping from $(r,\phi)$ to $(t,\eta)$ space. We use parameterisations of sound speed and surface density}
+\begin{align}
+    c(r) = c_{\rm p} \left(\frac{r}{r_{\rm p}}\right)^{-q}; \quad \Sigma(r) = \Sigma_{\rm p} \left(\frac{r}{r_{\rm p}}\right)^{-\delta},
+\end{align}
+where $c_{\rm p}$ and $\Sigma_{\rm p}$ are the sound speed and surface density at $r_{\rm p}$.
+Assuming also that $\Omega=\Omega_{\rm K}$, then equation \ref{eq:phi_wake} becomes \citep{rafikov2002a}
+\begin{align}
+    \phi_{\rm wake}(r) = \phi_{\rm p} + {\rm sgn} \left( r - r_{\rm p} \right) \frac{r_{\rm p}}{H_{\rm p}} \left[ \frac{2}{2q-1} \left(\frac{r}{r_{\rm p}}\right)^{q-\frac{1}{2}} - \frac{1}{q+1} \left(\frac{r}{r_{\rm p}}\right)^{q+1} - \frac{3}{\left(2q-1\right)\left(q+1\right)} \right].
+\end{align}
+Additionally, the Keplerian rotation implies $|2A| = 3\Omega/2 = 3c/2H$ and so the Mach-1 length becomes
+\begin{align}
+    l_{\rm p} = \frac{2H}{3},
+\end{align}
+and so the $\eta$ transformation \ref{eq:eta} reduces to 
+\begin{align}
+    \eta(r, \phi) = \frac{3 r_{\rm p}}{2 H_{\rm p}} \left[ \phi - \phi_{\rm wake} \right].
+\end{align}
+Additionally the $t$ transformation becomes \citep{rafikov2002a}
+\begin{align}
+    t(r) = \frac{3}{2^{5/4}} \left( \frac{r_{\rm p}}{H_{\rm p}} \right)^{\frac{5}{2}} \left| \int_1^{r/r_{\rm p}} |s^\frac{3}{2} - 1|^\frac{3}{2} s^{\frac{5q+\delta}{2}-\frac{11}{4}}\, ds \right|, \label{eq:t_power}
+\end{align}
+where explicitly the $g$ function is given by \citep{bollati2021}
+\begin{align}
+    g(r) = 2^{1/4} \left( \frac{r_{\rm p}}{H_{\rm p}} \right)^{\frac{1}{2}} \frac{\left( \frac{r}{r_{\rm p}} \right)^{\frac{5}{4} - \frac{\delta + 3q}{2}}}{\left| 1 - \left(\frac{r}{r_{\rm p}}\right)^\frac{3}{2} \right|^\frac{1}{2}}
+\end{align}
+This gives us all the tools we need to map from $(r,\phi)$ space to $(t,\eta)$ space in a Keplerian power law disk.
+These are the forms of the transformations used by \textsc{wakeflow}.
+We are therefore implicitly assuming that the unperturbed rotation profile is well approximated as Keplerian in the midplane, which is reasonable since the correction is of order $\left(H/r\right)^2$.
+
+Unlike in \citet{goodman2001,rafikov2002a,bollati2021} we do not use approximate forms of the transformations that hold nearby the planet in the shearing sheet approximation to extract the initial condition for the Burger's evolution.
+We found that the approximate transformation for $\eta$ \citep[equations 35 in][]{rafikov2002a} shifted the wake profile in $\eta$ by a few percent, leading to a discontinuity in the solution at the interface between the linear and non-linear regimes.
+The approximate $t$ transformation has a similar effect although it is much smaller.
+For this reason we always use the exact transformations as listed above.
+
+After Burger's equation is solved numerically, the solution must be mapped from $\chi(t,\eta)$ to $\chi(r,\phi)$.
+Since $t(r)$ is not invertible, we instead find the $(t,\eta)$ coordinates of every point on the solution grid $(r,\phi)$ and interpolate from the Burger's solution in $t,\eta$ space.
+We therefore must evaluate the $t(r)$ and $\eta(r,\phi)$ transformations $N$ times, where $N$ is the number of points in the grid.
+The $\eta$ transformation is easily vectorised since it is a simply algebraic expression, however the $t(r)$ transformation \ref{eq:t_power} involves an integral which naively must be evaluated $N$ times.
+This approach is very inefficient, since the integral in the transformation does not actually depend on $r$, merely the end point does.
+Re-evaluating the integral each time therefore often involves integrating over the same interval very many times.
+In \textsc{wakeflow} we instead convert mapping $r\rightarrow t$ into an initial value problem (IVP).
+Since the integrands of equation \ref{eq:t} is independent of r, we can convert equation \ref{eq:t} into an ordinary differential equation with an appropriate initial condition
+\begin{align}
+    \frac{dt(s)}{ds} = \frac{r_{\rm p}}{l_{\rm p}} \left[ \frac{\Omega(s) - \Omega_{\rm p}}{c_0(s) g(s)} \right]; \quad \, t(r_{\rm p}) = 0.
+\end{align}
+where obtaining $t(r)$ from the solution $t(s)$ is simply a matter of taking $s=r$.
+Applying this analysis to the $t$ transformation for a power law disk \ref{eq:t_power} we obtain 
+\begin{align}
+    \frac{dt(s)}{ds} = \frac{3}{2^{5/4}} \left( \frac{r_{\rm p}}{H_{\rm p}} \right)^{\frac{5}{2}} \left| |s^\frac{3}{2} - 1|^\frac{3}{2} s^{\frac{5q+\delta}{2}-\frac{11}{4}} \right|; \quad t(1)=0, \label{eq:t_power_IVP}
+\end{align}
+and $t(r)$ is obtained from the solution taking $s=r/r_{\rm p}$.
+\textsc{wakeflow} calculates the $t$ coordinates of the grid points by solving the IVP \ref{eq:t_power_IVP} using the \textsc{SciPy} function \textit{integrate.odeint} \citep{virtanen2020}.
 
 \subsection{Velocity Perturbations} \label{sec:velocity_perts}
 
-From \citet{rafikov2002a}, the conservation of the Riemann invariant $R_+$ gives for the radial velocity
+As we saw in section \ref{sec:nonlinear_evolution} the conservation of the Riemann invariant $R_+$ gives for the radial velocity perturbation
 \begin{align}
     u = 2\frac{c_0-c}{\gamma - 1}=-2\frac{c_0}{\gamma + 1} \psi, \label{eq:u_rafikov}
 \end{align}
@@ -111,8 +217,12 @@ For masses $\ge \hspace{-0.23em} M_\mathrm{th}$ the problem is even worse, as th
 To improve upon the velocity calculations used in \citet{bollati2021}, here we derive expressions for both $u$ and $v$ as functions of $\chi$ without truncating the equation of state to first order in $\psi$. This is as simple as substituting Equation \ref{eq:psi_exact} into Equations \ref{eq:u_rafikov} and \ref{eq:v_rafikov}, yielding
 \begin{align}
     u(\chi) &= -2 \frac{c_0}{\gamma - 1} \left[ \left( \frac{2}{\gamma + 1} \frac{\chi}{g(r)} +1  \right)^{(\psi-1)/2} -1 \right] \\
-    v(\chi) &\approx \frac{c_0}{\Delta\Omega r} u (\chi),
+    v(\chi) &\approx \frac{c_0}{\Delta\Omega r} u (\chi).
 \end{align}
+
+
+
+
 which are the expressions used to calculate the velocity perturbations in the non-linear regime in \textsc{wakeflow}. 
 
 \begin{figure}
@@ -135,6 +245,8 @@ which are the expressions used to calculate the velocity perturbations in the no
     \caption{}
     \label{fig:2_0mth}
 \end{figure}
+
+
 
 \section{Synthetic Kinematic Observations}
 
