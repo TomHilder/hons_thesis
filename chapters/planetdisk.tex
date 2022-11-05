@@ -1,6 +1,48 @@
+The tidal forces induced by a planet embedded in a gas disk results in the excitation of sound waves \citep{goldreich1980}.
+This waves propagate freely through the disk, interfering with one another and eventually steepening into shock waves \citep{goodman2001}.
+The overall result is the formation of a coherent, one-armed spiral density wave connected to the planet, known as the \textit{planet wake} \citep{ogilvie2002}. 
+This chapter provides an outline of the theory behind this interaction, and introduces the method with which we will go on to construct semi-analytic models of the planet wake.
+These ideas provide the necessary foundation that will allow us to go on to detecting and measuring young planets through kinematic observations.
+
 \section{Spiral Density Waves}
 
-\note{Introduce spiral arms and density waves in the context of observations. Mention Lin-Shu hypothesis and lead into tidal interaction which is what we care about here.}
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.7\textwidth]{figures/M81.jpeg}
+    \caption{Long exposure image of Messier 81 taken through a 20 inch telescope by astrophotographer \citet{adler2015}, taken with LRGB filters and a Hydrogen-$\alpha$ filter that was assigned to red. Overall 20 hours of exposures were taken.}
+    \label{fig:M81}
+\end{figure}
+
+Perhaps the most well known examples of spiral structures in astrophysics are the grand design spirals of spiral galaxies like Messier 81 (M81), shown in Figure \ref{fig:M81}.
+The disk of a galaxy rotates differentially similarly to a circumstellar disk, resulting in an initially puzzling state of affairs.
+If the material making up the spiral structure remains in the arm, then the pattern should be quickly destroyed since inner disk material orbits at a much greater rate than the outer disk material.
+This is known at the \textit{winding problem}, and it proved to be a great challenge for early attempts to explain spiral structure in galaxies \citep{wilczynski1896,oort1962}.
+
+The first major advance in our understanding of the origins of galactic spiral structure was made by Bertil Lindblad in the early 1960s. 
+Lindblad proposed that spiral structure may be a quasi-stationary wave resulting from the superposition of multiple spiral modes.
+In Lindblad's model, these modes were excited through the interaction of orbital motions and gravitational forces of the stars in the disk \citep{lindblad1963}.
+This was a radical view at the time, as it was widely believed that spiral structure was induced by galactic-scale magnetic fields \citep[eg.][]{hoyle1961,oki1964}.
+The paradigm-shift would come shortly after, with the seminal work by \citet{lin1964} who pioneered the \textit{density wave theory} picture of spiral structure.
+In their view, spiral arms are quasi-static overdense regions of the disk resulting from periodic compression and rarefaction of disk material, similar to a traffic jam.
+This in combination with Lindblad's findings make up the \textit{Lin-Shu Hypothesis}, which states that galactic spiral structure is a stationary density wave, and that the spiral pattern is unchanged over long timescales apart from the overall rotation of the galaxy.
+A more precise statement of the hypothesis is that the spiral is a marginally stable wave mode of the disk.
+
+The Lin-Shu hypothesis is however not correct.
+The spiral structure found in galaxies is indeed a density wave, but the wave is not stationary, stable mode of the disk.
+Instead the spiral arms are the result of the disk responding to a variety of gravitational disturbances such as nearby galaxies \citep{goldreich1965,julian1966}.
+Indeed, the grand design spirals in M81 are thought to be the result of tidal-interactions with its companion galaxy Messier 82.
+
+Spiral arms similar to those found in galaxies have been observed in the disks around the stars HD 142529 \citep{christiaens2014}, MWC 758 \citep{benisty2015} Elias 27 \citep{perez2016,huang2018}, IM Lupi \citep{avenhaus2018,huang2018}, WaOph 6 \citep{huang2018}, HD 163296 \citep{calcino2022}, TW Hya \citep{teague2022} and others \citep[and references therin]{dong2018}.
+Figure \ref{fig:mwc758} shows the double-armed spiral observed in the disk of MWC 758.
+The origin of most of these spirals is still unknown \citep[eg.][]{zhang2018}.
+Of particular interest to us here are kinematic detections of planets located inside dust gaps \citep{pinte2018a,pinte2019,pinte2020,teague2021,teague2022}, since this scenario is very well explained by the planet wake scenario, as we will see.
+
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.7\textwidth]{figures/mwc758.pdf}
+    \caption{Polarised intensity image of the disk MWC 758 obtained in December 2014 with SPHERE \citep[eg.][]{beuzit2019}. The colour scale is arbitrary. Two large spiral arms are clearly present in the disk \citep{benisty2015}. The origin of these spiral arms is still unknown.}
+    \label{fig:mwc758}
+\end{figure}
 
 \subsection{Spiral Structure Preliminaries}
 We now introduce the following concepts:
@@ -42,16 +84,16 @@ where $r \partial_r \phi$ is evaluated along the curve that defines the spiral. 
 
 In the previous section we stated that while leading spirals may exist in nature, they are at least much rarer that than trailing spirals. 
 Indeed, there are \textbf{no} known examples of leading spirals in circumstellar disks.
-This state of affairs is at least initially puzzling; if the trailing spiral arms seen in astrophysical disks are steady state solutions governed by Newtonian physics, which is fully time-reversible, surely the corresponding leading spirals solution is entirely equivalent?
-\citet{lynden-bell1967} followed this argument to prove the \textit{anti-spiral} theorem, which states that if trailing spirals constitute a steady state solution to time-reversible equations, then there necessarily exists an equivalent leading spiral solution.
-Thus the apparent ubiquity of trailing spirals in nature tells us that either the governing physics is not time-reversible, or the spirals are not true steady state solutions.
+This is at least initially surprising; if the trailing spiral arms seen in astrophysical disks are steady-state solutions governed by Newtonian physics, which is fully time-reversible, surely the corresponding leading spirals solution is entirely equivalent?
+\citet{lynden-bell1967} followed this argument to prove the \textit{anti-spiral} theorem, which states that if trailing spirals constitute a steady-state solution to time-reversible equations, then there necessarily exists an equivalent leading spiral solution.
+Thus the apparent ubiquity of trailing spirals in nature tells us that either the governing physics is not time-reversible, or the spirals are not true steady-state solutions.
 In the latter case spiral structure may be the result of a recent disturbance, or may be continuously regenerated for example by period tidal forcing.
-In the following section we will see that the perturbations driven by a gravitating body embedded in a circumstellar disk result in a trailing spiral structure that is a steady state solution.
+This mimics the failing of the Lin-Shu hypothesis for galaxies, where spiral structure turned out to be the response of the disk to disturbances.
+In the section \ref{sec:planet_forcing} we will see that the perturbations driven periodically by a gravitating body embedded in a circumstellar disk result in a trailing spiral structure.
 
 \section{The Linear Disk Response}
 
-\note{need a connecting sentence here to explain that we are eventually looking for the respone from a perturbing gravitating body.}
-
+Before determining how the periodic forcing of the planet potential perturbs the disk, we must first determine how the disk responds to some small, generic disturbance.
 The 2D inviscid equations of momentum and continuity expressed in terms of surface density are given by \citep{landau1959}
 \begin{align}
     &\partial_t u + u \partial_r u + \frac{v}{r} \partial_\phi u - \frac{v^2}{r} = - \partial_r \Phi - \frac{1}{\Sigma} \partial_r P, \label{eq:mom_eq_u} \\ 
@@ -223,9 +265,10 @@ Disk regions where $Q(r) < 1$ are subject to local unstable growth for certain v
 This may result in the fragmentation of the disk, and may be a pathway to the formation of giant planets \citep{boss1997}.
 %Planet formation through this mechanism is known as the Gravitational Instability model \fct, and it is similar in spirit to star formation through the Jeans instability \citep{jeans1902}.
 
-\section{Planet Forcing}
+\section{Planet Forcing} \label{sec:planet_forcing}
 
-\note{add connection paragraph maybe}
+Armed with the Lin-Shu dispersion relation that encodes the linear disk response to a disturbance in terms of density wave theory, we are ready to investigate the effects of the gravitational perturbation induced by an embedded planet.
+This will in turn allow us to study the generation and propagation of the spiral structure that is the result of this perturbation.
 
 \subsection{Lindblad Resonances}
 
@@ -382,8 +425,9 @@ Resonance-shifting is important for calculating the total resultant torque on th
 
 \subsection{The Planet Wake} \label{sec:planetwake}
 
-\note{add context: \citet{ogilvie2002}. We are not exactly following original derivation instead we want form of wake given in \citet{rafikov2002a}.}
-
+Following closely the work by \citet{ogilvie2002}, we will use phase arguments to determine the shape of the planet wake in the linear density wave theory paradigm.
+However we will not follow exactly their original derivation.
+We will instead obtain the more general form for the wake shape first given in \citet{rafikov2002a}.
 Similarly to in section \ref{sec:linshu}, we can write linear wave quantities in a 2D gas disk as 
 \begin{align}
     \delta a_m = A_m(r) \exp{i \Theta_m},
@@ -441,21 +485,23 @@ The form shown above was first found in \citet{rafikov2002a}.
 \begin{figure}
     \centering
     \includegraphics[width = 0.8\textwidth]{figures/planet_wake_shape.pdf}
-    \caption{Plot of the $n=0$ spiral arms defined by the lines of constant phase $\phi_{m,0}$ for modes $m=1$ -- $10$.
-    \note{add caption}}
+    \caption{Plot of the $n=0$ spiral arms defined by the lines of constant phase $\phi_{m,0}$ for modes $m=1,...,10$ (solid lines).
+    $\phi_{\infty,0}$ is shown with the red dotted line.
+    The planet is placed at $(1,0)$ once again and the disk parameters are as in Figure \ref{fig:wakes_m3}.
+    We see that asymptotically $\phi_{m,0}$ approaches the planet wake shape $\phi_{\infty,0}$ as the line of constant phase loses its $m$ dependence for large $m$.}
     \label{fig:planet_wake}
 \end{figure}
 
 Ogilvie and Lubow also calculated the degree to which the constructive interference along $\phi_{\infty,0}$ fails.
 To do this they calculated the relative error $\Delta_m$ in the phase for each $m$ caused by the approximation we have performed above.
 Note that this is not the same quantity as we defined in \ref{eq:def_delta_m}.
-Figure \note{add figure} shows $\Delta_m$ in both the outer and inner disk, for multiple values of $m$.
+Figure \ref{fig:delta_m} shows $\Delta_m$ in both the outer and inner disk, for multiple values of $m$.
 We see that in general, the approximation improves for larger $m$.
 Additionally, the behaviour in the inner and outer disk is very different.
 Ogilvie and Lubow found that $\Delta_m \sim \mathrm{constant}$ as $r \rightarrow \infty$, while $\Delta_m$ diverges as $r \rightarrow$ 0, and that for any fixed $r$ that $\Delta_m \rightarrow 0$ as $m \rightarrow \infty$.
 Thus the accuracy of the one-armed wake shape \ref{eq:planet_wake} is in general better in the outer disk than the inner disk, and also depends on the importance of each mode.
 If the wave is dominated by large $m$ then \ref{eq:planet_wake} holds everywhere except for very small disk radii, while always failing if dominated by $m=1$ or $2$ \citep{ogilvie2002}.
-The dominating azimuthal mode for tidal forcing by a planet is $m_{\rm D} \approx 1/2 \left( H/r \right)_{\rm p}^{-1}$ \citep{goldreich1980}, and so for candidate planetary companions in observed disks $m_{\rm D} \gtrsim 5$ \fct. 
+The dominating azimuthal mode for tidal forcing by a planet is $m_{\rm D} \approx 1/2 \left( H/r \right)_{\rm p}^{-1}$ \citep{goldreich1980}, and so for observed protoplanetary disks $m_{\rm D} \gtrsim 5$ \citep{law2021a}. 
 The coherent planet wake picture should therefore hold well except for at small disk radii.
 
 \begin{figure}
@@ -473,17 +519,19 @@ The coherent planet wake picture should therefore hold well except for at small 
         %\caption{$y=3sinx$}
         \label{fig:delta_m_outer}
     \end{subfigure}
-       \caption{\note{add caption}}
+       \caption{The error in the phase $\Delta_m$ resulting from neglecting the $m$ dependence in equation \ref{eq:phase}, plotted for both the inner (left) and outer (right) disk \citep{ogilvie2002}.
+       The planet is placed at $r=1$. Modes $m=1,...,10$ are shown from top to bottom.
+       We see that the approximation improves for large $m$ as expected.}
        \label{fig:delta_m}
 \end{figure}
 
 \subsection{Additional Spiral Arms}
 
 In addition to constructive interference of the $n=0$ components causing the planet wake, it is possible for additional spiral arms to form.
-These \textit{secondary} and \textit{tertiary} spiral arms (where the planet wake described in the previous section is the \textit{primary} arm) were first seen in numerical calculations \fct and were not very well understood in the context of linear density wave theory until quite recently \citep{bae2018a,miranda2019a}.
+These \textit{secondary} and \textit{tertiary} spiral arms (where the planet wake described in the previous section is the \textit{primary} arm) were first seen in numerical calculations \citep{fung2015} and were not very well understood in the context of linear density wave theory until quite recently \citep{bae2018a,miranda2019a}.
 Unlike the primary, these spirals are not centred on the planet position, and are instead generated some distance away in the inner disk.
 
-Figure \note{add figure} shows the phase of the $n=1$ and $n=2$ components in the inner disk.
+Figure \ref{fig:additional_arms} shows the phase of the $n=1$ and $n=2$ components in the inner disk.
 We see that unlike for the $n=0$ case, the waves are not launched in the vicinity of the planet, or nearby each other.
 However the overall behaviour of the constant offset launching term \ref{eq:spiral_offset} is the same for non-zero $n$, namely that it becomes smaller as $m$ increases and so the launching phases become closer for larger $m$.
 Furthermore, the modes become more tightly wound as $m$ increases, with the second term of \ref{eq:phase} also losing its $m$ dependence for very large values.
@@ -495,7 +543,9 @@ Bae and Zhu also found that this effect does not operate in the outer disk, as t
 \begin{figure}
     \centering
     \includegraphics[width = 0.95\textwidth]{figures/inner_n_1_and_2.pdf}
-    \caption{\note{add caption}}
+    \caption{Plot of the $n=1$ (left) and $n=2$ spiral arms defined by the $\phi_{m,n}$ for modes $m=1,...,10$ (solid lines).
+    We show only the inner disk, with the planet placed at $(1,0)$ and disk parameters as in Figure \ref{fig:wakes_m3}.
+    We see that in both the $n=1$ and $n=2$ case, although the spirals start initially out of phase due to different launching positions, the larger $m$ modes are able to catch-up resulting in the formation of the coherent secondary and tertiary spiral arms respectively.}
     \label{fig:additional_arms}
 \end{figure}
 
@@ -505,7 +555,7 @@ They found that their results in general supported the picture of additional arm
 
 In this work we will be concerned primarily with the waves generated by the planet in the outer disk and so our models will not include any of the additional arms in the inner disk, only the primary planet wake.
 
-\section{Linear Planet Wake Excitation}
+\section{Linear Planet Wake Excitation} \label{sec:linear_wake_excitation}
 
 We now move on to calculating the density and velocity perturbations in the vicinity of the planet due to the planet wake.
 This follows the method presented in \citet{goodman2001,rafikov2002a}, which itself is based on the seminal work by \citet{goldreich1978,goldreich1980}.
@@ -522,7 +572,7 @@ This approach is agnostic to the rotation, density and sound speed profiles of t
 It is also assumed that the disk is both locally polytropic (see section \ref{sec:velocity_perts}), inviscid, and non-self-gravitating.
 
 It should be noted that the used of the language "generation" and "propagation" are slightly misleading.
-The solution that we will calculate is steady-state and has no time dependence.
+The solution that we will calculate is mathematically a steady-state and has no time dependence.
 In a physical sense the language is correct; waves are excited nearby the planet before propagating out into the disk.
 In a mathematical sense the language is potentially confusing since the solution is independent of time.
 These two opposing points of view are reconciled by considering that we are working the frame where the planet is stationary. 
@@ -542,7 +592,8 @@ The resonances excited most efficiently are therefore located a few $H_{\rm p}$ 
 \begin{figure}
     \centering
     \includegraphics[width = 0.95\textwidth]{figures/shearing_sheet.pdf}
-    \caption{}
+    \caption{Schematic diagram of the sheared-sheet approximation from the lectures notes by \citet{armitage2022}, where in our case $r_0 = r_{\rm p}$ and $\Omega_0 = \Omega_{\rm p}$ and so the shearing box is centred on the planet location.
+    Under the approximation the shear nearby the planet is taken to be linear, while the surface density and sound speed are taken to be constant.}
     \label{fig:sheared_sheet}
 \end{figure}
 
@@ -560,6 +611,7 @@ The differential rotation of the disk is then expanded to lowest order in $x/r_{
 \end{align}
 where the shear $A$ and rotation $\Omega$ rates are treated as constant (that does \textit{not} make the above derivative zero), as is the vorticity $B \equiv A+\Omega$.
 The unperturbed surface density $\Sigma_{\rm p}$ and sound speed $c_{\rm p}$ are also assumed to be constant.
+A diagrammatic overview of the sheared-sheet approximation is presented in Figure \ref{fig:sheared_sheet}.
 
 We adopt as a length unit the mach-1 length $l_{\rm p}$, which is the distance from the planet where the flow becomes supersonic.
 This requires that $v_0 = 2|Ax| > c_{\rm p}$ and so 
@@ -811,32 +863,42 @@ Finally, while it is possible to calculate the scale factor for the proportional
 
 \section{Gap Opening} \label{sec:gap_opening}
 
-\note{from lit review. needs rewording.}
-
-For sufficiently large planets, the spiral waves launched by the planet form into shocks and exchange angular momentum with the disk. 
-This results in the removal of material from the orbit vicinity and thus an annular gap is created in the gas \citep{lin1979,goldreich1979,goldreich1980}. 
-The rough criterion for gap opening involves two conditions. 
-The planet's Hill radius $r_{\rm H}$ \citep{hill1878} must fulfil $r_{\rm H} \gtrsim H$, and the angular momentum transfer rate between the disk and planet must exceed the local transport rate from (effective) viscosity \citep{lin1993}.
-An analytic relation between planet mass $M_{\rm p}$, central star mass $M_*$, viscosity $\alpha$ \citep{shakura1973}, and gap depth $\Sigma_{\rm p} / \Sigma_0$ was found by \citet{kanagawa2015} in the case of an axisymmetric and geometrically thin disk of gas that evolves according to the effective viscous theory of accretion disks. It is given by
-\begin{align}
-    \frac{M_{\rm p}}{M_*} = 5 \times 10^{-4} \left( \frac{\Sigma_0}{\Sigma_{\rm p}} - 1 \right)^{\frac{1}{2}} \left( \frac{H_{\rm p}}{0.1}  \right)^{\frac{5}{2}} \left( \frac{\alpha}{10^{-3}} \right)^{\frac{1}{2}},
-\end{align}
-where the gap depth $\Sigma_{\rm p} / \Sigma_0$ is written in terms of the surface density in the gap $\Sigma_{\rm p}$, and the unperturbed surface density $\Sigma_0$. 
-In an inviscid disk the minimum mass required to open a gap is given by the thermal mass \citep{lin1993}, defined as \citep{goodman2001}
+For sufficiently large planets, the non-linear effects are such that planet wake shocks immediately after formation and the solution can no longer be neatly separated into the linear generation and non-linear propagation regimes.
+As already hinted at the condition under which this occurs in an inviscid disk is that the planet mass $M_{\rm p}$ exceeds the characteristic mass $M_1$ defined in equation \ref{eq:char_mass}.
+For a Keplerian disk the minimum gap-opening mass is the thermal mass \citep{lin1993}, defined as \citep{goodman2001}
 \begin{align}
     M_{\rm th} \equiv \frac{2}{3} \left( \frac{H_{\rm p}}{r_{\rm p}}  \right)^3 M_*. \label{eq:thermalmass}
 \end{align}
-This the the planet mass for which $r_{\rm H} \simeq H$. 
-The modern understanding of the gap opening criterion, including the effects of viscosity and the non-linear evolution of the planet wake, states that the thermal condition $r_{\rm H} \gtrsim H$ is unnecessary. 
-Instead, planets with $M_{\rm p} < M_{\rm th}$ may be able to open a gap depending on the disk conditions \citep{rafikov2002}. 
+Thus the wake solution approach presented in sections \ref{sec:linear_wake_excitation} and \ref{sec:nonlinear_evolution} is only \textit{strictly} valid for sub-thermal mass planets. It is not clear however, that the non-linear Burger's equation evolution is invalid for planets greater than the thermal mass. This non-linear prescription's strictest requirement is that the shock is sufficiently weak such that the perturbative approach is still valid.
+
+Gap opening occurs because the dissipative shock fronts allow angular momentum from the material nearby the disk to be deposited elsewhere \citep{lin1979,goldreich1979,goldreich1980}.
+The rough physical criterion for a gap to open depends on two conditions.
+Firstly the Hill radius of the planet $r_{\rm H}$ \citep{hill1878} must fulfil $r_{\rm H} \gtrsim H$, known as the \textit{thermal condition}.
+Secondly the transfer rate of angular momentum between the wake and disk must exceed the local transport rate from effective viscosity \citep{lin1993}.
+The thermal condition is equivalent to $M_{\rm p} = M_{\rm th}$ while the second is irrelevant to discussions of inviscid disks.
+
+\citet{kanagawa2015} found an analytic relation between planet mass $M_{\rm p}$, central star mass $M_*$, viscosity $\alpha$ \citep{shakura1973}, and gap depth $\Sigma_{\rm p} / \Sigma_0$ in the case of an axisymmetric and geometrically thin gas disk subject to viscous evolution
+\begin{align}
+    \frac{M_{\rm p}}{M_*} = 5 \times 10^{-4} \left( \frac{\Sigma_0}{\Sigma_{\rm p}} - 1 \right)^{\frac{1}{2}} \left( \frac{H_{\rm p}}{0.1}  \right)^{\frac{5}{2}} \left( \frac{\alpha}{10^{-3}} \right)^{\frac{1}{2}},
+\end{align}
+where the gap depth $\Sigma_{\rm p} / \Sigma_0$ is written in terms of the surface density in the gap $\Sigma_{\rm p}$, and the unperturbed surface density $\Sigma_0$.
+Indeed according to the modern understanding of gap opening where both viscosity and non-linear effects are considered, the thermal condition is not actually necessary for gap-opening.
+
+The modern understanding of gap opening, considering both the effects of viscosity and non-linear planet wake evolution, states that the thermal condition is unnecessary.
+Instead planets $\lesssim M_{\rm th}$ may be capable of opening a gap depending on the disk conditions \citep{rafikov2002}.
 The opening criterion is given by \citep{kanagawa2015a}
 \begin{align}
-    M_{\rm p} \gtrsim 5 H^\frac{5}{2} \alpha^\frac{1}{2} M_*.
+    M_{\rm p} \gtrsim 5 \left( \frac{H_{\rm p}}{r_{\rm p}} \right)^\frac{5}{2} \alpha^\frac{1}{2} M_*.
 \end{align}
-Gas gaps opened by sub thermal mass planets have also been confirmed through hydrodynamical simulations \citep{duffell2013}.
+Hydrodynamical simulations have confirmed the ability of sub-thermal mass planets to open gaps \citep{duffell2013}.
 
-The mechanism discussed so far creates gaps in not only the gas component of disks, but also the dust, since grains will move towards the pressure maxima induced at the edge of the gap \citep{paardekooper2004}. 
-Large dust grains that are weakly coupled to the gas become trapped at these maxima, while small grains that are strongly coupled follow the gas flow and are accreted onto the planet \citep{paardekooper2006,fouchet2007}. 
-However, planets that are not massive enough to induce a gap in the gas may still do so in the dust. 
-Both the drag and tidal torque from the planet experienced by dust particles inside the planet orbit result in inward drift. Outside the orbit the tidal torque resists the inward drift from drag \citep{dipierro2016}. 
-This results in a dust gap around the planet, but with no associated gap in the gas.
+Finally, gap-opening occurs not only in the gas component of disks, but also the dust component.
+Dust gaps are actually far more pervasive observationally \citep[eg.][]{almapartnership2015,andrews2016,isella2016,andrews2018,huang2018b}, since the gas structure of a disk is less straightforward to probe \citep{miotello2022}.
+Dust gaps can be created through the mechanisms already discussed, since the grains will migrate to the pressure maxima induced at the edges of the gas gap \citep{paardekooper2004}.
+The large and weakly-coupled grains become trapped at these maxima.
+Smaller grains couple to the gas strongly and so flow with it into the vicinity of the planet before being accreted \citep{paardekooper2006,fouchet2007}.
+Additionally, gaps may be induced only in the dust the component.
+Drag acts on dust grains interior and exterior to the planets orbit resulting in inward radial migration.
+Exterior to the orbit the tidal torque induced by the planet resists the inward drift
+\citep{dipierro2016}.
+Dust grains are therefore cleared from near the planets orbit resulting in a dust gap.
