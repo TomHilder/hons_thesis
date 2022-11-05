@@ -18,6 +18,7 @@
 \usepackage{float}
 \usepackage{esint}
 \usepackage{natbib}
+\usepackage[hyphens]{url}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{cancel}
@@ -27,7 +28,10 @@
 \usepackage{caption}
 \usepackage{subcaption}
 
-\settocbibname{References}
+
+\PassOptionsToPackage{hyphens}{url}
+
+\settocbibname{Bibliography}
 
 \pagestyle{fancy}
 \cfoot{\thepage}

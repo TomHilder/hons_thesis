@@ -1,11 +1,12 @@
 \setlength{\headheight}{13.59999pt}
 
 This chapter is concerned with the method we have used to create semi-analytic models of planet wakes that encompass both the linear and non-linear disk response due to a perturbing planet as described in the previous chapter. 
-Section \ref{sec:JOSS} introduces our Python package \textsc{wakeflow}, while sections \ref{sec:diskstruct}-\ref{sec:wakeprop} outline the theory and numerical methods it uses.
+This work builds on that presented in \citet{bollati2021} and so we will be predominantly concerned with the differences from their analysis.
+However we aim to provide enough detail to be understandable without having read the aforementioned paper.
 
 \section{Wakeflow: A Python Package For Semi-Analytic Models of Planet Wakes} \label{sec:JOSS}
 
-This section has been published in the Journal of Open Source Science \fct and is publicly available here \fct
+This section has been submitted to the Journal of Open Source Science and is currently in review. The preprint is publicly available here: \url{github.com/TomHilder/wakeflow/blob/master/paper/paper.md}
 
 \subsubsection{Summary}
 
@@ -15,7 +16,7 @@ These perturbationstake the form of a spiral shock wave \citep{ogilvie2002}, and
 \subsubsection{Statement of Need}
 
 Detecting newly formed planets embedded in their disk is a challenging problem in the field of planet formation. 
-A major area of progress in recent years isthe detection of planets by the gravitationally induced disturbance in theirhost disks. 
+A major area of progress in recent years is the detection of planets by the gravitationally induced disturbance in their host disks. 
 This disturbance, caused by the planet wake, manifests as a deviation in velocity from the bulk flow which may be measured through the Doppler shift of molecular lines \citep[eg.][]{perez2015, pinte2018a}. 
 Such kinematic observations have been accurately reproduced through 3D fluid simulations of the planet-disk interaction, allowing for the inference of planet and disk properties \citep{pinte2018a, pinte2019}. 
 However, these studies are computationally expensive.
@@ -26,7 +27,7 @@ The relatively low computational cost of \textsc{wakeflow}means that researchers
 
 \textsc{wakeflow} can interface with the radiative transfer code  \textsc{mcfost} \citep{pinte2006,pinte2009} in order to create synthetic observations of the semi-analytic models for direct comparison with observed continuum or line emission.
 
-\textsc{wakeflow} is partially adapted from a previous Python code also written by us called \textsc{analytical\_kinks} [@Analytical\_Kinks]. 
+\textsc{wakeflow} is partially adapted from a previous Python code also written by us called \textsc{analytical\_kinks} \citep{bollati2021a}. 
 \textsc{wakeflow} is intended to be a more complete, versatile and easy to use version of that code, and it obeys standard Python packaging conventions.
 In addition, \textsc{wakeflow} can directly interface with \textsc{mcfost} while \textsc{analytical\_kinks} cannot.
 At the time of writing, no other open source software packages exist to generate the perturbations induced by an embedded planet in a circumstellar disk using the semi-analytic theory of planet wakes.
