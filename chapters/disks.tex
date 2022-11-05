@@ -1,173 +1,215 @@
-\note{whole chapter is from lit review. needs rewording.}
+\setlength{\headheight}{13.59999pt}
+
+Before discussing the ways in which an embedded planet disturbs its host disk, we will first briefly outline physics underpinning accretion disks.
+This will be used to determine the structure of protoplanetary disks from a theoretical point of view.
+This will then be supplemented by a discussion of disk properties determined from observational studies, and of how these studies supplement and constrain the theoretical ideas.
 
 \section{Accretion Disk Physics}
 
-\note{define differential rotation as per Binney and Tremaine}
-
-Consider a test particle orbiting in a Newtonian point mass potential. Its angular velocity $\Omega$ is given by
+The angular velocity $\Omega$ of a test particle orbiting in a Newtonian point mass potential is given by
 \begin{align}
-    \Omega = \Omega_{\rm K} \equiv \sqrt{\frac{G M_*}{r^3}}, \label{eq:point_pot}
+    \Omega = \Omega_{\rm K} \equiv \sqrt{\frac{G M_\star}{r^3}}, \label{eq:point_pot}
 \end{align}
-where $M_*$ is the central mass, $r$ is the orbital radius, $G$ is Newton's constant and $\Omega_{\rm K}$ signifies Keplerian rotation. 
-Since $\Omega$ is a function of radius this is called \textit{differential rotation}.
-In this case the orbital speed is a decreasing function of radius $v_\phi = r \Omega_{\rm K} \propto r^{-1/2}$.
-Additionally, the specific angular momentum $h$ of the particle is given by
+where $M_\star$ is the central mass, $r$ is the orbital radius, $G$ is Newton's constant and we  define $\Omega_{\rm K}$ to be \textit{Keplerian rotation}.
+$\Omega$ is a function of radius and so the rotation is said to be \textit{differential}.
+The orbital speed $v_\phi$ is then a decreasing function of radius $v_\phi = r \Omega_{\rm K} \propto r^{-1/2}$.
+In addition, the test particle specific angular momentum $h$ is
 \begin{align}
-    h = r \Omega^2 = \sqrt{G M_* r}, \label{eq:ang_mom}
+    h = r^2 \Omega = \sqrt{G M_\star r}, \label{eq:ang_mom}
 \end{align}
-and so we see that $h$ is an increasing function of radius as $h \propto r^{1/2}$.
-Together the above quantities constitute a key feature of accretion disks; shearing stresses between annuli of material orbiting at slightly different radii, as well as other instabilities, allow for angular momentum transport within the disk. 
-This means inner material may lose its angular momentum to the outer disk and accrete onto the star. 
-Alternatively, the whole disk may lose angular momentum to its environment, for example through magnetised outflows that induce a torque on the disk.
+and is thus an increasing function of radius.
+In order for material in an accretion disk to move to lower radii, it needs to lose angular momentum.
+The differential rotation in the disk provides a natural mechanism for this transport due to the shearing stresses that occur between annuli of material orbiting at slightly different radii.
+Alternatively accretion may be powered by other disk instabilities or through an external torque, for example through magnetised outflows.
+Instead of attempting to consider the individual torques contributed by different instabilities or mechanisms operating in the disk, we will represent their overall effects as an effective fluid viscosity.
+This approach is known as \textit{viscous disk theory} \citep{lynden-bell1974,shakura1973}.
 
 \subsection{Fluid Equations} \label{sec:fluid_eqns}
 
-The structure and evolution of accretion disks are governed by the viscous and compressible continuity and momentum equations given by \citep[eg.][]{landau1959}
+Under the viscous disk theory framework we expect accretion disk structure and evolution to be described by the viscous and compressible equations of momentum and continuity.
+These are given by \citep[eg.][]{landau1959}
 \begin{align}
     \partial_t \rho + \nabla \cdot (\rho \VF{v}) &= 0, \label{eq:fluid_cont} \\
-    \partial_t \VF{v} + (\VF{v} \cdot \nabla) \VF{v} &= \frac{1}{\rho} \left( \nabla \cdot \VF{T} - \nabla P  \right) - \nabla \Phi_*, \label{eq:fluid_mom}
+    \partial_t \VF{v} + (\VF{v} \cdot \nabla) \VF{v} &= \frac{1}{\rho} \left( \nabla \cdot \VF{T} - \nabla P  \right) - \nabla \Phi_\star, \label{eq:fluid_mom}
 \end{align}
-where $\rho, P$ and $\VF{v}$ are the fluid density, pressure and velocity respectively, $\VF{T}$ is the viscous stress tensor and $\Phi_*$ is the gravitational potential of the central point mass, which is assumed to dominate over the gravity of the disk. 
-Following the review by \citet{papaloizou1995}, we find the corresponding equations of continuity and momentum that describe the evolution of a thin accretion disk.
-Rewriting the continuity equation in cylindrical coordinates and expanding we find
+where $\rho, P$ and $\VF{v}$ are the fluid density, pressure and velocity respectively, $\VF{T}$ is the viscous stress tensor and $\Phi_\star$ is the gravitational potential of the central point mass (which is a star for a circumstellar disk).
+We will ignore any contributions to the potential from the disk itself, assuming $\Phi_{\rm disk} \ll \Phi_\star$.
+
+Following the review by \citet{papaloizou1995}, we will reduce equations \ref{eq:fluid_cont} and \ref{eq:fluid_mom} to two one-dimensional conservation equations for a thin accretion disk.
+Expanding the continuity equation \ref{eq:fluid_cont} in cylindrical coordinates we find
 \begin{align}
     \partial_t \rho + \nabla \cdot (\rho \VF{v}) &= \partial_t \rho + \frac{1}{r} \partial_r (r \rho v_r) + \frac{1}{r} \partial_\phi (\rho v_\phi) + \partial_z (\rho v_z) = 0.
 \end{align}
-Integrating this over all $\phi$ and $z$ gives
+Integrating out the $\phi$ and $z$ dependence causes the third term to vanish. We also neglect the fourth term assuming that $v_z \simeq 0$
 \begin{align}
-    0 &= \int_0^{2\pi} \int_{-\infty}^\infty \left\{ \partial_t \rho + \frac{1}{r} \partial_r (r \rho v_r) + \frac{1}{r} \partial_\phi (\rho v_\phi) + \partial_z (\rho v_z) \right\} \dif{z} \dif{\phi} \\
-    &= \partial_t \int_0^{2\pi} \int_{-\infty}^\infty \rho \dif{z} \dif{\phi} + \frac{1}{r} \partial_r \int_0^{2\pi} \int_{-\infty}^\infty r \rho v_r \dif{z} \dif{\phi}, \label{eq:int_cont}
+    0 &= \partial_t \int_0^{2\pi} \int_{-\infty}^\infty \rho \dif{z} \dif{\phi} + \frac{1}{r} \partial_r \int_0^{2\pi} \int_{-\infty}^\infty r \rho v_r \dif{z} \dif{\phi}. \label{eq:int_cont}
 \end{align}
-where the third term vanishes and we neglect the fourth term assuming that $v_z \simeq 0$.
-Carrying out the integration by assuming $v_r$ is independent of $\phi$ and $z$, equation \ref{eq:int_cont} becomes
+Performing this integration assuming the disk to be axisymmetric and that $v_r$ is independent of $z$ yields
 \begin{align}
     \partial_t \Sigma + \frac{1}{r} \partial_r (r \Sigma v_r) = 0, \label{eq:1d_cont}
 \end{align}
-where we assume $\rho$ is independent of $\phi$, and the surface density $\Sigma$ is defined by 
+where the \textit{surface density} $\Sigma$ is defined as 
 \begin{align}
-    \Sigma = \int_{-\infty}^\infty \rho \dif{z}.
+    \Sigma \equiv \int_{-\infty}^\infty \rho \dif{z}. \label{eq:surf_dens_def}
 \end{align} 
-Equation \ref{eq:1d_cont} expresses that the total mass of the disk is conserved, even as material moves between adjacent annuli. 
-
-Taking the $\phi$ component of the momentum equation gives
+The resultant equation \ref{eq:1d_cont} expresses that the total mass of the disk is conserved, even as material moves between adjacent annuli.
+To find the other conservation equation we take the $\phi$ component of the momentum equation \ref{eq:fluid_mom}
 \begin{align}
-    \partial_t v_\phi + (\VF{v} \cdot \nabla) v_\phi &= \frac{1}{\rho} \left( [\nabla \cdot \VF{T}]_\phi - \nabla_\phi P  \right) - \nabla_\phi \Phi_*.
+    \partial_t v_\phi + (\VF{v} \cdot \nabla) v_\phi &= \frac{1}{\rho} \left( [\nabla \cdot \VF{T}]_\phi - \nabla_\phi P  \right) - \nabla_\phi \Phi_\star.
 \end{align}
-From equation \ref{eq:point_pot} we see that $\nabla_\phi \Phi_* = 0$. If we assume that the disk is axisymmetric such that $v_\phi=r \Omega(r)$ then we find $\partial_t v_\phi = 0$ and $\nabla_\phi P=0$. 
-The $\phi$ components of the remaining terms are given by \citep[eg.][]{armitage2022}
+Equation \ref{eq:point_pot} gives that $\nabla_\phi \Phi_\star = 0$, and under disk axisymmetry $\partial_t v_\phi = 0$ and $\nabla_\phi P=0$.
+The $\phi$ components of the remaining terms are given by \citep[eg.][]{landau1959}
 \begin{align}
     [(v \cdot \nabla) \VF{v}]_\phi &= v_r \frac{dv_\phi}{dr} + \frac{v_\phi v_r}{r}, \\
     [\nabla \cdot \VF{T}]_\phi &= \frac{1}{r^2} \partial_r (r^2 T_{r\phi}) + \partial_z T_{\phi z},
 \end{align}
-giving us
+giving
 \begin{align}
-    v_r \frac{dv_\phi}{dr} + \frac{v_\phi v_r}{r} &= \frac{1}{r^2 \rho} \, \partial_r (r^2 T_{r\phi}) + \frac{1}{\rho} \partial_z T_{\phi z}, \\
     \rho v_r \frac{dh}{dr} &= \frac{1}{r} \partial_r (r^2 T_{r\phi}) + r \partial_z T_{\phi z},
 \end{align}
-where in the second line we have used equation \ref{eq:ang_mom} and multiplied through by  $r \rho$. Integrating over all $\phi$ and $z$, and assuming that $T_{\phi z}$ vanishes as $z\rightarrow\pm\infty$, we obtain 
+where we have substituted equation \ref{eq:ang_mom} and multiplied through by $r \rho$.
+Assuming that $T_{\phi z}$ vanishes as $z\rightarrow\pm\infty$, we can integrate out the $\phi$ and $z$ dependence to find
 \begin{align}
     2\pi \frac{dh}{dr} r v_r \Sigma &= \partial_r \left( r^2 \int_0^{2\pi} \int_{-\infty}^\infty T_{r\phi} \dif{z} \dif{\phi} \right). \label{eq:z_van}
 \end{align}
-For a thin disk the $r\phi$ component of the viscous stress tensor is simply $\mu r \, d\Omega/dr$ where $\mu$ is the viscosity \citep[see review by][]{papaloizou1995}. 
-Let us define the kinematic viscosity $\nu$ as 
+For a thin disk the $T_{r\phi}=\mu r \, d\Omega/dr$ where $\mu$ is the fluid viscosity \citep[see review by][]{papaloizou1995}.
+We then define the \textit{kinematic viscosity} $\nu$ as
 \begin{align}
-    \nu = \frac{1}{2 \pi \Sigma} \int_0^{2\pi} \int_{-\infty}^\infty \mu \dif{z} \dif{\phi}.
+    \nu \equiv \frac{1}{2 \pi \Sigma} \int_0^{2\pi} \int_{-\infty}^\infty \mu \dif{z} \dif{\phi}.
 \end{align}
-Thus equation \ref{eq:z_van} becomes
+Equation \ref{eq:z_van} then becomes
 \begin{align}
     \Sigma v_r \frac{dh}{dr} &= \frac{1}{r} \partial_r \left( \Sigma r^3 \nu \frac{d\Omega}{dr} \right), \label{eq:1d_angmom}
 \end{align}
-which expresses that the total angular momentum of the fluid disk is conserved, under our various assumptions.
+which expresses total angular momentum conservation for a thin accretion disk governed by internal forces.
 
 \section{Theoretical Structure}
 
-\note{add some stuff here}
-
 \subsection{Vertical Density Structure}
 
-We may derive the vertical structure of the disk following the seminal review by \citet{pringle1981}. Taking the $z$ component of the momentum equation \ref{eq:fluid_mom}, again assuming $v_z \simeq 0$, giving
+The vertical density structure of the disk is derived following the seminal review by \citet{pringle1981}.
+Assuming $v_z$ to be negligible, the $z$ component of the momentum equation \ref{eq:fluid_mom} gives
 \begin{align}
-    \frac{1}{\rho} \partial_z P = \partial_z \Phi_*,
+    \frac{1}{\rho} \partial_z P = \partial_z \Phi_\star,
 \end{align}
-ie. vertical hydrostatic equilibrium. 
-Taking the pressure to be dominated by gas and assuming the disk is vertically isothermal with equation of state $P=c_s^2 \rho$ (which may not be a good approximation for protoplanetary disks, see \citet{pinte2018} and \citet{calahan2021}, for example) we find
+which expresses vertical hydrostatic equilibrium.
+Assuming that the pressure is gas-dominated (radiation pressure should be negligible for circumstellar disks), and assuming a locally isothermal equation of state $P=c^2 \rho$ \footnote[1]{Recently this approximation has become somewhat contentious as we have begun to observationally constrain the vertical temperature structure of circumstellar disks, see for example \citet{pinte2018} and \citet{calahan2021}.} where $c$ is the sound speed, we find 
 \begin{align}
-    \frac{c_s^2}{\rho} \partial_z \rho = - \frac{G M_* z}{\left(r^2 + z^2\right)^{3/2}} \simeq - \Omega_{\rm K}^2 z.
+    \frac{c^2}{\rho} \partial_z \rho = - \frac{G M_\star z}{\left(r^2 + z^2\right)^{3/2}} \simeq - \Omega_{\rm K}^2 z. \label{eq:vertical_hydro_eq}
 \end{align}
-The approximate equality in the above applies assuming $z \ll r$. 
-Solving this yields
+where the approximate equality relies on the condition that $z \ll r$.
+Equation \ref{eq:vertical_hydro_eq} is solved by
 \begin{align}
     \rho(r,z) &= \rho_0(r) \exp{\left( -\frac{z^2}{2 H^2} \right)}, \label{eq:vertical_rho}
 \end{align}
-where $\rho_0(r)$ is the density in the mid-plane at $z=0$, and we define the disk scale height $H = c_s/\Omega_{\rm K}$.
-We may also find the relation between $\Sigma$ and $\rho$ by integrating equation \ref{eq:vertical_rho} over all $z$, yielding
+where $\rho_0(r)$ is the density in the mid-plane at $z=0$, and we define the disk \textit{scale height}
+\begin{align}
+    H \equiv\frac{c}{\Omega_{\rm K}}.
+\end{align}
+Equation \ref{eq:vertical_rho} expresses that the vertical density structure is essentially Gaussian, with a standard deviation given by the scale height $H$.
+We can also find the relationship between $\Sigma$ and $\rho$ for this structure by integrating equation \ref{eq:vertical_rho} over all $z$, giving
 \begin{align}
     \rho_0(r) = \frac{1}{\sqrt{2\pi} H} \Sigma(r). \label{eq:surf_dens_to_dens}
 \end{align}
 
 \subsection{Rotation}
 
-Taking the radial component of the momentum equation \ref{eq:fluid_mom}, neglecting viscosity, assuming $v_r \ll v_\phi$, and again taking the disk rotation to be axisymmetric
+Now taking the radial component of the momentum equation \ref{eq:fluid_mom}, assuming axisymmetry, neglecting viscosity and assuming only small radial motions $v_r \ll v_\phi$, we find
 \begin{align}
-    \frac{v_\phi^2}{r} &= \frac{G M_* r}{\left( r^2 + z^2  \right)^{3/2}} + \frac{1}{\rho} \partial_r P \simeq \frac{G M_*}{ r^2} + \frac{1}{\rho} \partial_r P, 
+    \frac{v_\phi^2}{r} &= \frac{G M_\star r}{\left( r^2 + z^2  \right)^{3/2}} + \frac{1}{\rho} \partial_r P \simeq \frac{G M_\star}{ r^2} + \frac{1}{\rho} \partial_r P, 
 \end{align}
-again in the second equality using $z \ll r$. Now, dividing each side by $r$ and using $c_s^2=dP/d\rho$
+where the approximate equality once again assumes $z \ll r$.
+Dividing by $r$ and substituting $c^2=dP/d\rho$ gives
 \begin{align}
-    \Omega^2 &= \Omega_{\rm K}^2 + \left( \frac{c_s^2}{r^2} \right) \frac{r}{\rho} \frac{d \rho}{dr}, \\
+    \Omega^2 &= \Omega_{\rm K}^2 + \left( \frac{c^2}{r^2} \right) \frac{r}{\rho} \frac{d \rho}{dr}, \\
     &= \Omega_{\rm K} \left[ 1 + \left(\frac{H}{r}\right)^2 \frac{d \ln{\rho}}{d \ln{r}} \right]^{1/2} . \label{eq:rotation}
 \end{align}
-Thus we find Keplerian rotation to be a good approximation for disks if $H/r \ll 1$, in regions where $z \ll r$. Additionally, the correction term $d\ln{\rho}/d\ln{r}$ is negative in most astrophysical disks since the density usually decreases with radius, and so the true rotation is sub-Keplerian.
+and so we find that for pressure supported circumstellar disks, Keplerian rotation is a good approximation provided that the disk \textit{aspect ratio} $H/r \ll 1$, with the correction being of order $(H/r)^2$.
+For circumstellar disks, and indeed for most astrophysical disks, $d\ln{\rho}/d\ln{r}$ is negative.
+Thus including the correction results in a smaller $\Omega$ and so the true rotation is slightly \textit{sub-Keplerian}.
 
-\subsection{Disk flaring}
+\subsection{Disk Flaring} \label{sec:disk_flaring}
 
-An accretion disk is said to be flared if its aspect ratio $H/r$ increases with radius so that
+The definition of a \textit{flared} accretion disk is one whose aspect ratio fulfils the condition
 \begin{align}
-    \frac{H}{r} \propto r^\gamma, \quad \gamma > 0.
+    \frac{H}{r} \propto r^\gamma; \quad \gamma > 0, \label{eq:flared_hr}
 \end{align}
-That is, the scale height of the disk increases with radius faster than just linearly so $H \propto r^{1+\gamma}$. 
-A ``flat" disk has an aspect ratio independent of scale height, $\gamma=0$.
-The physical condition for flaring is given by the effective temperature profile of the disk, which we can see by considering that for an ideal gas $c_s^2 \propto T_{\rm eff}$ \citep[eg.][]{pringle2007}, and so
+such that the scale height $H$ increases with radius at a rate greater than linear $H \propto r^{1+\gamma}$. 
+A \textit{flat} disk then has an aspect ratio independent of radius so 
+$\gamma=0$.
+Physically the condition for flaring is related to the effective temperature $T_{\rm eff}$ of the disk.
+For an ideal gas $c^2 \propto T_{\rm eff}$ \citep[eg.][]{pringle2007}, and so
 \begin{align}
-    \frac{H}{r} &= \frac{c_s}{r \Omega_{\rm K}} \propto \frac{T_{\rm eff}^{1/2}}{r^{-1/2}}.
+    \frac{H}{r} &= \frac{c}{r \Omega_{\rm K}} \propto \frac{T_{\rm eff}^{1/2}}{r^{-1/2}}.
 \end{align}
-Thus we see that whether a disk is flared depends on its temperature profile. 
-It can be shown that all disks irradiated by a central object are flared \citep{kenyon1987}. 
-Indeed, \citet{chiang1997} modelled passive disks around young stars and found approximately $T_{\rm eff} \appropto r^{-1/2}$, which yields $\gamma \simeq 1/4$. 
-From equation \ref{eq:rotation}, we see that a consequence of aspect ratio increasing with radius is that the flow becomes increasingly sub-Keplerian in the outer disk.
+All disks irradiated by a central object are flared \citep{kenyon1987} and for passive circumstellar disks modelling suggests that $T_{\rm eff} \appropto r^{-1/2}$ \citep{chiang1997}, giving $\gamma \simeq 1/4$.
+Figure \ref{fig:im_lup} shows a scattered light image of the disk around the young star IM Lupi, and the flared nature of the structure is clearly seen in the illuminated top and bottom surfaces of the disk.
+Equation \ref{eq:rotation} suggests that flared disks become increasingly sub-Keplerian with radius.
 
-\section{Viscous evolution}
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.5\textwidth]{figures/IM_Lup_scattered.pdf}
+    \caption{H-band image showing the light scattered off the top and bottom surfaces of the disk around the T-Tauri star IM Lupi, taken with the extreme adaptive optics SPHERE instrument at the Very Large Telescope \citep{avenhaus2018}.
+    The data has been rescaled with a logarithmic stretch to improve contrast.
+    The green dot in the centre of the image corresponds to a region where no data was taken due to the coronagraph, the red dot is the star position.
+    1 arcsecond and 100 au scales are in the bottom left and right of the image respectively.
+    The disk clearly exhibits the flared structure expected for centrally illuminated disks.}
+    \label{fig:im_lup}
+\end{figure}
 
-%\begin{figure}
-%    \centering
-%    \includegraphics[width = 0.8\textwidth]{figures/armitage_ringspread.png}
-%    \caption{The evolution of a ring of gas centred initially at $r=r_0$ according to equation \ref{eq:1d_evol}, as derived by \citet{lynden-bell1974}. Each curve is plotted from $\tau=0.008$ to $\tau=0.512$ with interval 0.084, where $\tau$ is dimensionless time \citep[figure from lecture notes by][]{armitage2022}. The diffusive nature of the evolution is clearly evident, with the overdense ring spreading out over time.}
-%    \label{fig:ring_spreading}
-%\end{figure}
+\section{Viscous Evolution}
 
 Combining the mass and angular momentum conservation equations \ref{eq:1d_cont} and \ref{eq:1d_angmom}, and substituting the Keplerian forms for $\Omega$ and $h$ in equations \ref{eq:point_pot} and \ref{eq:ang_mom}, we find
 \begin{align}
     \partial_t \Sigma &= \frac{3}{r} \partial_r \left[ \sqrt{r} \partial_r \left( \nu \sqrt{r} \Sigma  \right)  \right] \label{eq:1d_evol},
 \end{align}
-which is the surface density evolution equation for a thin, Keplerian disk. 
-This is a partial differential equation, in the form of the 1D diffusion equation.
-The diffusive property of the evolution equation is evident in the so-called ring spreading solution derived by \citet{lynden-bell1974} for the case where $\nu$ is constant, as shown in Figure %\ref{fig:ring_spreading}. 
-We see that the solution involves the diffusion of a lot of mass to lower radii, while small amounts of mass carry the angular momentum away to very large radii.
+which gives the evolution in the surface density for a thin, Keplerian disk.
+The equation \ref{eq:1d_evol} has the form of the one-dimensional heat or diffusion equation, and its diffusive properties are evident in the \textit{ring spreading} solution derived by \citet{lynden-bell1974} in the case of constant $\nu$.
+The initial condition for this solution is the Dirac delta centred at $r/r_0 = 1$, representing a thin ring of material orbiting at some radius.
+The solution shown in Figure \ref{fig:ring_spreading}, and we see that the diffusion results in the movement of a lot of mass to small radii, while small amounts of mass carry angular momentum away to very large radii.
 
-In our analysis here and in section \ref{sec:fluid_eqns} we have implicitly used the effective viscous theory of accretion disks, where although angular momentum may physically be transferred by the magnerotational instability \citep{sano2000}, self-gravity \citep{kratter2016}, turbulent eddies \citep{klahr2003}, or other mechanisms, we assume that all of these can be captured considering the problem in terms of a fluid viscosity ($\nu$ in equation \ref{eq:1d_evol}).
-Therefore, in order to model disk evolution, we must know how to determine the value of the viscosity $\nu$.
-\citet{shakura1973} argued that it is physically consistent to parametrise the viscosity in terms of some constant $\alpha \lesssim 1$ as
-\begin{align}
-    \nu = \frac{2}{3} \alpha c_s H.
-\end{align}
-This is known as the $\alpha$-prescription. If $\nu \propto r^\beta$ for some constant $\beta$, then the surface density of a viscous accretion disk is given by \citep{lynden-bell1974}
-\begin{align}
-    \Sigma(r) = (2 - \beta) \frac{M_d}{2 \pi r_c^2} \left( \frac{r}{r_c} \right)^{-\beta} \exp{\left[ - \left(\frac{r}{r_c}\right)^{2-\beta} \right]},
-\end{align}
-which is an exponentially tapered power law. That is, the density drops approximately as a power law in $-\beta$ with radius for $r < r_c$, and for $r > r_c$ the exponential decay terms dominates. If we use the $\alpha$-prescription and the above definition for $\gamma$ then $\beta=2\gamma+\frac{3}{2}$. 
-More commonly this is parametrised in terms of the effective temperature profile $T_{\rm eff} \propto r^{-q}$ for some constant $q$, giving $\beta = \frac{3}{2} - q$ \citep{hartmann1998}. 
-If $q=1/2$ as in \citet{chiang1997}, then $\beta=1$.
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.8\textwidth]{figures/armitage_ringspread.png}
+    \caption{The evolution of a ring of gas centred initially at $r=r_0$ according to equation \ref{eq:1d_evol}, as derived by \citet{lynden-bell1974}. Each curve is plotted from $\tau=0.008$ to $\tau=0.512$ with interval 0.084, where $\tau$ is dimensionless time \citep[figure from lecture notes by][]{armitage2022}. The diffusive nature of the evolution is clearly evident, with the overdense ring spreading out over time.}
+    \label{fig:ring_spreading}
+\end{figure}
 
-\section{Observed Structure}
+The analysis here and in section \ref{sec:fluid_eqns} relies on viscous disk theory as previously stated.
+In this, we consider that although angular momentum may be physically transferred by mechanisms such as the magnerotational instability \citep{sano2000}, self-gravity \citep{kratter2016}, turbulent eddies \citep{klahr2003}, or others, we assume that all of the physics can be captured by the kinematic viscosity $\nu$.
+Modelling disk evolution accurately therefore relies on determining the value of $\nu$.
+\citet{shakura1973} argued that it is physically consistent to parametrise the viscosity in terms of some constant $\alpha \lesssim 1$ as\footnote[2]{Strictly there is also a factor of $2/3$ on the right-hand side but this is typically ignored in the literature and absorbed into the value of $\alpha$.}
+\begin{align}
+    \nu = \alpha c H.
+\end{align}
+This is known as the $\alpha$\textit{-prescription}. If $\nu \propto r^\beta$ for some constant real number $\beta$, then \ref{eq:1d_evol} has solution \citep{lynden-bell1974}
+\begin{align}
+    \Sigma(r) = (2 - \beta) \frac{M_d}{2 \pi r_c^2} \left( \frac{r}{r_c} \right)^{-\beta} \exp{\left[ - \left(\frac{r}{r_c}\right)^{2-\beta} \right]}, \label{eq:exp_taper_dens}
+\end{align}
+which is a so-called \textit{exponentially tapered} power law in $\Sigma$.
+That is, the density roughly obeys a negative power law with index $-\beta$ at radii less than the critical radius $r_c$, while dropping off exponentially at radii greater than $r_c$.
+Using the $\alpha$-prescription and the definition of $\gamma$ given in equation \ref{eq:flared_hr} gives $\beta=2\gamma+\frac{1}{2}$.
+More commonly this is parameterised in terms of the effective temperature profile or the sound speed profile $T \propto c^2 \propto r^{-2q}$ for some constant real number $q$, yielding $\beta = \frac{3}{2} - 2q$ \citep{hartmann1998}.
+If we take $q=1/4$ as in section \ref{sec:disk_flaring}, then $\beta=1$ \citep{chiang1997}.
+
+The exponentially tapered power law picture for the surface density profile \ref{eq:exp_taper_dens}, combined with the vertically Gaussian density structure \ref{eq:vertical_rho}, provide the typical parameterisation used to fit the density structure of observed disks \citep{andrews2011,zhang2021}.
+The high-resolution MAPS survey found remarkably consistent best fitting parameters of $\beta=1$ and $\gamma=0.2$, with variation of only $\simeq20$\% and $\simeq10$\% respectively across the 5 disks in the sample.
+
+
+\section{Observed Properties}
+
+\subsection{Components}
+
+Figure \ref{fig:struct_cartoon} presents a cartoon overview of the modern understanding of the structural components of protoplanetary disks \citep{andrews2020}.
+The disk is comprised of both gas and dust, where dust is taken to mean any solid material.
+The gas component is pressure supported and so exhibits the expected flared structure discussed in section \ref{sec:disk_flaring}.
+The dust grains however do not feel any pressure and their behaviour depends on their size.
+Small dust grains, those on the order of a few microns or less, couple strongly to the gas and thus trace the gas structure.
+Larger grains experience drag forces and thus settle to the disk mid-plane \citep{nakagawa1986}.
+These different components are probed via different observational tracers.
+The distribution of small dust grains may be examined through scattered light, while the larger grains can be traced with millimetre thermal continuum observations \citep{almapartnership2015,andrews2016,ansdell2016}. 
+The gas component on the other hand may be studied through spectral emission lines of different molecules.
+These kinds of observations can be used to constrain the gas gas distribution \citep{vandermarel2015,ansdell2016,zhang2021}, kinematics \citep{perez2015,pinte2018a,teague2018,pinte2019,yu2021,calcino2022} and temperature \citep{pinte2018,calahan2021}.
 
 \begin{figure}
     \centering
@@ -176,28 +218,52 @@ If $q=1/2$ as in \citet{chiang1997}, then $\beta=1$.
     \label{fig:struct_cartoon}
 \end{figure}
 
-In the absence of any mechanism driving substructure a protoplanetary disk around a single star should have a structure as depicted in Figure \ref{fig:struct_cartoon}. 
-The disk consists of two main components, gas and dust, where dust refers to any solid material. 
-The gas component exhibits the expected flared structure \citep{kenyon1987}. 
-The dust does not feel any pressure, but small grains couple strongly to the gas while large grains do not. 
-As a result, the large grains settle to the mid-plane, while the smaller grains trace the gas structure \citep{nakagawa1986}.
-The dust structure of the disk may be probed observationally through infrared scattered light as well as thermal continuum emission \citep{almapartnership2015,andrews2016,ansdell2016}. 
-Molecular emission lines allow for measurements of the gas distribution \citep{vandermarel2015,ansdell2016,zhang2021}, kinematics \citep{perez2015,pinte2018a,teague2018,pinte2019,yu2021,calcino2022} and temperature \citep{pinte2018,calahan2021}.
+\subsection{Size}
 
-%Bitsch paper. DSHARP papers. MAPS papers. 
+The size of a disk is typically defined as the radius within which 90\% of the total luminosity is contained.
+This is in general a function of the observational tracer and so for example $R_\mathrm{mm}$ may be different to $R_\mathrm{CO}$, where the subscripts signify millimetre continuum and molecular carbon monoxide (CO) line emission respectively. 
+Furthermore, each of these sizes may be used as a proxy for the size of a certain component of the disk based on what the component of the disk probes.
+Thus $R_\mathrm{mm}$ is essentially the size of the dust disk comprised of millimetre sized grains and larger, while $R_\mathrm{CO}$ gives the size of the gas disk.
+In general the size of the dust disk is smaller than the gas disk for the same system, as demonstrated in Figure \ref{fig:maps_disks}.
+Medium resolution population studies that resolved almost 200 disks to scales of $25-50$ au suggest that the typical dust disk size is in the $\simeq 10 - 250$ au \citep{tripathi2017,andrews2018a,hendler2020}.
+This range is supported by surveys of many fewer disks, around 30, taken at the much higher resolution of $\sim5$ au \citep{long2018,huang2018b}.
+The gas disks are typically larger with radii of $100 - 500$ au, with a few extending out even farther \citep{ansdell2018,zhang2021}.
 
-%We will now outline the modern understanding of the structure and properties of protoplanetary disks as determined through observations, and how the observational constraints effect the theoretical picture presented in section \ref{sec:acc_disks}. 
-%Figure \ref{fig:struct_cartoon} shows a rough cross-section illustration of a disk and outlines key properties as well as the observational tracers of those properties. 
-%Disks consist of two main components, gas and dust (where by dust we mean any solids). 
-%Observations of infrared light scattered off the surface of the disk as well as thermal continuum emission are tracers of the dust structure \fct, while molecular emission lines allow for measurements of the gas distribution \fct, kinematics \citep{perez2015,pinte2018a,teague2018,pinte2019,calcino2022,yu2021} and temperature \citep{pinte2018,calahan2021}.
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.95\textwidth]{figures/Figure-DISKS-Website.png}
+    \caption{Top row: $^{12}$CO $2-1$ Line emission integrated intensity images taken of the five protoplanetary disks as part of MAPS \citep{oberg2021}.
+    The bottom row shows continuum millimetre observations of the same disks, zoomed in on the box shown on each figure in the top row \citep{andrews2018,huang2020,oberg2021}. 
+    We see that in each case the spatial extent of the dust disk probed in mm is much less than that for the gas disk probed with $^{12}$CO.
+    Figure retrieved from https://alma-maps.info/disks.html.}
+    \label{fig:maps_disks}
+\end{figure}
 
-The size of disks is typically defined by some radius within which most of the luminosity is contained, usually chosen as 90\% \citep[eg.][]{andrews2018a}. 
-This varies for different tracers and so for example $R_\mathrm{mm}$, the radius within which most of the mm emission is contained, is in general different to $R_\mathrm{CO}$, the corresponding radius for line emission of molecular carbon monoxide (CO). 
-Furthermore, since mm emission traces the dust component of the disk while CO emission traces the gas, their disk sizes are proxies for the size of the dust and gas disks respectively.
-Medium resolution surveys, resolved to tens of AU, using ALMA of almost 200 disks suggest dust disk sizes in the range $R_\mathrm{mm} \simeq 10 - 250$ AU \citep{tripathi2017,andrews2018a,hendler2020}. 
-This is also compatible with that found from higher resolution surveys of around 30 disks resolved spatially to approximately $5$ AU \citep{long2018,huang2018b}.
-Studies probing the gas component have found sizes in the range $100-500$ AU, with a few extending to even greater radii \citep{ansdell2018,zhang2021}. 
-Observations of cyanide (CN) emission lines with ALMA have also found evidence for compact gas disks with sizes $\lesssim 15$ AU \citep{vanterwisga2019}.
+\subsection{Mass}
+
+Observational disk mass measurements are something of a problem child.
+We split the total disk mass $M_\mathrm{d}$ into two components, the gas mass $M_\mathrm{g}$  and the dust or solids mass $M_\mathrm{s}$ where $M_\mathrm{d} = M_\mathrm{g} + M_\mathrm{s}$.
+Measurements of $M_\mathrm{s}$ rely on assumptions of the optical properties of dust grains and so are intrinsically uncertain.
+$M_\mathrm{g}$ measurements are even worse off.
+Molecular hydrogen is too faint in disks to be of use, no instruments operating or planned can observe the hydrogen deuteride $1-0$ transition that may be of use, and most other molecules are not very abundant.
+CO is the next most abundant molecule after $H_2$ and is readily detectable at wavelengths available to ALMA.
+Measurements of $M_\mathrm{g}$ via CO are unfortunately complicated by uncertainty in the C/H ratio in disks \citep[see the review by][for in-depth discussion of difficulties with disk mass measurements]{miotello2022}.
+
+These measurements are crucial to understanding planet formation as they constrain the possible bodies that may be created from a disk as it continues to evolve.
+The \textit{Minimum Mass Solar Nebula} (MMSN) is the hypothesised disk that the solar system formed from, with just enough mass to create each of the planets \citep{weidenschilling1977b,hayashi1981}.
+Modern measurements place the MMSN at $M_\mathrm{s} \gtrsim 40 \, M_\oplus$, $M_\mathrm{g} \gtrsim 3000 \, M_\oplus$, where $M_\oplus$ is an Earth mass \citep[see review by][]{andrews2020}.
+If planets are formed from protoplanetary disks then the mass of said disks should be comparable to, or larger than, the MMSN.
+Figure \ref{fig:disk_masses} shows the distribution of dust mass measurements for disks in the regions of Ophiuchus, Lupus, Upper Scorpius, Chamaeleon I, $\sigma$ Ori, IC 348 and Taurus \citep[and references therin]{cieza2019}, compared with the MMSN.
+Even in the youngest regions of the sample, fewer than $20\%$ of the disks contain a dust mass greater than the MMSN value of $M_\mathrm{s}\gtrsim 40 \, M_\oplus$.
+This result does not seem to be compatible with the known population of exoplanets, a conundrum known as the \textit{missing mass problem} \citep[eg.]{najita2014}.
+
+One possible resolution to the missing mass problem is that protoplanetary disks are planet-hosting disks rather than planet-forming disks.
+In this scenario planet formation occurs during the protostellar stage while the star is still embedded in a envelope, since massive disks are more common \citep{greaves2010}.
+This scenario is supported by the growing body of evidence that protoplanetary disks contain planets when the system is as young as 1-2 Myr \citep{almapartnership2015,zhang2018,verrios2022}.
+On the other hand planet formation may be incredibly efficient during the very early protoplanetary stage \citep{najita2014,manara2018,Tychoniec2020}.
+A final possibility is that derived dust disk masses suffer from systematic underestimation. 
+\citet{zhu2019} argued that if disks are not optically thin, as assumed in calculations of disk mass from continuum observations, then the true dust mass may be a factor of 2 or more larger.
+Whatever the case may be, it is likely that detecting young planets and constraining their masses through kinematic observations will be a key part of determining which scenario is correct.
 
 \begin{figure}
     \centering
@@ -205,19 +271,3 @@ Observations of cyanide (CN) emission lines with ALMA have also found evidence f
     \caption{Cumulative mass distributions for disks found in various nearby young stellar regions. The shaded regions represent the $1\sigma$ confidence intervals \citep{vanterwisga2019}. Plotted in red is the dust mass of the MMSN \citep{weidenschilling1977b}. According to this analysis, very few of the disks in the sample have enough mass to create the planets of the solar system.}
     \label{fig:disk_masses}
 \end{figure}
-
-The total disk mass $M_\mathrm{d}$ is split into two components, the total gas mass $M_\mathrm{g}$ and the total dust (solids) mass $M_\mathrm{s}$, such that $M_\mathrm{d} = M_\mathrm{g} + M_\mathrm{s}$. 
-Measurements of these values constrain the possible bodies that are able to be created from a disk as it evolves into the future. 
-The so-called Minimum Mass Solar Nebula (MMSN) is the supposed disk that the solar system formed from, with enough mass to create the planets \citep{weidenschilling1977b,hayashi1981}. 
-Modern measurements for the MMSN give $M_\mathrm{s} \gtrsim 40 \, M_\oplus$, $M_\mathrm{g} \gtrsim 3000 \, M_\oplus$, where $M_\oplus$ is an Earth mass \citep[see review by][]{andrews2020}.
-If protoplanetary disks are the sites of planet formation, one would then expect that measurements of disk masses would yield values comparable to or larger than the MMSN.
-Figure \ref{fig:disk_masses} compares the distribution of dust disk masses $M_\mathrm{s}$ ($M_\mathrm{dust}$ in the figure) found in the regions of Ophiuchus, Lupus, Upper Scorpius, Chamaeleon I, $\sigma$ Ori, IC 348 and Taurus \citep[and references therin]{cieza2019}.
-We see that even in the youngest regions less than 20\% of the disks contain a dust component surpassing the MMSN value of $M_\mathrm{s}\gtrsim 40 \, M_\oplus$.
-This finding is seemingly incompatible with the known population of exoplanets, and is known as the missing mass problem.
-However, if it is the case the planets have \textit{already formed} in protoplanetary disks, then the apparent contradiction is resolved.
-This case was put forward by \citet{greaves2010}.
-They argued that planets must begin forming in the protostellar stage of star formation, since massive disks are more common.
-This stage occurs when the central star is still embedded in an envelope, and occurs prior to the protoplanetary stage.
-Comparisons of the constraints imposed by disk mass measurements and the properties of known exoplanets show that either planet formation is incredibly efficient in the early protoplanetary stage, or it begins in the embedded phase \citep{najita2014,manara2018,Tychoniec2020}.
-
-Alternatively, it is possible that the derived dust disk masses suffer from systematic underestimation. \citet{zhu2019} argued that if disks are not optically thin, as assumed in calculations of disk mass from continuum observations, then the true dust mass may be a factor of 2 or more larger.

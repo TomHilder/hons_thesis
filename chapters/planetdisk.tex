@@ -1,8 +1,6 @@
-
-
 \section{Spiral Density Waves}
 
-Introduce spiral arms and density waves in the context of observations. Mention Lin-Shu hypothesis and lead into tidal interaction which is what we care about here.
+\note{Introduce spiral arms and density waves in the context of observations. Mention Lin-Shu hypothesis and lead into tidal interaction which is what we care about here.}
 
 \subsection{Spiral Structure Preliminaries}
 We now introduce the following concepts:
@@ -162,7 +160,7 @@ Recalling that $\partial_r f |_{r,t}$ is none other than the radial wavenumber $
 and so we find that the radial wavenumber $r$ has the usual relationship with the radial wavelength $\lambda_r$ for tightly-wound spiral arms. 
 Substituting equation \ref{eq:pitchangle} gives
 \begin{align}
-    \frac{2 \pi}{|rk|} &=  \frac{\tan \alpha}{m},
+    \frac{\lambda_r}{r} = \frac{2 \pi}{|rk|} =  \frac{2 \pi \tan \alpha}{m},
 \end{align}
 and so an equivalent condition for the tight-winding approximation is that $|rk| \gg 2 \pi$. 
 This equivalency however does not hold for very large $m$ since the right-hand side above can then approach zero regardless of $\alpha$, and is also invalid for $m = 0$ ie. purely radial perturbations.
@@ -178,7 +176,7 @@ To determine the disk response we must determine the gravitational potential due
     \nabla^2 \delta \Phi_m = 4 \pi G \delta \Sigma_m \delta(z), \label{eq:poisson_pert}
 \end{align}
 where $\delta(z)$ is the Dirac delta since we are working in 2D. 
-The solution under the WKB approximation is \fct
+The solution under the WKB approximation is \citep[eg.][]{binney2008}
 \begin{align}
     \delta \Phi_m &= - \frac{2 \pi G}{|k|} \Sigma_m \exp \left[ i \left( m \phi + f(r,t)  \right)  \right], \\
     \Rightarrow \Phi_m &= - \frac{2 \pi G}{|k|} \Sigma_m. \label{eq:phi_m_sigma_m}
@@ -195,7 +193,9 @@ The radial derivative of $a_m$ is then
 \begin{align}
     \partial_r a_m(r) = \left( \partial_r A_m + ikA_m  \right) \exp \left[ i \int^r k(r') \, dr' \right].
 \end{align}
-As shown in appendix \ref{appendix:asymptotic_deriv}, the WKB approximation implies that we may neglect the first term giving
+Under the WKB approximation we have $|kr|\gg 2 \pi$.
+Since $A_m(r)$ is a smoothly varying function of r, $|\partial_r A_m| \sim \mathcal{O}(A_m / r)$, yielding $\partial_r A_m \ll |k A_m|$.
+We therefore neglect the first term above, giving
 \begin{align}
     \partial_r a_m(r) = ikA_m \exp \left[ i \int^r k(r') \, dr' \right] + \mathcal{O}\left(\frac{1}{|kr|}\right) \approx ik a_m(r). \label{eq:app_radial_deriv}
 \end{align}
@@ -220,8 +220,8 @@ By requiring that $(\omega - m \Omega)^2 > 0$ for all possible $k$, the disk sta
     Q(r) \equiv \frac{c_0 \kappa}{\pi G \Sigma} > 1.
 \end{align}
 Disk regions where $Q(r) < 1$ are subject to local unstable growth for certain values of $k$.
-This may result in the fragmentation of the disk, and may be a pathway to the formation of giant planets \fct.
-Planet formation through this mechanism is known as the Gravitational Instability model \fct, and it is similar in spirit to star formation through the Jeans instability \citep{jeans1902}.
+This may result in the fragmentation of the disk, and may be a pathway to the formation of giant planets \citep{boss1997}.
+%Planet formation through this mechanism is known as the Gravitational Instability model \fct, and it is similar in spirit to star formation through the Jeans instability \citep{jeans1902}.
 
 \section{Planet Forcing}
 
@@ -289,7 +289,7 @@ Starting with the usual point mass potential centred on the planet we have
 \end{align}
 where $\mathcal{R} = r / r_{\rm p}$.
 To investigate the influence of this potential perturbing our test particles we will decompose it using a Fourier series.
-The potential must by invariant under $\phi \rightarrow -\phi$ as well as $2 \pi$ periodic in $\phi$, motivating the form
+The potential must by invariant under $\phi \rightarrow -\phi$ as well as $2 \pi$ periodic in $\phi$, motivating the form\footnote[3]{The origin of our chosen coordinates is the centre of the star, but this point will not be the barycentre of the system. Our frame is therefore non-inertial and results in an additional acceleration which is typically included as the gradient of the so-called indirect potential \citep{goldreich1980}. However this contribution is small and so is neglected even in detailed calculations of the linear disk response to tidal forcing by a planet \citep{bae2018a,miranda2019a}.}
 \begin{align}
     \Phi_{\rm p}(r,\phi) = \sum_{m=0}^\infty \Phi_m (r,\phi) = \sum_{m=0}^\infty V_m (r) \cos (m \phi), \label{eq:fourier_planet}
 \end{align}
@@ -298,8 +298,10 @@ where in our case the Fourier coefficients are given by
     V_m (r) &= - \frac{2}{\pi} \frac{G M_{\rm p}}{r_{\rm p}} \int_0^\pi  \left( \mathcal{R}^2 - 2 \mathcal{R} \cos \phi + 1\right)^{-\frac{1}{2}} \cos (m \phi) \, d\phi, \\
     &= \frac{\delta_{m0} - 2}{2} \frac{G M_{\rm p}}{r_{\rm p}} \, b_{1/2}^m (\mathcal{R}),
 \end{align}
-where $b_{1/2}^m (\mathcal{R})$ are the Laplace coefficients defined in \citet{brouwer1961} \note{maybe add a footnote about how this form also ignores the indirect potential term but this is typically done even in detailed calculations for instance Bae and Zhu 2018 and Miranda and Rafikov} 2019.
-\note{add something about the figure}
+where $b_{1/2}^m (\mathcal{R})$ are the Laplace coefficients defined in \citet{brouwer1961}.
+Figure \ref{fig:planet_fourier} shows the first $m$ Fourier components of the planet potential $\Phi_m$, where the star is located at the origin and the planet is at the point $(1,0)$.
+Each of these results in the periodic driving of perturbations in the disk, with a period equal to $\frac{2\pi}{m \Omega_{\rm p}}$.
+
 Here we are primarily concerned with the \textit{form} of the decomposition \ref{eq:fourier_planet}, and it should be noted that this form is quite general and can represent a variety of potentials including the bars often found in spiral galaxies.
 Next we will substitute a single Fourier component in place of the planet potential to determine the response for \textit{each individual component}.
 Note that we will also ignore the contribution of $\delta \phi$ to $\Phi_{\rm p}$, assuming that $\phi$ corresponds to the zeroth order solution where $\phi = (\Omega - \Omega_{\rm p}) t$. 
@@ -307,7 +309,7 @@ Note that we will also ignore the contribution of $\delta \phi$ to $\Phi_{\rm p}
 \begin{figure}
     \centering
     \includegraphics[width = 0.95\textwidth]{figures/planet_components.pdf}
-    \caption{\note{add caption}}
+    \caption{The first 9 Fourier components of the planet potential $\Phi_m(r,\phi) = V_m(r) \cos (m \phi)$, where the star is located at $(x,y) = (0,0)$ and the planet at $(1,0)$. The units are dimensionless such that $G=M_{\rm p}=1$. The Laplace coefficients $b_{1/2}^m$ were calculated using the \textsc{Python} package \textsc{PyLaplace} \citep{paardekooper2019a}}
     \label{fig:planet_fourier}
 \end{figure}
 
@@ -367,12 +369,14 @@ The Lindblad resonances are spatially segregated but become densely packed as th
 This segregation allows us to consider each resonance location as driven by only the $m$th component of the planet potential.
 This breaks down for large $m$ as the resonances are no longer clearly separated.
 
-\note{maybe add something about resonance shifting from pressure terms.}
+The pressure support of the disk results in a slight modification of $\Omega$ from $\Omega_{\rm K}$ as seen in equation \ref{eq:rotation}.
+This results in the radial shifting of the resonance positions \citep{artymowicz1993a}.
+Resonance-shifting is important for calculating the total resultant torque on the disk, but affects the structure of excited waves only minimally and so we will ignore it here.
 
 \begin{figure}
     \centering
     \includegraphics[width = 0.9\textwidth]{figures/lindblad_two_panel.pdf}
-    \caption{\note{add caption}}
+    \caption{Lindblad resonance positions as given by equation \ref{eq:lind_loc}. The bottom panel shows the physical radial locations in the disk where these resonances occur for different $m$, with the inner resonances coloured blue and the outer resonances coloured orange. The top panel shows how these position are related to $m$, and demonstrates the asymptotic behaviour of the resonance position $r_{\rm L}^\pm \rightarrow r_{\rm p}$ as $m \rightarrow \infty$.}
     \label{fig:lindblad}
 \end{figure}
 
@@ -406,7 +410,10 @@ The shape of these spirals is calculated as follows.
 \begin{figure}
     \centering
     \includegraphics[width = 0.9\textwidth]{figures/wakes_m3.pdf}
-    \caption{\note{add caption}}
+    \caption{Schematic overview of the $m=3$ mode excited in a Keplerian disk. The disk has sound speed $c \propto r^{-1/4}$ where the aspect ratio at the planet is $(H/r)_{\rm p} = 0.1$.
+    The planet is placed at $(1,0)$ and the inner and outer Lindblad resonances are shown by the red and purple dashed lines respectively.
+    The blue, orange and green solid lines show lines of constant phase for the $n=0,1,2$ spiral arms excited at the resonance as they propagate inwards and outwards in the disk.
+    These lines were calculated using equations \ref{eq:phase} -- \ref{eq:planet_wake}.}
     \label{fig:wakes_m3}
 \end{figure}
 Placing ourselves in the frame where the planet is stationary at $\phi = 0$, we can find the phase of the spiral waves simply by integrating equation \ref{eq:spiral_km} giving \citep{bae2018a}
@@ -434,7 +441,8 @@ The form shown above was first found in \citet{rafikov2002a}.
 \begin{figure}
     \centering
     \includegraphics[width = 0.8\textwidth]{figures/planet_wake_shape.pdf}
-    \caption{\note{add caption}}
+    \caption{Plot of the $n=0$ spiral arms defined by the lines of constant phase $\phi_{m,0}$ for modes $m=1$ -- $10$.
+    \note{add caption}}
     \label{fig:planet_wake}
 \end{figure}
 
@@ -511,7 +519,7 @@ Their approach for calculating the wake structure splits the problem into two se
     \item Non-linear wake \textit{propagation}: As the wave travels away from the planet it steepens into a shock and non-linear behaviour becomes important.  
 \end{enumerate}
 This approach is agnostic to the rotation, density and sound speed profiles of the disk, assuming only that they are functions of radius.
-It is assumed that the disk is both locally polytropic (see section \ref{sec:velocity_perts}), and inviscid, as well as non-self-gravitating.
+It is also assumed that the disk is both locally polytropic (see section \ref{sec:velocity_perts}), inviscid, and non-self-gravitating.
 
 It should be noted that the used of the language "generation" and "propagation" are slightly misleading.
 The solution that we will calculate is steady-state and has no time dependence.
@@ -531,9 +539,16 @@ In addition the resonances with very low $m$ are not effectively excited due to 
 Indeed the dominant mode is of order $(H_{\rm p} / r_{\rm p})^{-1}$, as mentioned in section \ref{sec:planetwake}.
 The resonances excited most efficiently are therefore located a few $H_{\rm p}$ from the planet, far enough to justify the linear approach.
 
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.95\textwidth]{figures/shearing_sheet.pdf}
+    \caption{}
+    \label{fig:sheared_sheet}
+\end{figure}
+
 The rest of this subsection directly follows \citet{goodman2001}. 
-The linear calculation is performed in the \textit{sheared-sheet approximation} \citep{hill1878}.
-These involves defining pseudo-cartesian coordinates centred on the planet location
+The linear calculation is performed in the \textit{sheared-sheet approximation} \citep{hill1878,goldreich1965}.
+This involves defining pseudo-cartesian coordinates centred on the planet location
 \begin{align}
     x &= r - r_{\rm p}, \\
     y &= r_{\rm p} \left( \phi - \phi_{\rm p} \right),
