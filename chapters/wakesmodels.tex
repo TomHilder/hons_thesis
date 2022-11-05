@@ -1,17 +1,19 @@
 \setlength{\headheight}{13.59999pt}
 
+\note{come back to this after sections are written}
+
 This chapter is concerned with the method we have used to create semi-analytic models of planet wakes that encompass both the linear and non-linear disk response due to a perturbing planet as described in the previous chapter. 
 This work builds on that presented in \citet{bollati2021} and so we will be predominantly concerned with the differences from their analysis.
 However we aim to provide enough detail to be understandable without having read the aforementioned paper.
 
 \section{Wakeflow: A Python Package For Semi-Analytic Models of Planet Wakes} \label{sec:JOSS}
 
-This section has been submitted to the Journal of Open Source Science and is currently in review. The preprint is publicly available here: \url{github.com/TomHilder/wakeflow/blob/master/paper/paper.md}
+This section has been submitted to the Journal of Open Source Science and is currently in review. The preprint is publicly available here: \url{https://github.com/TomHilder/wakeflow/blob/master/paper/paper.md}
 
 \subsubsection{Summary}
 
 \textsc{wakeflow} is a Python package for generating semi-analytic models of the perturbations induced by planets embedded in gaseous circumstellar disks. 
-These perturbationstake the form of a spiral shock wave \citep{ogilvie2002}, and are often called a "planet wake" in analogy with that produced by a boat in a lake.
+These perturbations take the form of a spiral shock wave \citep{ogilvie2002}, and are often called a ``planet wake'' in analogy with that produced by a boat in a lake.
 
 \subsubsection{Statement of Need}
 
@@ -21,18 +23,18 @@ This disturbance, caused by the planet wake, manifests as a deviation in velocit
 Such kinematic observations have been accurately reproduced through 3D fluid simulations of the planet-disk interaction, allowing for the inference of planet and disk properties \citep{pinte2018a, pinte2019}. 
 However, these studies are computationally expensive.
 
-\textsc{wakeflow} eases this computational cost by applying the theory of planet wake generation and propagation \citep{goldreich1979,goodman2001,rafikov2002a,bollati2021}to create semi-analytic models of planet wakes. 
-\textsc{wakeflow} models are readily created in less than a minute on a modern laptop, as opposed to the hours of supercomputer time needed for 3D hydrodynamical simulations. 
-The relatively low computational cost of \textsc{wakeflow}means that researchers can get an idea of whether planet-disk interactionscan explain their observations, and the disk and planet parameters needed, beforespending computer time on more detailed simulations.
+\textsc{wakeflow} eases this computational cost by applying the theory of planet wake generation and propagation \citep{goldreich1979,goodman2001,rafikov2002a,bollati2021} to create semi-analytic models of planet wakes. 
+\textsc{wakeflow} models are readily created in a few seconds on a modern laptop, as opposed to the hours of supercomputer time needed for 3D hydrodynamical simulations. 
+The relatively low computational cost of \textsc{wakeflow} means that researchers can get an idea of whether planet-disk interactions can explain their observations, and the disk and planet parameters needed, before spending computer time on more detailed simulations.
 
-\textsc{wakeflow} can interface with the radiative transfer code  \textsc{mcfost} \citep{pinte2006,pinte2009} in order to create synthetic observations of the semi-analytic models for direct comparison with observed continuum or line emission.
+\textsc{wakeflow} can interface with the radiative transfer code \textsc{mcfost} \citep{pinte2006,pinte2009} in order to create synthetic observations of the semi-analytic models for direct comparison with observed continuum or line emission.
 
 \textsc{wakeflow} is partially adapted from a previous Python code also written by us called \textsc{analytical\_kinks} \citep{bollati2021a}. 
 \textsc{wakeflow} is intended to be a more complete, versatile and easy to use version of that code, and it obeys standard Python packaging conventions.
 In addition, \textsc{wakeflow} can directly interface with \textsc{mcfost} while \textsc{analytical\_kinks} cannot.
 At the time of writing, no other open source software packages exist to generate the perturbations induced by an embedded planet in a circumstellar disk using the semi-analytic theory of planet wakes.
 
-Existing scientific publications focusing on detecting the kinematic signatures of planets that have used \textsc{wakeflow} or its predecessor \textsc{analytical\_kinks} include \citet{bollati2021}, \citet{calcino2022}, \citet{teague2022}, \citeauthor{garginreview} (in review) and \citeauthor{fasanoinprep.} (in prep.).
+Existing scientific publications focusing on detecting the kinematic signatures of planets that have used \textsc{wakeflow} or its predecessor \textsc{analytical\_kinks} include \citet{bollati2021}, \citet{calcino2022}, \citet{teague2022}, \citet{garg2022} and \citeauthor{fasanoinprep.} (in prep.).
 
 \subsubsection{Acknowledgements}
 
@@ -40,17 +42,27 @@ Existing scientific publications focusing on detecting the kinematic signatures 
 
 \section{Semi-Analytic Solution Algorithm}
 
-As stated in the previous section, \textsc{wakeflow}
-
-Outline the wakeflow algorithm for generating a model:
+Here we provide an overview of the algorithm used by \textsc{wakeflow} to generate models.
+For stages that are sufficiently different to \citet{bollati2021}, further detail will be provided in the following sections.
+The algorithm proceeds as:
 \begin{enumerate}
-    \item Generate grid geometry. Interface with \textsc{mcfost if desired}.
-    \item Calculate the unperturbed disk.
-    \item Read in linear perturbations, scale, interpolate onto global grid geometry interpreting $y$ as an arc length in $\phi$. Mapped onto an annulus. Annulus is an update, more honestly displays results from shearing sheet approximation, minimises discontinuity in solution. Also, it is perfectly acceptable to extend the box vertically further since it is the position of the Lindblad resonances that matter ultimately for the linear regime not the planet itself (sort of).
-    \item Extract initial conditions using \textbf{exact} transformations instead of approximate ones in \citet{bollati2021} to minimise discontinuity in solution.
-    \item Solve Burger's equation until $t_{\rm f}=300$ using vectorised Godunov solver and adaptive time stepping.
-    \item Get $\chi(r,\phi)$. Transformations are vectorised and the whole solution is interpolated in one go. Asymptotic regime and planet annulus are masked.
-    \item Perturbations are calculated from $\chi$ using updated velocity mapping
+    \item The global grid geometry is generated based on the user's choice of grid geometry and number of grid points. Both cylindrical and cartesian grid geometries are supported, as well as the \textsc{mcfost} grid geometry if the user wishes to generate synthetic observations from their model.
+    
+    The run time for \textsc{wakeflow} scales linearly in the number of grid points provided that other parameters are kept fixed.
+    
+    \item The unperturbed disk density and velocity structure is calculated based on the user's choice of disk parameters as outlined in section \ref{sec:diskstruct}.
+    
+    \item The linear perturbations are calculated and mapped onto the global disk geometry, following section \ref{sec:linear_box}. The perturbations $\sigma, u$ and $v$ are assumed to be independent of vertical height $z$.
+    
+    \item The initial conditions for the non-linear evolution are extracted from the edge of the linear regime along a slice of constant $t$, as described in \ref{sec:transformations}.
+    
+    \item Burger's equation is solved in $(t,\eta)$ space until $t_{\rm f}=300$ using a vectorised Godunov solver \citep{astrofluids}. Unlike in \citet{bollati2021} we use make use of adaptive time-steps, which both ensures the stability of the solution (especially for large planet masses that shock quickly), as well as improves efficiency as large time-steps are taken when appropriate. After $t_{\rm f}$, the asymptotic solution is taken as described in \citet{bollati2021}.
+    
+    \item The solution $\chi(t,\eta)$ is transformed to $\chi(r,\phi)$ as described in section \ref{sec:transformations}.
+    
+    \item The density perturbations in the non-linear regime are calculated from $\chi$ using equations \ref{eq:chi} and \ref{eq:g_power}. The velocity perturbations are calculated from $\chi$ as described in section \ref{sec:velocity_perts}. Again, all perturbations $\sigma, u$ and $v$ are assumed to be independent of $z$.
+    
+    \item The results are written to the disk. This output may be a \textit{.fits} file if desired.
 \end{enumerate}
 
 \section{Theoretical and Numerical Considerations} 
@@ -101,9 +113,13 @@ The rotation is derived assuming radial force balance \citep[eg.][]{nelson2013} 
 \end{align}
 where $\Omega_{\rm K}$ is as defined in equation \ref{eq:point_pot}.
 
-\subsection{Transformations}
+\subsection{Linear Box} \label{sec:linear_box}
 
-\note{Something about we give the transformations used in mapping from $(r,\phi)$ to $(t,\eta)$ space. We use parameterisations of sound speed and surface density}
+Read in linear perturbations, scale, interpolate onto global grid geometry interpreting $y$ as an arc length in $\phi$. Mapped onto an annulus. Annulus is an update, more honestly displays results from shearing sheet approximation, minimises discontinuity in solution. Also, it is perfectly acceptable to extend the box vertically further since it is the position of the Lindblad resonances that matter ultimately for the linear regime not the planet itself (sort of).
+
+\subsection{Transformations} \label{sec:transformations}
+
+To perform transformation between the physical coordinates and $(t,\eta)$ space in calculating our models, we apply the general forms of the transformations \ref{eq:g} -- \ref{eq:eta} to so-called \textit{power-law disks} where the sound speed and surface density are parameterised as
 \begin{align}
     c(r) = c_{\rm p} \left(\frac{r}{r_{\rm p}}\right)^{-q}; \quad \Sigma(r) = \Sigma_{\rm p} \left(\frac{r}{r_{\rm p}}\right)^{-\delta},
 \end{align}
@@ -126,16 +142,20 @@ Additionally the $t$ transformation becomes \citep{rafikov2002a}
 \end{align}
 where explicitly the $g$ function is given by \citep{bollati2021}
 \begin{align}
-    g(r) = 2^{1/4} \left( \frac{r_{\rm p}}{H_{\rm p}} \right)^{\frac{1}{2}} \frac{\left( \frac{r}{r_{\rm p}} \right)^{\frac{5}{4} - \frac{\delta + 3q}{2}}}{\left| 1 - \left(\frac{r}{r_{\rm p}}\right)^\frac{3}{2} \right|^\frac{1}{2}}
+    g(r) = 2^{1/4} \left( \frac{r_{\rm p}}{H_{\rm p}} \right)^{\frac{1}{2}} \frac{\left( \frac{r}{r_{\rm p}} \right)^{\frac{5}{4} - \frac{\delta + 3q}{2}}}{\left| 1 - \left(\frac{r}{r_{\rm p}}\right)^\frac{3}{2} \right|^\frac{1}{2}} \label{eq:g_power}
 \end{align}
 This gives us all the tools we need to map from $(r,\phi)$ space to $(t,\eta)$ space in a Keplerian power law disk.
 These are the forms of the transformations used by \textsc{wakeflow}.
-We are therefore implicitly assuming that the unperturbed rotation profile is well approximated as Keplerian in the midplane, which is reasonable since the correction is of order $\left(H/r\right)^2$.
+We are therefore implicitly assuming that the unperturbed rotation profile is well approximated as Keplerian in the mid-plane, which is reasonable since the correction is of order $\left(H/r\right)^2$.
 
 Unlike in \citet{goodman2001,rafikov2002a,bollati2021} we do not use approximate forms of the transformations that hold nearby the planet in the shearing sheet approximation to extract the initial condition for the Burger's evolution.
 We found that the approximate transformation for $\eta$ \citep[equations 35 in][]{rafikov2002a} shifted the wake profile in $\eta$ by a few percent, leading to a discontinuity in the solution at the interface between the linear and non-linear regimes.
 The approximate $t$ transformation has a similar effect although it is much smaller.
 For this reason we always use the exact transformations as listed above.
+
+Previously \citet{bollati2021} assumed that the initial condition for the inner ($r<r_{\rm p}$) and outer ($r>r_{\rm p}$) wake propagation were identical and so solved only the outer wake case and copied the solution for the inner wake.
+This approximation does not hold well except for very small values of $(H/r)_{\rm p}$, as the radial extent of the box results in different $t$ coordinates at the inner and outer edge of the box in general.
+For this reason we instead solve separately the inner and outer wake propagation, taking the appropriate initial condition for each (\citeauthor{fasanoinprep.}, in prep.).
 
 After Burger's equation is solved numerically, the solution must be mapped from $\chi(t,\eta)$ to $\chi(r,\phi)$.
 Since $t(r)$ is not invertible, we instead find the $(t,\eta)$ coordinates of every point on the solution grid $(r,\phi)$ and interpolate from the Burger's solution in $t,\eta$ space.
@@ -179,7 +199,7 @@ This yields
 \begin{align}
     \frac{\Sigma - \Sigma_0}{\Sigma_0} = \frac{2}{\gamma + 1}\psi + \frac{3 - \gamma}{\left( \gamma + 1  \right)^2} \psi^2 + \mathcal{O}(\psi^3). \label{eq:psi_exp}
 \end{align}
-Taking this expression to first order only, we write $u$ in terms of the density perturbation, and then in terms of $\chi$ by substituting Equation \feqr. 
+Taking this expression to first order only, we write $u$ in terms of the density perturbation, and then in terms of $\chi$ by substituting equation \ref{eq:chi}. 
 \begin{align}
     u = - c_0 \frac{\Sigma - \Sigma_0}{\Sigma_0} = -2 \frac{c_0}{\gamma + 1} \frac{\chi}{g(r)}. \label{eq:ap_rad_vel}
 \end{align}
@@ -191,33 +211,33 @@ giving to first order in $\psi$
 \begin{align}
     v \approx - \frac{c_0^2}{\Delta \Omega r} \frac{\Sigma - \Sigma_0}{\Sigma_0} = - \frac{2}{\gamma + 1} \frac{c_0^2}{\Delta \Omega r} \frac{\chi}{g(r)}. \label{eq:ap_az_vel}
 \end{align}
-Equations \ref{eq:ap_rad_vel} and \ref{eq:ap_az_vel} are the expressions used in \citet{bollati2021} to calculate the velocity perturbations in the non-linear regime. 
-Since these are only accurate to first order in $\psi$, the assumption is made that $\psi \ll 1$; indeed \citet{bollati2021} notes that terms proportional to $\psi^2$ are discarded in the derivation of the Burgers evolution \feqr, and thus also in the calculation of $\chi$ from which $u$ and $v$ are calculated. 
+equations \ref{eq:ap_rad_vel} and \ref{eq:ap_az_vel} are the expressions used in \citet{bollati2021} to calculate the velocity perturbations in the non-linear regime. 
+Since these are only accurate to first order in $\psi$, the assumption is made that $\psi \ll 1$; indeed \citet{bollati2021} notes that terms proportional to $\psi^2$ are discarded in the derivation of the Burgers evolution \ref{eq:burgers}, and thus also in the calculation of $\chi$ from which $u$ and $v$ are calculated. 
 However it is not clear that neglecting the most non-linear terms to calculate the density perturbation $\chi$ necissitates the truncation of the equation of state in the same way. 
 Since we are in particular interested in the velocity perturbations, and in planet masses comparable to the thermal mass, we should check if the assumption that $\psi \ll 1$ holds.
 
-We can derive an \textit{exact} expression for $\psi$ in terms of the density perturbation simply by rearranging Equation \ref{eq:poly_EOS}. We find
+We can derive an \textit{exact} expression for $\psi$ in terms of the density perturbation simply by rearranging equation \ref{eq:poly_EOS}. We find
 \begin{align}
     \psi = \frac{\gamma + 1}{\gamma - 1} \left[ \left( \frac{\Sigma-\Sigma_0}{\Sigma_0} +1  \right)^{(\psi-1)/2}  -1 \right],
 \end{align}
-which can be written equivalently in terms of $\chi$ using Equation \feqr giving
+which can be written equivalently in terms of $\chi$ using equation \ref{eq:chi} giving
 \begin{align}
     \psi = \frac{\gamma + 1}{\gamma - 1} \left[ \left( \frac{2}{\gamma + 1} \frac{\chi}{g(r)} +1  \right)^{(\psi-1)/2} -1 \right]. \label{eq:psi_exact}
 \end{align}
-We will use Equation \ref{eq:psi_exact} to check the aforementioned assumption that $\psi \ll 1$ in the non-linear regime solution. 
+We will use equation \ref{eq:psi_exact} to check the aforementioned assumption that $\psi \ll 1$ in the non-linear regime solution. 
 We construct three \textsc{wakeflow} models using dimensionless units, with embedded planet masses of $0.5, 1.0$ and $2.0 \, M_{\rm{th}}$ respectively, all placed in orbit around a $1 \, M_{\rm{\odot}}$ star at an orbital radius of $r=1$. 
 For all models, we choose $p=2.25$ and $q=0.25$ such that $\Sigma \propto r^{-1}$, and an aspect ratio $H/r=0.1$ at $r=1$. 
 Figure \ref{fig:psi_comparison} shows the values of $\psi$ for each of these models, and demonstrates that even for the lowest planet mass model the value of $\psi$ nearby the planet is as large as $\sim \hspace{-0.23em} 0.6$ and so the second order terms will clearly be important even in this case. 
-For masses $\ge \hspace{-0.23em} M_\mathrm{th}$ the problem is even worse, as there are regions where $\psi \gtrsim 1$ causing the expansion given in Equation \ref{eq:psi_exp} to diverge.
+For masses $\ge \hspace{-0.23em} M_\mathrm{th}$ the problem is even worse, as there are regions where $\psi \gtrsim 1$ causing the expansion given in equation \ref{eq:psi_exp} to diverge.
 
 \begin{figure}
     \centering
     \includegraphics[width = 0.98\textwidth]{figures/psi 2.pdf}
-    \caption{Comparison of the values of $\psi$ calculated from Equation \ref{eq:psi_exact} for three \textsc{wakeflow} models with planet masses of $0.5, 1.0$ and $2.0 \, M_{\rm{th}}$ respectively. Clearly one cannot assume that $\psi \ll 1$ even for the lowest mass model, especially nearby the planet. For the two larger masses, there are even regions where $\psi > 1$.}
+    \caption{Comparison of the values of $\psi$ calculated from equation \ref{eq:psi_exact} for three \textsc{wakeflow} models with planet masses of $0.5, 1.0$ and $2.0 \, M_{\rm{th}}$ respectively. Clearly one cannot assume that $\psi \ll 1$ even for the lowest mass model, especially nearby the planet. For the two larger masses, there are even regions where $\psi > 1$.}
     \label{fig:psi_comparison}
 \end{figure}
 
-To improve upon the velocity calculations used in \citet{bollati2021}, here we derive expressions for both $u$ and $v$ as functions of $\chi$ without truncating the equation of state to first order in $\psi$. This is as simple as substituting Equation \ref{eq:psi_exact} into Equations \ref{eq:u_rafikov} and \ref{eq:v_rafikov}, yielding
+To improve upon the velocity calculations used in \citet{bollati2021}, here we derive expressions for both $u$ and $v$ as functions of $\chi$ without truncating the equation of state to first order in $\psi$. This is as simple as substituting equation \ref{eq:psi_exact} into equations \ref{eq:u_rafikov} and \ref{eq:v_rafikov}, yielding
 \begin{align}
     u(\chi) &= -2 \frac{c_0}{\gamma - 1} \left[ \left( \frac{2}{\gamma + 1} \frac{\chi}{g(r)} +1  \right)^{(\psi-1)/2} -1 \right] \\
     v(\chi) &\approx \frac{c_0}{\Delta\Omega r} u (\chi).
