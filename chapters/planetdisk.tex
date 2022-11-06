@@ -82,9 +82,9 @@ where $r \partial_r \phi$ is evaluated along the curve that defines the spiral. 
 
 \subsection{No Leading Spirals}
 
-In the previous section we stated that while leading spirals may exist in nature, they are at least much rarer that than trailing spirals. 
-Indeed, there are \textbf{no} known examples of leading spirals in circumstellar disks.
-This is at least initially surprising; if the trailing spiral arms seen in astrophysical disks are steady-state solutions governed by Newtonian physics, which is fully time-reversible, surely the corresponding leading spirals solution is entirely equivalent?
+In the previous section we stated that while leading spirals may exist in nature, they are at least much rarer that than trailing spirals; there are \textbf{no} known examples of leading spirals in circumstellar disks.
+This is at least initially surprising. 
+If the trailing spiral arms seen in astrophysical disks are steady-state solutions governed by Newtonian physics, which is fully time-reversible, surely the corresponding leading spirals solution is entirely equivalent?
 \citet{lynden-bell1967} followed this argument to prove the \textit{anti-spiral} theorem, which states that if trailing spirals constitute a steady-state solution to time-reversible equations, then there necessarily exists an equivalent leading spiral solution.
 Thus the apparent ubiquity of trailing spirals in nature tells us that either the governing physics is not time-reversible, or the spirals are not true steady-state solutions.
 In the latter case spiral structure may be the result of a recent disturbance, or may be continuously regenerated for example by period tidal forcing.
@@ -408,7 +408,7 @@ By substituting equation \ref{eq:point_pot} we obtain the \textit{Lindblad radii
     r_{\rm L}^\pm(m) = \left( 1 \pm \frac{1}{m} \right)^\frac{2}{3} r_{\rm p}, \label{eq:lind_loc}
 \end{align}
 which are the positions of the $m$th Lindblad resonances, where $r_{\rm L}^-$ is interior to the planets orbit and $r_{\rm L}^+$ is exterior to the planets orbit.
-The Lindblad resonances are spatially segregated but become densely packed near $r_{\rm p}$ as $m$ becomes large, as shown in figure \ref{fig:lindblad}.
+The Lindblad resonances are spatially segregated but become densely packed near $r_{\rm p}$ as $m$ becomes large, as shown in Figure \ref{fig:lindblad}.
 This segregation allows us to consider each resonance location as driven by only the $m$th component of the planet potential.
 This breaks down for large $m$ as the resonances are no longer clearly separated.
 
@@ -477,7 +477,7 @@ This results in the formation of a coherent, one-armed spiral wave centred on th
 \begin{align}
     \phi_{\infty,0}(r) = - \int_{r_{\rm p}}^ r \frac{\Omega(r') - \Omega_{\rm p}}{c(r')} \, dr'. \label{eq:planet_wake}
 \end{align}
-Because the $n=0$ waves launch almost in phase nearby the planet, as seen in figure \ref{fig:planet_wake}, the planet wake is always centred on the planet location. 
+Because the $n=0$ waves launch almost in phase nearby the planet, as seen in Figure \ref{fig:planet_wake}, the planet wake is always centred on the planet location. 
 The above result was first found by \citet{ogilvie2002}, although they wrote it in a different form. 
 They dubbed the resultant spiral wave the planet ``wake'' in analogy with the Kelvin wedge produced by a ship moving through water.
 The form shown above was first given in \citet{rafikov2002a}.
@@ -601,8 +601,8 @@ The rest of this subsection directly follows \citet{goodman2001}.
 The linear calculation is performed in the \textit{sheared-sheet approximation} \citep{hill1878,goldreich1965}.
 This involves defining pseudo-cartesian coordinates centred on the planet location
 \begin{align}
-    x &= r - r_{\rm p}, \\
-    y &= r_{\rm p} \left( \phi - \phi_{\rm p} \right),
+    x &= r - r_{\rm p}, \label{eq:local_x} \\
+    y &= r_{\rm p} \left( \phi - \phi_{\rm p} \right), \label{eq:local_y}
 \end{align}
 where $\phi_{\rm p}$ is the azimuthal location of the planet.
 The differential rotation of the disk is then expanded to lowest order in $x/r_{\rm p}$, which reduces the azimuthal component of the flow to
@@ -630,9 +630,9 @@ In the linear regime the amplitude of the wake is directly proportional to the p
 In the frame of the planet the wake is stationary such that the radial velocity, azimuthal velocity and density perturbations, $u, v$ and $\sigma = \delta \Sigma / \Sigma$ respectively, are independent of time.
 The spatial Fourier transform of these components $\hat{u}, \hat{v}, \hat{\sigma}$ are functions of the coordinate wavenumbers $k_x$ and $k_y$, and they satisfy \citep{goldreich1978,goldreich1980}
 \begin{align}
-    \frac{d^2 \hat{v}}{d \tau^2} + \left[ c^2 k^2 + \kappa^2 \right]\hat{v} &= -i k_y \frac{d \hat{\Phi}_{\rm p}}{d\tau} + 2i k_x B \hat{\Phi}_{\rm p} \\
-    \hat{u} &= - \frac{1}{c^2 k_y^2 + 4 B^2} \left( 2 B \frac{d \hat{v}}{d\tau} - c^2 k_x k_y \hat{v} + 2iBk_y \hat{\Phi}_{\rm p} \right) \\
-    \hat{\sigma} &= \frac{i}{c^2 k_y^2 + 4 B^2} \left( k_y \frac{d \hat{v}}{d \tau} + 2B k_x \hat{v} + i k_y^2 \hat{\Phi}_{\rm p} \right),
+    \frac{d^2 \hat{v}}{d \tau^2} + \left[ c^2 k^2 + \kappa^2 \right]\hat{v} &= -i k_y \frac{d \hat{\Phi}_{\rm p}}{d\tau} + 2i k_x B \hat{\Phi}_{\rm p} \label{eq:fourier_v} \\
+    \hat{u} &= - \frac{1}{c^2 k_y^2 + 4 B^2} \left( 2 B \frac{d \hat{v}}{d\tau} - c^2 k_x k_y \hat{v} + 2iBk_y \hat{\Phi}_{\rm p} \right) \label{eq:fourier_u} \\
+    \hat{\sigma} &= \frac{i}{c^2 k_y^2 + 4 B^2} \left( k_y \frac{d \hat{v}}{d \tau} + 2B k_x \hat{v} + i k_y^2 \hat{\Phi}_{\rm p} \right), \label{eq:fourier_sigma}
 \end{align}
 where
 \begin{align}
@@ -647,7 +647,7 @@ This system of ordinary differential equations, combined with the initial condit
 We are obviously interested in accounting for these aspects and so we will largely follow \citet{rafikov2002a} in this section, but we will endeavour to make it clear when a result is originally from \citet{goodman2001}.
 
 After the wake is generated, it propagates away from the planet.
-At distances $\gg l$ the contribution of the planet potential becomes negligible.
+At distances $\gg l_{\rm p}$ the contribution of the planet potential becomes negligible.
 However unlike in the sheared sheet, we must now consider the evolution of $\Sigma$ and $c$ with radius, as well as the global geometry of the disk.
 Rewriting the 2D inviscid fluid equations \ref{eq:mom_eq_u}-\ref{eq:cont_2d} in a rotating frame such that the planet is stationary at $\phi=\phi_{\rm p}$, and $\phi$ is defined such that $\Omega>0$, we obtain \citep{landau1959}
 \begin{align}
@@ -795,7 +795,7 @@ which we can rewrite as a function of $t$ using the transformations \ref{eq:chi}
     \rm{where} \quad \Phi(t) &= \oint \chi^2(t,\eta) \, d\eta 
 \end{align}
 is the dimensionless AMF, which we will always write as a function of $t$ to avoid confusion with the potential.
-After shock formation the resultant dissipation results in the non-conservation of the AMF, as shown in figure \ref{fig:AMF}.
+After shock formation the resultant dissipation results in the non-conservation of the AMF, as shown in Figure \ref{fig:AMF}.
 
 Recently \citet{cimerman2021} performed a numerical study to validate the weakly non-linear wake evolution theory.
 They compared the Burger's equation evolution with hydrodynamical simulations performed with the grid code \textsc{athena++} \citep{stone2020}.
@@ -813,7 +813,7 @@ See in particular sections 5.1, 5.2 and 8.1 of \citet{cimerman2021} for greater 
     \label{fig:AMF}
 \end{figure}
 
-\subsection{Asymptotic Planet Mass Scaling}
+\subsection{Asymptotic Planet Mass Scaling} \label{sec:asymptotic_N_wave}
 
 While the AMF is no longer conserved in the dissipative wake evolution regime, Burger's equation does encode the perfect conservation of a quantity both before and after shock formation, which is the area under the curve $\chi$ \citep{landau1959,whitham1999}.
 We will show that physically this corresponds to conservation of mass in the disk.

@@ -42,13 +42,22 @@ Existing scientific publications focusing on detecting the kinematic signatures 
 
 \section{Semi-Analytic Solution Algorithm}
 
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.85\textwidth]{figures/wakeflow_tutorial_plot.pdf}
+    \caption{Density slice of a \textsc{wakeflow} model at constant height $z=5.15$ au, plotted with a logarithmic colourbar. The model contains a $0.5 \, M_{\rm J}$ planet, placed at a separation of $256$ au from the central star. These results were generated following the quickstart tutorial publicly available on the \textsc{wakeflow} documentation\protect\footnotemark[4], and are meant as a model of the planet wake in the disk of HD 163296, with disk parameters chosen following \citet{pinte2018a} and \citet{calcino2022}.}
+    \label{fig:example_model}
+\end{figure}
+
+\footnotetext[4]{\url{https://wakeflow.readthedocs.io/en/latest/tutorials/quickstart.html}}
+
 Here we provide an overview of the algorithm used by \textsc{wakeflow} to generate models.
-For stages that are sufficiently different to \citet{bollati2021}, further detail will be provided in the following sections.
+For stages that are sufficiently different to \citet{bollati2021}, further detail will be provided in the section \ref{sec:model_considerations}.
 The algorithm proceeds as:
 \begin{enumerate}
     \item The global grid geometry is generated based on the user's choice of grid geometry and number of grid points. Both cylindrical and cartesian grid geometries are supported, as well as the \textsc{mcfost} grid geometry if the user wishes to generate synthetic observations from their model.
     
-    The run time for \textsc{wakeflow} scales linearly in the number of grid points provided that other parameters are kept fixed.
+    The run time for \textsc{wakeflow} scales linearly in the number of grid points $n_x \times n_y$ or $n_r \times n_\phi$, but is roughly independent of the number of points in the vertical direction $n_z$..
     
     \item The unperturbed disk density and velocity structure is calculated based on the user's choice of disk parameters as outlined in section \ref{sec:diskstruct}.
     
@@ -65,7 +74,10 @@ The algorithm proceeds as:
     \item The results are written to the disk. This output may be a \textit{.fits} file if desired.
 \end{enumerate}
 
-\section{Theoretical and Numerical Considerations} 
+\noindent A density slice of an example \textsc{wakeflow} model is shown in Figure \ref{fig:example_model}.
+This model was calculated on a $1000 \times 1000 \times 30$ grid in $x,y$ and $z$ respectively, and took in $19.1$ seconds to compute on an Apple M1 processor.
+
+\section{Theoretical and Numerical Considerations} \label{sec:model_considerations}
 
 \note{Add something about how we are basically going into more detail for the steps in the algorithm and explaining the specific applications of or improvements to the stuff that been done before.}
 
@@ -115,7 +127,26 @@ where $\Omega_{\rm K}$ is as defined in equation \ref{eq:point_pot}.
 
 \subsection{Linear Box} \label{sec:linear_box}
 
-Read in linear perturbations, scale, interpolate onto global grid geometry interpreting $y$ as an arc length in $\phi$. Mapped onto an annulus. Annulus is an update, more honestly displays results from shearing sheet approximation, minimises discontinuity in solution. Also, it is perfectly acceptable to extend the box vertically further since it is the position of the Lindblad resonances that matter ultimately for the linear regime not the planet itself (sort of).
+The solution in the linear regime nearby the planet used in \textsc{wakeflow} was calculated by \citet{bollati2020} and \citet{bollati2021} by solving equations \ref{eq:fourier_v} -- \ref{eq:fourier_sigma} numerically following the procedure outlined in \citet{goodman2001}.
+Here, we simply read their dimensionless calculations and scale them accordingly for our purposes. Figure \ref{fig:lin_box_bollati} shows the $u$ and $v$ solutions presented in \citet{bollati2021} in local cartesian coordinates $x,y$ centred on the planet location.
+The $x,y$ coordinates are scaled by the Mach-1 length $l_{\rm p} = 2H_{\rm p}/3$, while the perturbation are scaled by the planet mass in units of the thermal mass $M_{\rm p} / M_{\rm th}$.
+
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.95\textwidth]{figures/linear_box_bollati.pdf}
+    \caption{Linear azimuthal (left) and radial (right) velocity perturbations $v$ and $u$ centred on the planet in local cartesian coordinates as defined in equations \ref{eq:local_x} and \ref{eq:local_y}, and calculated by \citet{bollati2021}. The velocity is given in units of $v_{\rm p} = \Omega_{\rm K}(r_{\rm p})$, and the arrows denote the direction of the shearing bulk gas flow in a frame centred on the planet.}
+    \label{fig:lin_box_bollati}
+\end{figure}
+
+Unlike \citet{bollati2021}, we do not include the linear regime results as a square box in the global solution.
+Instead, we take seriously the transformation \ref{eq:local_y}, and interpret $y$ as an arc-length instead of a true Cartesian coordinate, giving us a \textit{linear annulus segment} instead of a \textit{linear square box} (we will from now on refer to the former simply as the \textit{linear box}).
+Indeed, when the $\chi$ initial condition is extracted from the edge of the box, this is the treatment used for $y$.
+It is therefore more honest to take this approach when mapping the linear solution onto the global grid, and has the added benefit of resulting in a more continuous solution.
+In addition, we allow for separate variation of the height (angular extent) and width (radial extent) of the box.
+This is motivated by considering that the box size was originally chosen as the Mach-1 length through an argument about resonance location (see section \ref{sec:linear_wake_excitation}).
+Since these locations are constant as $\phi$ varies, it is perfectly acceptable to extent the linear regime in the angular direction.
+The caveat to this is that the linear solution was derived in the shearing sheet approximation where the global geometry of the disk is not considered.
+The curvature of the $y$ coordinate becomes more extreme as the box size increases angularly.
 
 \subsection{Transformations} \label{sec:transformations}
 
@@ -175,6 +206,42 @@ Applying this analysis to the $t$ transformation for a power law disk \ref{eq:t_
 \end{align}
 and $t(r)$ is obtained from the solution taking $s=r/r_{\rm p}$.
 \textsc{wakeflow} calculates the $t$ coordinates of the grid points by solving the IVP \ref{eq:t_power_IVP} using the \textsc{SciPy} function \textit{integrate.odeint} \citep{virtanen2020}.
+
+\subsection{The High Mass Regime} \label{sec:high_mass}
+
+Before we discuss our final improvement to the semi-analytic models, a higher order accuracy mapping from $\chi$ to the velocity perturbations $u$ and $v$, we will briefly address the question of the validity of the semi-analytic wake solution for planet masses of order $M_{\rm th}$.
+While \citet{cimerman2021} performed a numerical validation of the models for the mass range $\le \frac{1}{2} M_{\rm th}$, we are particularly interested in more massive planets.
+In the upcoming paper \citeauthor{fasanoinprep.} (in prep.) we will present detailed comparisons between simulations performed with the smoothed particle hydrodynamics (SPH) code \textsc{phantom} \citep{price2018} and the semi-analytic models, in the high mass regime with planet masses $\gtrsim M_{\rm th}$.
+We will summarise the main findings of that work here.
+
+For planet masses greater than $M_{\rm th}$, the linear solution is no longer valid as the wake should shock before it is fully formed \citep{goodman2001}.
+It is then impossible to spatially separate the wake evolution neatly into the linear and non-linear regimes.
+Ignoring this issue and calculating the semi-analytic models as usual introduces a few issues that we found to be discrepant with the simulation results.
+Firstly, the wake structure in the linear box does not match that of the simulated models, and over-predicts the amplitude of the perturbations.
+A sharp discontinuity is also formed at the boundary between the linear and non-linear regimes, since the very large linear perturbation initial condition results in very rapid shock formation in the non-linear regime.
+This discontinuity is visible in Figure \ref{fig:2_0mth}, and is more extreme for the radial velocity perturbations than for the azimuthal velocity or density perturbations.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.98\textwidth]{figures/comp_as_prof_out_high.png}
+    \caption{Comparison between SPH (left) and semi-analytic (right) solutions for the perturbations induced by a $3.87 \, M_{\rm th}$ planet with orbital radius $r_{\rm p}=95.7 \, \mathrm{au}$. Wake profiles taken as slices of constant $t$, or equivalently $r$ are shown. The radial velocity, azimuthal velocity and density perturbations shown from top to bottom. The colourbar indicates the $t$ coordinate for each profile, as well as the physical distance $d$ from the planet location. Figure taken from \citeauthor{fasanoinprep.} (in prep.).}
+    \label{fig:profile_comparison}
+\end{figure}
+
+However, moving away from the planet and deeper into the non-linear regime the agreement between the analytical and simulated models improves.
+Figure \ref{fig:profile_comparison} shows the outer wake profile as it evolves in $t$ for $3.87 \, M_{\rm th}$, compared between both models.
+Remarkably, the accuracy in the non-linear regime seems to improve as $t$ increases.
+The amplitude for each of the perturbations is in good agreement between the models after the wake was propagated only a few tens of $\mathrm{au}$ from the planet location.
+The shocks produced by the inviscid Burger's equation evolution are however steeper than those found in the SPH model, like due to the artificial viscosity present in the simulation \citep{lodato2010}.
+The wake profiles are more extended in $\eta$ in the analytics, but we do not seem to recover the over-damping found in the low mass regime by \citet{cimerman2021}.
+The position of the outer shock in density, and so the shape of the wake, is also different between the models.
+This is not surprising as the pitch angle of the spiral increases and deviates from the linear shape used in the analytics \ref{eq:phi_wake} for high mass planets \cite{zhu2015}.
+It may be possible to calibrate for this increase in pitch angle from non-linear effects, see section 5.2 of \citet{cimerman2021} for more details.
+
+The apparent accuracy of the solution in the semi-analytical model far from the planet in the high mass case is perhaps not surprising when considered in the context of the existence of the asymptotic solution given in section \ref{sec:asymptotic_N_wave}.
+The more massive planets result in faster shock formation in the Burger's equation evolution, and so it makes at least qualitative sense that the asymptotic solution may also become valid earlier.
+The agreement between the analytics and simulations for $t \gtrsim 10$ may therefore reflect that the solution quickly becomes independent of the initial condition, and that the asymptotic scaling in $\chi$ holds well for high planets resulting in the correct non-linear behaviour at some distance from the planet.
+We defer further discussions of accuracy, including a full parameter study and a preliminary calibration of the semi-analytic method, to \citeauthor{fasanoinprep.} (in prep.).
 
 \subsection{Velocity Perturbations} \label{sec:velocity_perts}
 
