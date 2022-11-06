@@ -53,6 +53,9 @@
 \newcommand{\appropto}{\mathrel{\vcenter{
   \offinterlineskip\halign{\hfil$##$\cr
     \propto\cr\noalign{\kern2pt}\sim\cr\noalign{\kern-2pt}}}}}
+\newenvironment{myquote}[1]%
+  {\list{}{\leftmargin=#1\rightmargin=10pt}\item[]}%
+    {\endlist}
 
 % Details
 \title{Measuring Young Planets from their Spiral Wakes}
@@ -92,7 +95,7 @@
     \chapter{Semi-Analytic Models of Planet Wakes}
     \input{chapters/wakesmodels}
 
-    \chapter{Mapping Planet Wakes with Disk Kinematics}
+    \chapter{Mapping Planet Wakes with Disk Kinematics} \label{ch:wake_mapping}
     \input{chapters/wakesmapping}
 
     \chapter{Quantitative Measurements of the Wake}
