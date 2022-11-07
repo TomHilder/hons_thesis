@@ -32,15 +32,15 @@ The spiral structure found in galaxies is indeed a density wave, but the wave is
 Instead the spiral arms are the result of the disk responding to a variety of gravitational disturbances such as nearby galaxies \citep{goldreich1965,julian1966}.
 Indeed, the grand design spirals in M81 are thought to be the result of tidal-interactions with its companion galaxy Messier 82 \citep{yun1999a}.
 
-Spiral arms similar to those found in galaxies have been observed in the disks around the stars HD 142529 \citep{christiaens2014}, MWC 758 \citep{benisty2015}, Elias 27 \citep{perez2016,huang2018}, IM Lupi \citep{avenhaus2018,huang2018}, WaOph 6 \citep{huang2018}, HD 163296 \citep{calcino2022}, TW Hya \citep{teague2022} and others \citep[and references therin]{dong2018}.
-Figure \ref{fig:mwc758} shows the double-armed spiral of MWC 758 in scattered light.
+Spiral arms similar to those found in galaxies have been observed in the disks around the stars HD~142529 \citep{christiaens2014}, MWC~758 \citep{benisty2015}, Elias~27 \citep{perez2016,huang2018}, IM~Lupi \citep{avenhaus2018,huang2018}, WaOph~6 \citep{huang2018}, HD~163296 \citep{calcino2022}, TW~Hya \citep{teague2022} and others \citep[and references therin]{dong2018}.
+Figure \ref{fig:mwc758} shows the double-armed spiral of MWC~758 in scattered light.
 The origin of most of these spirals is still unknown \citep[eg.][]{zhang2018}.
 Of particular interest to us here are kinematic detections of planets located inside dust gaps \citep{pinte2018a,pinte2019,pinte2020,teague2021,teague2022}, since they are very well explained by the planet wake scenario, as we will see.
 
 \begin{figure}
     \centering
     \includegraphics[width = 0.7\textwidth]{figures/mwc758.pdf}
-    \caption{Polarised intensity image of the disk MWC 758 obtained in December 2014 with SPHERE \citep[eg.][]{beuzit2019}. The colour scale is arbitrary. Two large spiral arms are clearly present in the disk \citep{benisty2015}. The origin of these spiral arms is still unknown.}
+    \caption{Polarised intensity image of the disk MWC~758 obtained in December 2014 with SPHERE \citep[eg.][]{beuzit2019}. The colour scale is arbitrary. Two large spiral arms are clearly present in the disk \citep{benisty2015}. The origin of these spiral arms is still unknown.}
     \label{fig:mwc758}
 \end{figure}
 
@@ -332,7 +332,7 @@ Starting with the usual point mass potential centred on the planet we have
 \end{align}
 where $\mathcal{R} = r / r_{\rm p}$.
 To investigate the influence of this potential perturbing our test particles we will decompose it using a Fourier series.
-The potential must by invariant under $\phi \rightarrow -\phi$ as well as $2 \pi$ periodic in $\phi$, motivating the form\footnote[3]{The origin of our chosen coordinates is the centre of the star, but this point will not be the barycentre of the system. Our frame is therefore non-inertial and results in an additional acceleration which is typically included as the gradient of an additional potential contribution, the so-called indirect potential \citep{goldreich1980}. However the contribution is small and so is neglected even in detailed calculations of the linear disk response to tidal forcing by a planet \citep[see for example][]{bae2018a,miranda2019a}.}
+The potential must by invariant under $\phi \rightarrow -\phi$ as well as $2 \pi$ periodic in $\phi$, motivating the form\footnote{The origin of our chosen coordinates is the centre of the star, but this point will not be the barycentre of the system. Our frame is therefore non-inertial and results in an additional acceleration which is typically included as the gradient of an additional potential contribution, the so-called indirect potential \citep{goldreich1980}. However the contribution is small and so is neglected even in detailed calculations of the linear disk response to tidal forcing by a planet \citep[see for example][]{bae2018a,miranda2019a}.}
 \begin{align}
     \Phi_{\rm p}(r,\phi) = \sum_{m=0}^\infty \Phi_m (r,\phi) = \sum_{m=0}^\infty V_m (r) \cos (m \phi), \label{eq:fourier_planet}
 \end{align}
@@ -864,12 +864,12 @@ Finally, while it is possible to calculate the scale factor for the proportional
 \section{Gap Opening} \label{sec:gap_opening}
 
 For sufficiently large planets, the non-linear effects are such that the planet wake shocks immediately after formation and the solution can no longer be neatly separated into the linear generation and non-linear propagation regimes.
-As already hinted at the condition under which this occurs in an inviscid disk is that the planet mass $M_{\rm p}$ exceeds the characteristic mass $M_1$ defined in equation \ref{eq:char_mass}.
+As already hinted at, the condition under which this occurs in an inviscid disk is that the planet mass $M_{\rm p}$ exceeds the characteristic mass $M_1$ defined in equation \ref{eq:char_mass}.
 For a Keplerian disk the minimum gap-opening mass is the thermal mass \citep{lin1993}, defined as \citep{goodman2001}
 \begin{align}
-    M_{\rm th} \equiv \frac{2}{3} \left( \frac{H_{\rm p}}{r_{\rm p}}  \right)^3 M_*. \label{eq:thermalmass}
+    M_{\rm th} \equiv \frac{2}{3} \left( \frac{H_{\rm p}}{r_{\rm p}}  \right)^3 M_\star. \label{eq:thermalmass}
 \end{align}
-Thus the wake solution approach presented in sections \ref{sec:linear_wake_excitation} and \ref{sec:nonlinear_evolution} is only \textit{strictly} valid for sub-thermal mass planets. It is not clear however, that the non-linear Burger's equation evolution is invalid for planets greater than the thermal mass. This non-linear prescription's strictest requirement is that the shock is sufficiently weak such that the perturbative approach is still valid.
+Thus the wake solution approach presented in sections \ref{sec:linear_wake_excitation} and \ref{sec:nonlinear_evolution} is only \textit{strictly} valid for sub-thermal mass planets. It is not clear however, that the non-linear Burger's equation evolution is invalid for planets greater than the thermal mass. The non-linear evolution prescription's strictest requirement is that the shock is sufficiently weak, such that the perturbative approach is still valid.
 
 Gap opening occurs because the dissipative shock fronts allow angular momentum from the material nearby the disk to be deposited elsewhere \citep{lin1979,goldreich1979,goldreich1980}.
 The rough physical criterion for a gap to open depends on two conditions.
@@ -879,7 +879,7 @@ The thermal condition is equivalent to $M_{\rm p} = M_{\rm th}$ while the second
 
 \citet{kanagawa2015} found an analytic relation between planet mass $M_{\rm p}$, central star mass $M_*$, viscosity $\alpha$ \citep{shakura1973}, and gap depth $\Sigma_{\rm p} / \Sigma_0$ in the case of an axisymmetric and geometrically thin gas disk subject to viscous evolution
 \begin{align}
-    \frac{M_{\rm p}}{M_*} = 5 \times 10^{-4} \left( \frac{\Sigma_0}{\Sigma_{\rm p}} - 1 \right)^{\frac{1}{2}} \left( \frac{H_{\rm p}}{0.1}  \right)^{\frac{5}{2}} \left( \frac{\alpha}{10^{-3}} \right)^{\frac{1}{2}},
+    \frac{M_{\rm p}}{M_\star} = 5 \times 10^{-4} \left( \frac{\Sigma_0}{\Sigma_{\rm p}} - 1 \right)^{\frac{1}{2}} \left( \frac{(H/r)_{\rm p}}{0.1}  \right)^{\frac{5}{2}} \left( \frac{\alpha}{10^{-3}} \right)^{\frac{1}{2}}, \label{eq:kanagawa_gap_depth}
 \end{align}
 where the gap depth $\Sigma_{\rm p} / \Sigma_0$ is written in terms of the surface density in the gap $\Sigma_{\rm p}$, and the unperturbed surface density $\Sigma_0$.
 
@@ -887,7 +887,7 @@ The modern understanding of gap opening, considering both the effects of viscosi
 Instead planets $\lesssim M_{\rm th}$ may be capable of opening a gap depending on the disk conditions \citep{rafikov2002}.
 The opening criterion is given by \citep{kanagawa2015a}
 \begin{align}
-    M_{\rm p} \gtrsim 5 \left( \frac{H_{\rm p}}{r_{\rm p}} \right)^\frac{5}{2} \alpha^\frac{1}{2} M_*.
+    M_{\rm p} \gtrsim 5 \left( \frac{H_{\rm p}}{r_{\rm p}} \right)^\frac{5}{2} \alpha^\frac{1}{2} M_\star.
 \end{align}
 Hydrodynamical simulations have confirmed the ability of sub-thermal mass planets to open gaps \citep{duffell2013}.
 

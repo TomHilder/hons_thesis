@@ -93,7 +93,7 @@ Assuming $v_z$ to be negligible, the $z$ component of the momentum equation \ref
     \frac{1}{\rho} \partial_z P = \partial_z \Phi_\star,
 \end{align}
 which expresses vertical hydrostatic equilibrium.
-Assuming that the pressure is gas-dominated (radiation pressure should be negligible for circumstellar disks), and assuming a locally isothermal equation of state $P=c^2 \rho$ \footnote[1]{Recently this approximation has become somewhat contentious as we have begun to observationally constrain the vertical temperature structure of circumstellar disks, see for example \citet{pinte2018} and \citet{calahan2021}.} where $c$ is the sound speed, we find 
+Assuming that the pressure is gas-dominated (radiation pressure should be negligible for circumstellar disks), and assuming a locally isothermal equation of state $P=c^2 \rho$ \footnote{Recently this approximation has become somewhat contentious as we have begun to observationally constrain the vertical temperature structure of circumstellar disks, see for example \citet{pinte2018} and \citet{calahan2021}.} where $c$ is the sound speed, we find 
 \begin{align}
     \frac{c^2}{\rho} \partial_z \rho = - \frac{G M_\star z}{\left(r^2 + z^2\right)^{3/2}} \simeq - \Omega_{\rm K}^2 z. \label{eq:vertical_hydro_eq}
 \end{align}
@@ -112,11 +112,11 @@ We can also find the relationship between $\Sigma$ and $\rho$ for this structure
     \rho_0(r) = \frac{1}{\sqrt{2\pi} H} \Sigma(r). \label{eq:surf_dens_to_dens}
 \end{align}
 
-\subsection{Rotation}
+\subsection{Rotation} \label{sec:disk_rotation}
 
 Now taking the radial component of the momentum equation \ref{eq:fluid_mom}, assuming axisymmetry, neglecting viscosity and assuming only small radial motions $v_r \ll v_\phi$, we find
 \begin{align}
-    \frac{v_\phi^2}{r} &= \frac{G M_\star r}{\left( r^2 + z^2  \right)^{3/2}} + \frac{1}{\rho} \partial_r P \simeq \frac{G M_\star}{ r^2} + \frac{1}{\rho} \partial_r P, 
+    \frac{v_\phi^2}{r} &= \frac{G M_\star r}{\left( r^2 + z^2  \right)^{3/2}} + \frac{1}{\rho} \partial_r P \simeq \frac{G M_\star}{ r^2} + \frac{1}{\rho} \partial_r P, \label{eq:rot_eq_full}
 \end{align}
 where the approximate equality once again assumes $z \ll r$.
 Dividing by $r$ and substituting $c^2=dP/d\rho$ gives
@@ -126,6 +126,7 @@ Dividing by $r$ and substituting $c^2=dP/d\rho$ gives
 \end{align}
 and so we find that for pressure supported circumstellar disks, Keplerian rotation is a good approximation provided that the disk \textit{aspect ratio} $H/r \ll 1$, with the correction being of order $(H/r)^2$.
 For circumstellar disks, and indeed for most astrophysical disks, $d\ln{\rho}/d\ln{r}$ is negative.
+This is because both the density and the temperature will typically decrease with disk radius.
 Thus including the correction results in a smaller $\Omega$ and so the true rotation is slightly \textit{sub-Keplerian}.
 
 \subsection{Disk Flaring} \label{sec:disk_flaring}
@@ -143,13 +144,13 @@ For an ideal gas $c^2 \propto T_{\rm eff}$ \citep[eg.][]{pringle2007}, and so
     \frac{H}{r} &= \frac{c}{r \Omega_{\rm K}} \propto \frac{T_{\rm eff}^{1/2}}{r^{-1/2}}.
 \end{align}
 All disks irradiated by a central object are flared \citep{kenyon1987} and for passive circumstellar disks modelling suggests that $T_{\rm eff} \appropto r^{-1/2}$ \citep{chiang1997}, giving $\gamma \simeq 1/4$.
-Figure \ref{fig:im_lup} shows a scattered light image of the disk around the young star IM Lupi, and the flared nature of the structure is clearly seen in the illuminated top and bottom surfaces of the disk.
+Figure \ref{fig:im_lup} shows a scattered light image of the disk around the young star IM~Lupi, and the flared nature of the structure is clearly seen in the illuminated top and bottom surfaces of the disk.
 Equation \ref{eq:rotation} suggests that flared disks become increasingly sub-Keplerian with radius.
 
 \begin{figure}
     \centering
     \includegraphics[width = 0.5\textwidth]{figures/IM_Lup_scattered.pdf}
-    \caption{H-band image showing the light scattered off the top and bottom surfaces of the disk around the T-Tauri star IM Lupi, taken with the extreme adaptive optics SPHERE instrument at the Very Large Telescope \citep{avenhaus2018}.
+    \caption{H-band image showing the light scattered off the top and bottom surfaces of the disk around the T-Tauri star IM~Lupi, taken with the extreme adaptive optics SPHERE instrument at the Very Large Telescope \citep{avenhaus2018}.
     The data has been rescaled with a logarithmic stretch to improve contrast.
     The green dot in the centre of the image corresponds to a region where no data was taken due to the coronagraph, the red dot is the star position.
     1 arcsecond and 100 au scales are in the bottom left and right of the image respectively.
@@ -178,7 +179,7 @@ The solution shown in Figure \ref{fig:ring_spreading}, and we see that the diffu
 The analysis here and in section \ref{sec:fluid_eqns} relies on viscous disk theory as previously stated.
 In this, we consider that although angular momentum may be physically transferred by mechanisms such as the magnerotational instability \citep{sano2000}, self-gravity \citep{kratter2016}, turbulent eddies \citep{klahr2003}, or others, we assume that all of the physics can be captured by the kinematic viscosity $\nu$.
 Modelling disk evolution accurately therefore relies on determining the value of $\nu$.
-\citet{shakura1973} argued that it is physically consistent to parametrise the viscosity in terms of some constant $\alpha \lesssim 1$ as\footnote[2]{Strictly there is also a factor of $2/3$ on the right-hand side but this is typically ignored in the literature and absorbed into the value of $\alpha$.}
+\citet{shakura1973} argued that it is physically consistent to parametrise the viscosity in terms of some constant $\alpha \lesssim 1$ as\footnote{Strictly there is also a factor of $2/3$ on the right-hand side but this is typically ignored in the literature and absorbed into the value of $\alpha$.}
 \begin{align}
     \nu = \alpha c H.
 \end{align}
@@ -235,7 +236,7 @@ The gas disks are typically larger with radii of $100 - 500$ au, with a few exte
     \caption{Top row: $^{12}$CO $2-1$ Line emission integrated intensity images taken of the five protoplanetary disks as part of MAPS \citep{oberg2021}.
     The bottom row shows continuum millimetre observations of the same disks, zoomed in on the box shown on each figure in the top row \citep{andrews2018,huang2020,oberg2021}. 
     We see that in each case the spatial extent of the dust disk probed in mm is much less than that for the gas disk probed with $^{12}$CO.
-    Figure retrieved from \url{alma-maps.info/disks.html}.}
+    Figure retrieved from \url{https://www.alma-maps.info/disks.html}.}
     \label{fig:maps_disks}
 \end{figure}
 
