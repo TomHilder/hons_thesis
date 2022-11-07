@@ -19,7 +19,7 @@ These perturbations take the form of a spiral shock wave \citep{ogilvie2002}, an
 
 Detecting newly formed planets embedded in their disk is a challenging problem in the field of planet formation. 
 A major area of progress in recent years is the detection of planets by the gravitationally induced disturbance in their host disks. 
-This disturbance, caused by the planet wake, manifests as a deviation in velocity from the bulk flow which may be measured through the Doppler shift of molecular lines \citep[eg.][]{perez2015, pinte2018a}. 
+This disturbance, caused by the planet wake, manifests as a deviation in velocity from the bulk flow which may be measured through the Doppler shift of molecular lines \citep[e.g.][]{perez2015, pinte2018a}. 
 Such kinematic observations have been accurately reproduced through 3D fluid simulations of the planet-disk interaction, allowing for the inference of planet and disk properties \citep{pinte2018a, pinte2019}. 
 However, these studies are computationally expensive.
 
@@ -117,9 +117,9 @@ However this turns out not to matter since $\delta$ will only show up in the $t(
 \subsubsection{Velocities}
 
 The radial and vertical motions in the unperturbed disk are set to zero. 
-The rotation is derived assuming radial force balance \citep[eg.][]{nelson2013} and is given by 
+The rotation is derived assuming radial force balance \citep[e.g.][]{nelson2013} and is given by 
 \begin{align}
-    \Omega(r,z) = \Omega_{\rm K} \left[ - \left(p + 2q\right) \left( \frac{H}{r} \right)^2 + \left( 1-2q \right) + \frac{2qr}{\sqrt{r^2 + z^2}}\right]^{1/2},
+    \Omega(r,z) = \Omega_{\rm K} \left[ - \left(p + 2q\right) \left( \frac{H}{r} \right)^2 + \left( 1-2q \right) + \frac{2qr}{\sqrt{r^2 + z^2}}\right]^{1/2}, \label{eq:omega_wf_ps}
 \end{align}
 where $\Omega_{\rm K}$ is as defined in equation \ref{eq:point_pot}.
 
@@ -364,7 +364,7 @@ High resolution kinematic observations allow for the mapping of the planet wake 
 
 \section{Modelling the Kinematic Arc in HD~169142} \label{sec:hd169}
 
-This section presents the semi-analytical modelling performed as a part of \citet{garg2022}, which is publicly available at \href{https://arxiv.org/abs/2207.02869}{arXiv:2210.10248}.
+This section presents the semi-analytical modelling performed as a part of \citet{garg2022}, which is publicly available at \href{https://arxiv.org/abs/2207.02869}{\url{arXiv:2210.10248}}.
 
 \subsection{Introduction}
 
@@ -436,10 +436,9 @@ After the \textsc{wakeflow} models were calculated, we used the Monte Carlo radi
 The total gas mass of the model was set to $10^{-2} \, \mathrm{M_\odot}$ \citep{toci2019} and the gas-to-dust ratio was set to 100.
 We use Mie theory \citep{mie1908} to calculate the optical properties of the dust grains, and assume that their size $a$ is distributed as $dn(a) \propto a^{-3.5} da$ where $n(a)$ is the number density of grains with size $a$.
 The range of dust grain sizes used was between $0.03 \, \mathrm{\mu m}$ and $1$ mm, and they were taken to have a silicate composition \citep{weingartner2001}.
-We assumed equal dust and gas temperatures, as well as
-local thermodynamic equilibrium.
+We assumed equal dust and gas temperatures, as well as local thermodynamic equilibrium.
 The central star was modelled as an isotropically radiating blackbody, and $12.8\times 10^6$ packets were used to compute the dust temperature structure.
-The relative CO abundance was taken to be $10^{-4}$, and the effects of CO freeze-out at $T < 20\, \mathrm{K}$, and photodissociation and photodesorption in regions of high UV are included following Appendix B of \citet{pinte2018}.
+The relative CO abundance was taken to be $10^{-4}$, and the effects of CO freeze-out at $T < 20\, \mathrm{K}$, and photodissociation and photodesorption in regions of high UV were included following Appendix B of \citet{pinte2018}.
 The resultant channel maps had a channel spacing of $32 \, \mathrm{m/s}$, and the synthetic cubes were subsequently convolved spatially with a Gaussian of width $0.1"$ to replicate the beam size in the observations, as well as spectrally with a Hanning function of width $167 \, \mathrm{m/s}$ to replicate the effects of the correlator.
 
 To create sky-plane velocity residuals, the cubes were collapsed spectrally in the same way as for the observations.
