@@ -52,12 +52,12 @@ Existing scientific publications focusing on detecting the kinematic signatures 
 \footnotetext{\url{https://wakeflow.readthedocs.io/en/latest/tutorials/quickstart.html}}
 
 Here we provide an overview of the algorithm used by \textsc{wakeflow} to generate models.
-For stages that are sufficiently different to \citet{bollati2021}, further detail will be provided in the section \ref{sec:model_considerations}.
+For stages that are sufficiently different to \citet{bollati2021}, further detail will be provided in section \ref{sec:model_considerations}.
 The algorithm proceeds as:
 \begin{enumerate}
-    \item The global grid geometry is generated based on the user's choice of grid geometry and number of grid points. Both cylindrical and cartesian grid geometries are supported, as well as the \textsc{mcfost} grid geometry if the user wishes to generate synthetic observations from their model.
+    \item The global grid is generated based on the user's choice of grid geometry and number of grid points. Both cylindrical and cartesian grid geometries are supported, as well as the \textsc{mcfost} grid geometry.
     
-    The run time for \textsc{wakeflow} scales linearly in the number of grid points $n_x \times n_y$ or $n_r \times n_\phi$, but is roughly independent of the number of points in the vertical direction $n_z$..
+    The run time for \textsc{wakeflow} scales linearly in the number of grid points $n_x \times n_y$ or $n_r \times n_\phi$, but is roughly independent of the number of points in the vertical direction $n_z$.
     
     \item The unperturbed disk density and velocity structure is calculated based on the user's choice of disk parameters as outlined in section \ref{sec:diskstruct}.
     
@@ -97,7 +97,7 @@ The constant of proportionality for these relations in determined by the user sp
 
 \subsubsection{Density}
 
-We use a density structure derived by assuming that the disk is in vertical hydrostatic equilibrium \citep{pringle1981}, but unlike in \ref{eq:vertical_rho} we will not assume that $z\ll r$.
+We use a density structure derived by assuming that the disk is in vertical hydrostatic equilibrium \citep{pringle1981}, but unlike in equation \ref{eq:vertical_rho} we will not assume that $z\ll r$.
 The density $\rho$ is given by 
 \begin{align}
     \rho(r,z) \propto \left( \frac{r}{r_{\rm ref}} \right)^{-p} \exp{\left( \frac{G M_\star}{c^2} \left[ \frac{1}{\sqrt{r^2 + z^2}} - \frac{1}{r} \right] \right)},
@@ -125,24 +125,24 @@ where $\Omega_{\rm K}$ is as defined in equation \ref{eq:point_pot}.
 
 \subsection{Linear Box} \label{sec:linear_box}
 
-The solution in the linear regime nearby the planet used in \textsc{wakeflow} was calculated by \citet{bollati2020} and \citet{bollati2021} by solving equations \ref{eq:fourier_v} -- \ref{eq:fourier_sigma} numerically following the procedure outlined in \citet{goodman2001}.
-Here, we simply read their dimensionless calculations and scale them accordingly for our purposes. Figure \ref{fig:lin_box_bollati} shows the $u$ and $v$ solutions presented in \citet{bollati2021} in local cartesian coordinates $x,y$ centred on the planet location.
+The solution in the linear regime nearby the planet used in \textsc{wakeflow} was calculated by \citet{bollati2020} and \citet{bollati2021} by solving equations \ref{eq:fourier_v} -- \ref{eq:fourier_sigma} numerically, following the procedure outlined in \citet{goodman2001}.
+Here, we simply read their dimensionless calculations and scale them accordingly for our purposes. Figure \ref{fig:lin_box_bollati} shows the $u$ and $v$ solutions presented in \citet{bollati2021}, in local cartesian coordinates $x,y$ centred on the planet location.
 The $x,y$ coordinates are scaled by the Mach-1 length $l_{\rm p} = 2H_{\rm p}/3$, while the perturbation are scaled by the planet mass in units of the thermal mass $M_{\rm p} / M_{\rm th}$.
 
 \begin{figure}
     \centering
     \includegraphics[width = 0.95\textwidth]{figures/linear_box_bollati.pdf}
-    \caption{Linear azimuthal (left) and radial (right) velocity perturbations $v$ and $u$ centred on the planet in local cartesian coordinates as defined in equations \ref{eq:local_x} and \ref{eq:local_y}, and calculated by \citet{bollati2021}. The velocity is given in units of $v_{\rm p} = \Omega_{\rm K}(r_{\rm p})$, and the arrows denote the direction of the shearing bulk gas flow in a frame centred on the planet.}
+    \caption{Linear azimuthal (left) and radial (right) velocity perturbations $v$ and $u$ centred on the planet in local cartesian coordinates as defined in equations \ref{eq:local_x} and \ref{eq:local_y}, and calculated by \citet{bollati2021}. The velocity is given in units of $v_{\rm p} = \Omega_{\rm K}(r_{\rm p})$, and the arrows denote the direction of the shearing gas flow in a frame centred on the planet.}
     \label{fig:lin_box_bollati}
 \end{figure}
 
 Unlike \citet{bollati2021}, we do not include the linear regime results as a square box in the global solution.
-Instead, we take seriously the transformation \ref{eq:local_y}, and interpret $y$ as an arc-length instead of a true Cartesian coordinate, giving us a \textit{linear annulus segment} instead of a \textit{linear square box} (we will from now on refer to the former simply as the \textit{linear box}).
+Instead, we take seriously the transformation \ref{eq:local_y}, and interpret $y$ as an arc-length instead of a true Cartesian coordinate, giving us an \textit{annulus segment} instead of a \textit{square box} (we will from now on refer to the former simply as the \textit{linear box}).
 Indeed, when the $\chi$ initial condition is extracted from the edge of the box, this is the treatment used for $y$.
 It is therefore more honest to take this approach when mapping the linear solution onto the global grid, and has the added benefit of resulting in a more continuous solution.
 In addition, we allow for separate variation of the height (angular extent) and width (radial extent) of the box.
 This is motivated by considering that the box size was originally chosen as the Mach-1 length through an argument about resonance location (see section \ref{sec:linear_wake_excitation}).
-Since these locations are constant as $\phi$ varies, it is perfectly acceptable to extent the linear regime in the angular direction.
+Since these locations are constant as $\phi$ varies, it is perfectly acceptable to extend the linear regime in the angular direction.
 The caveat to this is that the linear solution was derived in the shearing sheet approximation where the global geometry of the disk is not considered.
 The curvature of the $y$ coordinate becomes more extreme as the box size increases angularly.
 By default, \textsc{wakeflow} chooses the angular extent of the box to be the same as the radial extent, with a height of $4H_{\rm p}/3$.
@@ -160,9 +160,9 @@ Assuming also that $\Omega=\Omega_{\rm K}$, then equation \ref{eq:phi_wake} beco
 \end{align}
 Additionally, the Keplerian rotation implies $|2A| = 3\Omega/2 = 3c/2H$ and so the Mach-1 length becomes
 \begin{align}
-    l_{\rm p} = \frac{2H}{3},
+    l_{\rm p} = \frac{2H_{\rm p}}{3},
 \end{align}
-and so the $\eta$ transformation \ref{eq:eta} reduces to 
+and the $\eta$ transformation \ref{eq:eta} reduces to 
 \begin{align}
     \eta(r, \phi) = \frac{3 r_{\rm p}}{2 H_{\rm p}} \left[ \phi - \phi_{\rm wake} \right].
 \end{align}
@@ -194,7 +194,7 @@ The $\eta$ transformation is easily vectorised since it is a simply algebraic ex
 This approach is very inefficient, since the integral in the transformation does not actually depend on $r$, merely the end point does.
 Re-evaluating the integral each time therefore often involves integrating over the same interval very many times.
 In \textsc{wakeflow} we instead convert mapping $r\rightarrow t$ into an initial value problem (IVP).
-Since the integrands of equation \ref{eq:t} is independent of r, we can convert equation \ref{eq:t} into an ordinary differential equation with an appropriate initial condition
+Since the integrand of equation \ref{eq:t} is independent of r, we can convert equation \ref{eq:t} into an ordinary differential equation with an appropriate initial condition
 \begin{align}
     \frac{dt(s)}{ds} = \frac{r_{\rm p}}{l_{\rm p}} \left[ \frac{\Omega(s) - \Omega_{\rm p}}{c_0(s) g(s)} \right]; \quad \, t(r_{\rm p}) = 0.
 \end{align}
@@ -217,9 +217,9 @@ For planet masses greater than $M_{\rm th}$, the linear solution is no longer va
 It is then impossible to spatially separate the wake evolution neatly into the linear and non-linear regimes.
 Ignoring this issue and calculating the semi-analytic models as usual introduces a few issues that we found to be discrepant with the simulation results.
 Firstly, the wake structure in the linear box does not match that of the simulated models, and over-predicts the amplitude of the perturbations.
-A sharp spatial discontinuity is also formed at the boundary between the linear and non-linear regimes, since the very large linear perturbation initial condition results in very rapid shock formation in the non-linear regime.
+A sharp spatial discontinuity is also formed at the boundary between the linear and non-linear regimes, since the very large linear perturbation initial condition results in rapid shock formation in the non-linear regime.
 This discontinuity is visible in Figure \ref{fig:2_0mth}, and is more extreme for the radial velocity perturbations than for the azimuthal velocity or density perturbations.
-There is also an additional continuity over the box edge in the amplitude of the velocity perturbations, with the perturbation just outside the linear box being far greater than that just inside.
+We also found an additional discontinuity over the box edge in the amplitude of the velocity perturbations, with the perturbation just outside the linear box being far greater than that just inside.
 
 \begin{figure}[H]
     \centering
@@ -228,7 +228,7 @@ There is also an additional continuity over the box edge in the amplitude of the
     \label{fig:profile_comparison}
 \end{figure}
 
-However, moving away from the planet and deeper into the non-linear regime the agreement between the analytical and simulated models improves.
+However, moving away from the planet and deeper into the non-linear regime, the agreement between the analytical and simulated models improves.
 Figure \ref{fig:profile_comparison} shows the outer wake profile as it evolves in $t$ for $3.87 \, M_{\rm th}$, compared between both models.
 Remarkably, the accuracy in the non-linear regime seems to improve as $t$ increases.
 The amplitude for each of the perturbations is in good agreement between the models after the wake was propagated only a few tens of $\mathrm{au}$ from the planet location.
@@ -245,8 +245,9 @@ We defer further discussions of accuracy, including a full parameter study and a
 
 \subsection{Velocity Perturbations} \label{sec:velocity_perts}
 
-Following the method of \citet{bollati2021} to calculate the velocity perturbations in the non-linear regime results in a discontinuous solution at the edge of the linear box, as the amplitude of the velocity perturbations for $t>t_0$ is smaller than that at the start of the non-linear solution where $t-t_0$ is small\footnote{Recall that $t_0$ is the $t$ coordinate at the transition between the linear and non-linear regimes.} (\citeauthor{fasanoinprep.}, in prep).
-To investigate this discontinuity in velocity amplitude we re-derive the mapping from $\chi$ to $u$ and $v$ derived by \citet{rafikov2002a} and \citet{bollati2021}.
+Following the method of \citet{bollati2021} to calculate the velocity perturbations in the non-linear regime results in a discontinuous solution at the edge of the linear box. 
+The calculated amplitude of the velocity perturbations for $t>t_0$ is significantly less than that at the start of the non-linear solution where $t-t_0$ is small\footnote{Recall that $t_0$ is the $t$ coordinate at the transition between the linear and non-linear regimes.} (\citeauthor{fasanoinprep.}, in prep).
+To investigate this discontinuity in velocity amplitude we re-derived the mapping from $\chi$ to $u$ and $v$ from \citet{rafikov2002a} and \citet{bollati2021}.
 As we saw in section \ref{sec:nonlinear_evolution} the conservation of the Riemann invariant $R_+$ gives for the radial velocity perturbation
 \begin{align}
     u = 2\frac{c_0-c}{\gamma - 1}=-2\frac{c_0}{\gamma + 1} \psi, \label{eq:u_rafikov}
@@ -282,7 +283,7 @@ giving to first order in $\psi$
 \end{align}
 equations \ref{eq:ap_rad_vel} and \ref{eq:ap_az_vel} are the expressions used in \citet{bollati2021} to calculate the velocity perturbations in the non-linear regime. 
 Since these are only accurate to first order in $\psi$, the assumption is made that $\psi \ll 1$, which is the weak shock approximation introduced in section \ref{sec:nonlinear_evolution}.
-Since we are in particular interested in the velocity perturbations in the context of kinematics, and in planet masses comparable to the thermal mass, we should check if the assumption that $\psi \ll 1$ still holds for more planets in the high mass regime.
+Since we are in particular interested in the velocity perturbations in the context of kinematics, and in planet masses comparable to the thermal mass, we should check if the assumption that $\psi \ll 1$ still holds for planets in the high mass regime.
 
 We can derive an \textit{exact} expression for $\psi$ in terms of the density perturbation simply by rearranging equation \ref{eq:poly_EOS}. We find
 \begin{align}
@@ -292,9 +293,9 @@ which can be written equivalently in terms of $\chi$ using equation \ref{eq:chi}
 \begin{align}
     \psi = \frac{\gamma + 1}{\gamma - 1} \left[ \left( \frac{2}{\gamma + 1} \frac{\chi}{g(r)} +1  \right)^{(\psi-1)/2} -1 \right]. \label{eq:psi_exact}
 \end{align}
-We will use equation \ref{eq:psi_exact} to check the aforementioned assumption that $\psi \ll 1$ in the non-linear regime solution. 
-We construct three \textsc{wakeflow} models using dimensionless units, with embedded planet masses of $0.5, 1.0$ and $2.0 \, M_{\rm{th}}$ respectively, all placed in orbit around a $1 \, M_{\rm{\odot}}$ star at an orbital radius of $r=1$. 
-For all models, we choose $p=2.25$ and $q=0.25$ such that $\Sigma \propto r^{-1}$, and an aspect ratio $H/r=0.1$ at $r=1$. 
+We used equation \ref{eq:psi_exact} to check the aforementioned assumption that $\psi \ll 1$ in the non-linear regime solution. 
+We constructed three \textsc{wakeflow} models using dimensionless units, with embedded planet masses of $0.5, 1.0$ and $2.0 \, M_{\rm{th}}$ respectively, all placed in orbit around a $1 \, M_{\rm{\odot}}$ star at an orbital radius of $r=1$. 
+For all models, we chose $p=2.25$ and $q=0.25$ such that $\Sigma \propto r^{-1}$, and an aspect ratio $H/r=0.1$ at $r=1$. 
 Figure \ref{fig:psi_comparison} shows the values of $\psi$ for each of these models, and demonstrates that even for the lowest planet mass model the value of $\psi$ nearby the planet is as large as $\sim \hspace{-0.23em} 0.6$ and so the second order terms will clearly be important even in this case. 
 For masses $\ge \hspace{-0.23em} M_\mathrm{th}$ the problem is even worse, as there are regions where $\psi \gtrsim 1$ causing the expansion given in equation \ref{eq:psi_exp} to diverge.
 
@@ -335,10 +336,10 @@ This is as simple as substituting equation \ref{eq:psi_exact} into equations \re
     \caption{As in Figure \ref{fig:2_0mth}, except for a planet mass of $2.0 \, M_{\rm th}$. We see that the amplitude discontinuity is again significantly improved for the radial velocities, while unaffected or even slightly worse for the azimuthal velocities.}
     \label{fig:2_0mth}
 \end{figure}
-Figures \ref{fig:0_5mth},\ref{fig:1_0mth} and \ref{fig:2_0mth} show a comparison of the velocities calculated from the above with those calculated to first order in $\psi$, for planet masses of $0.5, 1.0$ and $2.0 \, M_{\rm th}$ respectively. 
+Figures \ref{fig:0_5mth}, \ref{fig:1_0mth} and \ref{fig:2_0mth} show a comparison of the velocities calculated from the above with those calculated to first order in $\psi$, for planet masses of $0.5, 1.0$ and $2.0 \, M_{\rm th}$ respectively. 
 These are the same models as those used to create Figure \ref{fig:psi_comparison}. 
 The plots are centred on the planet location, and they show that even for the lowest mass case the amplitude discontinuity is improved significantly for the radial perturbations by the new extraction using equation \ref{eq:u_chi_new}. 
-This affect is increasingly significant for the massive planets as can been seen in the $1.0$ and $2.0 \, M_{\rm th}$ cases. The azimuthal velocity case is however minimally affected. 
+This affect is increasingly significant for the more massive planets as can been seen in the $1.0$ and $2.0 \, M_{\rm th}$ cases. The azimuthal velocity case is however minimally affected. 
 It is unclear why the radial perturbation is improved while the azimuthal perturbation is not.
 However the derivation for $u(\psi)$ in \citet{rafikov2002a} comes from the conservation of the Riemann invariant $R_+$, while $v(\psi)$ is found in terms of $u$ by taking equation \ref{eq:phi_xi_v} and the terms $u \partial_\phi v$ and $u v / (\Delta \Omega r)$.
 We conjecture that these terms are also important for larger mass planets, and that they could be responsible for the lack of improvement in the $v$ mapping.
@@ -351,7 +352,7 @@ Due to the reduction in the amplitude discontinuity, equations \ref{eq:u_chi_new
 Figure \ref{fig:2D_kinks} shows the ``mock'' velocity channels that they generated by rotating the velocity perturbations to the line of sight for a disk inclined at $30^\circ$ from the sky plane.
 They recover the abrupt sign reversal in velocity across the planet location first suggested by \citet{casassus2019}, the so-called \textit{Doppler flip}.
 They also found that velocity kinks arise due to the intersection of the planet wake and the velocity channels, and that these kinks are spread throughout the disk.
-Since at the time kinks were thought to be localised nearby the planet \citep{pinte2018a,pinte2019,pinte2020}, Bollati suggested that viscous damping may suppress the amplitude of the perturbations far from the planet.
+Since at the time kinks were thought to be localised nearby the planet \citep{pinte2018a,pinte2019,pinte2020}, Bollati suggested that viscous damping may suppress the amplitude of the wave as it travels through the disk.
 As we will see in chapter \ref{ch:wake_mapping}, velocity kinks are in fact \textit{not} localised nearby the planet location.
 High resolution kinematic observations allow for the mapping of the planet wake in the disk through spatially correlated kinks spread throughout the disk \citep{calcino2022,teague2022,verrios2022}
 
@@ -384,22 +385,22 @@ The obtained angular resolutions of $0.07"$ and $0.1"$ allowed us resolve both d
 We imaged the $J=2-1$ line transitions of $^{12}$CO, $^{13}$CO and C$^{18}$O using ALMA band~6 observations from projects [2015.1.00490.S] and [2016.1.00344.S].
 For details of the self-calibration and data reduction process, see \citet{garg2022}.
 
-From equation \ref{eq:rot_eq_full} we have the rotation velocity of the gas in a pressure-supported disk is given by 
+From equation \ref{eq:rot_eq_full}, the rotation velocity of the gas in a pressure-supported disk is given by 
 \begin{align}
     \frac{v_{\rm gas}^2}{r} &= \frac{G M_\star r}{\left( r^2 + z^2  \right)^{3/2}} + \frac{1}{\rho_{\rm gas}} \partial_r P_{\rm gas}, \label{eq:gas_rotation}
 \end{align}
 where the first term is the typical Keplerian rotation and the second is the contribution by the radial pressure gradient.
 As discussed in section \ref{sec:disk_rotation}, the second term typically results in sub-Keplerian motions.
 To find kinematic substructures in the data, we wish remove the background motions of the disk associated with equation \ref{eq:gas_rotation} to isolate only the deviations from the bulk flow.
-As a first step, we peak velocity $v_0$ maps by spectrally collapsing the data cube using the \textsc{Python} package \textsc{bettermoments} \citep{teague2018a}.
+As a first step, we compute peak velocity $v_0$ maps by spectrally collapsing the data cube using the \textsc{Python} package \textsc{bettermoments} \citep{teague2018a}.
 We chose specifically to use the \textit{Gaussian} method since it provides also the velocity error for each pixel $\delta v_0$ and has minimal statistical uncertainty \citep{yu2021}.
 
 To obtain only the deviations from bulk rotation in $v_0$, we made use of the \textsc{Python} package \textsc{Eddy} \citep{teague2019}.
-\textsc{Eddy} subtracts a best-fitting Keplerian rotation profile using a Markov Chain Monte Carlo (MCMC) method \citep{foreman-mackey2013}\footnote{The main point of using MCMC over a traditional optimisation method is to obtain the uncertainties in the best fitting parameters by estimating the posterior distribution. However, we found that the error-bars we obtained were too small to be physically realistic, and so in appendix C of \citet{garg2022} we provide a parameter study around the best fit to investigate the true uncertainty.}.
+\textsc{Eddy} subtracts a best-fitting Keplerian rotation profile using a Markov Chain Monte Carlo (MCMC) method \citep{foreman-mackey2013}\footnote{The main point of using MCMC over a traditional optimisation methods is to obtain the uncertainties in the best fitting parameters by estimating the posterior distribution. However, we found that the error-bars we obtained were too small to be physically realistic, and so in appendix C of \citet{garg2022} we provide a parameter study around the best fit to investigate the true uncertainty.}.
 We fit for the disk position angle (PA), central star mass $M_\star$, central star pixel location $(x_0,y_0)$ and systemic velocity $v_{\rm syst}$.
 For the MCMC, we used 250 walkers and ran for 10,000 steps.
 The data used in the fit were also restricted to within $1.5"$ from the centre of the image, as outside of this region was noise dominated.
-The inner $0.2"$, twice the beam width, was also exclude to avoid any bias resulting from beam smearing in the inner disk.
+The inner $0.2"$, equal to twice the beam width, was also exclude to avoid any bias resulting from beam smearing in the inner disk.
 From fitting the $^{12}$CO data, we found best-fitting model parameters of $\mathrm{PA} = 5.33^\circ$, $M_\star = 1.47 \, \mathrm{M_\odot}$, and $v_{\rm syst} = 6.897 \, \mathrm{km/s}$.
 
 To account for the pressure term of equation \ref{eq:gas_rotation}, we need the radial pressure gradient $\partial_r P_{\rm gas}(r)$.
@@ -438,16 +439,16 @@ We use Mie theory \citep{mie1908} to calculate the optical properties of the dus
 The range of dust grain sizes used was between $0.03 \, \mathrm{\mu m}$ and $1$ mm, and they were taken to have a silicate composition \citep{weingartner2001}.
 We assumed equal dust and gas temperatures, as well as local thermodynamic equilibrium.
 The central star was modelled as an isotropically radiating blackbody, and $12.8\times 10^6$ packets were used to compute the dust temperature structure.
-The relative CO abundance was taken to be $10^{-4}$, and the effects of CO freeze-out at $T < 20\, \mathrm{K}$, and photodissociation and photodesorption in regions of high UV were included following Appendix B of \citet{pinte2018}.
+The relative CO abundance was taken to be $10^{-4}$, and the effects of CO freeze-out at $T < 20\, \mathrm{K}$, as well as photodissociation and photodesorption in regions of high UV were included \citep{pinte2018}.
 The resultant channel maps had a channel spacing of $32 \, \mathrm{m/s}$, and the synthetic cubes were subsequently convolved spatially with a Gaussian of width $0.1"$ to replicate the beam size in the observations, as well as spectrally with a Hanning function of width $167 \, \mathrm{m/s}$ to replicate the effects of the correlator.
 
 To create sky-plane velocity residuals, the cubes were collapsed spectrally in the same way as for the observations.
-This whole process was then repeated except for models were the planet perturbations are absent, and residuals were calculated as the different between the two velocity maps.
+This whole process was then repeated except for models with no planet, and residuals were calculated as the different between the two velocity maps.
 These residuals are presented in Figure \ref{fig:garg_analytics}.
 Comparing these with Figure \ref{fig:garg_arc}, we see that in neither case do the analytic models recreate the arc found observationally.
 The $1 \, \mathrm{M_J}$ planet model contains kinematic deviations that are far smaller than those observed.
-On the other hand, the $10 \, \mathrm{M_J}$ produces residuals that while similar in amplitude differ from the observations in shape, location and sign.
-Of the two models, the $10 \, \mathrm{M_J}$ is more compatible with the observations, but it still performs poorly.
+On the other hand, the $10 \, \mathrm{M_J}$ produces residuals that while similar in amplitude, differ from the observations in shape, location and sign.
+Of the two models, the $10 \, \mathrm{M_J}$ is more compatible with the observations but it still performs poorly.
 
 Since the disk is nearly face-on, the observed kinematic structure may be dominated by vertical motions which are absent in the analytical models.
 This may help to explain why the arc was absent in the $^{13}$CO and C$^{18}$O observations, since these trace the disk structure closer to the mid-plane.
@@ -458,9 +459,9 @@ A significant limitation to the analysis performed here is the accuracy of the \
 Given the disk aspect ratio and central star mass, the thermal mass is only $\sim 0.5 \, \mathrm{M_J}$.
 Thus the two models we have used here contain planets of masses $2 \, M_{\rm th}$ and $20 \, M_{\rm th}$.
 In both of these cases the perturbations calculated close to the planet will be overestimated (\citeauthor{fasanoinprep.}, in prep.).
-Unfortunately, in this case that is the region we are specifically interested in, since we are supposing that the kinematic arc contains the planet.
+Unfortunately, in this case that is the region we are specifically interested in.
 It is therefore only reasonable to interpret these results as upper bounds on the size of the perturbations that may be induced by the planet mass in each model.
-We thus conclude that to explain the kinematic excess we have detected in the disk through the perturbations induced by an embedded planet requires a planet of no more than $10 \, \mathrm{M_J}$.
+We thus conclude that to explain the kinematic excess we have detected in the disk through our model requires a embedded planet of no more than $10 \, \mathrm{M_J}$.
 %Planet masses were chosen based off the depth of the gas gap observed at $r=38$ au.
 %Equation \ref{eq:kanagawa_gap_depth} relates the gap depth $\Sigma_{\rm p} / \Sigma_0$ to the aspect ratio $(H/r)_{\rm p}$, effective viscosity $\alpha$ and planet mass $M_{\rm p} / M_\star$.
 %Taking our measured value of $\Sigma_{\rm p} / \Sigma_0 \approx 0.13$ in combination with  
