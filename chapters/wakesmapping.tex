@@ -10,8 +10,8 @@ The protoplanetary disk of HD~163296 has been shown to contain kinematic signatu
 Millimetre continuum and CO spectral line observations taken at high spatial resolution have revealed additional substructures in both the DSHARP \citep{andrews2018,huang2018b,pinte2020,izquierdo2021} and MAPS \citep{oberg2021,teague2021} large programs using ALMA.
 Spiral features have been identified in kinematics, in both channel maps and velocity residuals \citep{teague2021}.
 The so-called \textit{velocity kinks} found in the velocity channel maps arise from perturbations in the bulk gas motions, causing modifications to the line-of-sight velocity field.
-Specifically, we define a velocity kinks as a localised distortion of the iso-velocity curve caused by deviations from Keplerian motion, shifting line emission into an adjacent channel.
-Perturbations that cause kinks may be caused by spiral density waves induced by either gravitating bodes such as planets, or the gravitational instability mechanism \citep{hall2020}.
+Specifically, we define a velocity kink as a localised distortion of the iso-velocity curve caused by deviations from Keplerian motion, shifting line emission into an adjacent channel.
+Kinks may be caused by spiral density waves induced by either gravitating bodes such as planets, or the gravitational instability mechanism \citep{hall2020}.
 The velocity kinks detected in CO emission observations of HD~163296 have been associated with an embedded planet \citep{pinte2018a}.
 
 In \citet{bollati2021} (hereafter \citetalias{bollati2021}), we developed a semi-analytic framework for predicting velocity kinks caused by the planet-disk interaction, using the mathematical theory of density waves launched at the Lindblad resonances by tidal forcing \citep{goldreich1979,goldreich1980,goodman2001,ogilvie2002,rafikov2002a}.
@@ -30,9 +30,9 @@ Determining the shape of the planet wake also constrains the temperature structu
 \subsection{Observations}
 
 We used the JvM corrected \citep{jorsater1995} $^{12}$CO $J=2-1$ \textit{robust=0.5} line emission observations of HD~163296 from the MAPS large program (2018.1.01055.L, \citealt{oberg2021,czekala2021})\footnote{The data are available for download at \url{http://alma-maps.info/}.}.
-The beam size of the observations is approximately $0.14" \times 0.11"$, the position angle is $104^\circ$, the spectral resolution is $92 \, \mathrm{m/s}$ and the channels spacing is $200 \mathrm{m/s}$.
+The beam size of the observations is approximately $0.14" \times 0.11"$, the position angle is $104^\circ$, the spectral resolution is $92 \, \mathrm{m/s}$ and the channel spacing is $200 \mathrm{m/s}$.
 The data is identical to that used by \citet{teague2021} in their study of the kinematics of HD~163296.
-We assumed a systemic velocity velocity of  $v_{\textrm{los}}= 5.76$ km/s \citep{teague2021}.
+We assumed a systemic velocity of $v_{\textrm{los}}= 5.76$ km/s \citep{teague2021}.
 
 \citet{law2021a} fit the following parameterisation to the CO emitting surface of the disk
 \begin{align}
@@ -43,7 +43,7 @@ They found best-fitting parameters of $z_0 = 0.388$, $\phi = 1.851$, $r_\textrm{
 
 \subsection{Hydrodynamical Modelling} \label{sec:calcino_hydro}
 
-We simulated the interaction of a gas disk and an embedded 3 M$_\textrm{J}$ in 3D using the SPH code \textsc{phantom} \citep{price2018}.
+We simulated the interaction of a gas disk and an embedded 3 M$_\textrm{J}$ planet in 3D using the SPH code \textsc{phantom} \citep{price2018}.
 We used two million SPH particles to model a disk of mass $10^{-2} \, \mathrm{M_\odot}$ surrounding a $1.9 \, \mathrm{M_\odot}$ star.
 The planet and star were both modelled as sink particles \citep{bate1995}, with accretion radii of $5$ au and $5.56 \, \mathrm{au} = r_{\rm H}/4$ respectively, where $r_{\rm H}$ is the Hill radius of the planet \citep{hill1878}.
 The SPH particles were initialised according to the surface density profile
@@ -68,9 +68,9 @@ We set the effective surface temperature and radius of the star to $T_\textrm{ef
     \label{fig:calcino_channels}
 \end{figure}
 
-The central star was modelled as an isotropically radiating blackbody, and $10^8$ photon packets were used to compute temperature structure.
+The central star was modelled as an isotropically radiating blackbody, and $10^8$ photon packets were used to compute the temperature structure.
 We assumed equal dust and gas temperatures, as well as local thermodynamic equilibrium.
-The CO abundance ratio was taken to be $^{12}$CO/H$_2 = 5\times 10^{-5}$, and the effects of CO freeze-out at $T < 20\, \mathrm{K}$, and photodissociation and photodesorption in regions of high UV were included following Appendix B of \citet{pinte2018}.
+The CO abundance ratio was taken to be $^{12}$CO/H$_2 = 5\times 10^{-5}$, and the effects of CO freeze-out at $T < 20\, \mathrm{K}$, as well as photodissociation and photodesorption in regions of high UV were included \citep{pinte2018}.
 
 We created synthetic velocity channels for the $^{12}$CO $J=2-1$ transition, with a channel spacing of $20 \, \mathrm{m/s}$.
 This was then linearly interpolated over 5 channels and averaged after spectral convolution with the Hanning function, resulting in a channel width of $100 \, \mathrm{m/s}$ and spacing of $200 \, \mathrm{m/s}$.
@@ -87,7 +87,7 @@ The images were then spatially convolved with a Gaussian of width $0.15"$ to rep
     \label{fig:calcino_analytics}
 \end{figure}
 
-Assuming a Keplerian power law disk we calculated the wake shape by \citep{rafikov2002a}
+Assuming a Keplerian power law disk we calculated the wake shape using \citep{rafikov2002a}
 \begin{align}
     \phi_{\rm wake}(r) = \phi_{\rm p} + {\rm sgn} \left( r - r_{\rm p} \right) \frac{r_{\rm p}}{H_{\rm p}} \left[ \frac{2}{2q-1} \left(\frac{r}{r_{\rm p}}\right)^{q-\frac{1}{2}} - \frac{1}{q+1} \left(\frac{r}{r_{\rm p}}\right)^{q+1} - \frac{3}{\left(2q-1\right)\left(q+1\right)} \right], \label{eq:power_law_wake}
 \end{align}
@@ -102,7 +102,7 @@ We then projected both the wake shape and the velocities of the analytic model t
 The wake and velocity fields were then rotated to match the disk inclination of $i=46^{\circ}$ and PA of $313^{\circ}$.
 This allowed us to find both the shape of the wake on the sky plane and the line-of-sight velocities resulting from the planet-induced perturbations.
 The projection assumes that the disk is locally isothermal since $c$ is assumed to be independent of height, just as in the SPH simulations.
-In reality the temperature structure is vertically stratified \citep{calahan2021}, which may cause the pitch angle of the spiral arms to increase in the upper layers (see section \ref{sec:limitations})
+In reality the temperature structure is vertically stratified \citep{calahan2021}, which may cause the pitch angle of the spiral arms to increase in the upper layers (see section \ref{sec:limitations}).
 
 \section{Results}
 
@@ -147,7 +147,7 @@ These discontinuities are clearly seen in Figure~\ref{fig:calcino_analytics}.
 
 Figure~\ref{fig:calcino_channel_comparison} shows the  $\Delta v = 0.2$ km/s channel in the left panel, and the line-of-sight velocity perturbations from the analytic model projected to the emitting surface in the right panel.
 The annotations in the figure highlight how the perturbations from the wake shown in the right effect the channel.
-Moreover the labels show how the perturbations change sign of the semi-major axis, which is as expected for perturbations dominated by radial motion.
+Moreover the labels show how the perturbations change sign over the semi-major axis, which is as expected for perturbations dominated by radial motion.
 While more subtle, the N-wave shape of the perturbation in the wake discussed in section~\ref{sec:asymptotic_N_wave} is also visible in the channel, especially on the south side (\citealt{rafikov2002a}, \citetalias{bollati2021}).
 
 \begin{figure}
@@ -158,8 +158,8 @@ While more subtle, the N-wave shape of the perturbation in the wake discussed in
 \end{figure}
 
 A comparison of the peak velocity map of HD~163296 between the observations, analytics, and SPH plus radiation transfer models are shown in Figure~\ref{fig:calcino_v0}.
-The lines separating the coloured region of the contour plot are iso-velocity curves, and each of these roughly corresponds to the line of peak emission in a particular velocity channel.
-Velocity kinks therefore show up in this plot as a ``wiggle'' in the iso-velocity curves, and so the planet wake causes deviations from the typical Keplerian butterfly planet expected for an unperturbed disk.
+The lines separating the coloured regions of the contour plot are iso-velocity curves, and each of these roughly corresponds to the line of peak emission in a particular velocity channel.
+Velocity kinks therefore show up in this plot as a ``wiggle'' in the curve, and so the planet wake causes deviations from the typical Keplerian butterfly planet expected for an unperturbed disk.
 Plotted also is the projected wake shape, which we see traces the velocity kinks across successive lines of iso-velocity, revealing the planetary wake extended throughout the disk. 
 The features are most visible along the semi-major axis, again suggesting radial-dominated perturbations.
 They are additionally seen in both the analytic and SPH model.
@@ -179,10 +179,10 @@ They are additionally seen in both the analytic and SPH model.
 We have demonstrated:
 \begin{enumerate}
     \item The spiral structures in HD~163296 reported by \citet{teague2021} are due to the planet wake induced by tidal-forcing of the embedded protoplanet \citep{pinte2018a}.
-    \item The velocity damping proposed in \citetalias{bollati2021} is not necessary, as velocity kinks are indeed not localised to the planet location.
+    \item The velocity damping proposed in \citetalias{bollati2021} is not necessary, as velocity kinks are not localised to the planet location.
 \end{enumerate}
 
-These results also constitute the first direct confirmation of density waves generated by the Lindblad resonances in a circumstellar disk through the gravitational interaction of a planet.
+\noindent These results constitute the first direct confirmation of density waves generated by the Lindblad resonances in a circumstellar disk through the gravitational interaction of a planet.
 
 \subsection{Density Waves or Buoyancy Spirals?}
 
@@ -197,12 +197,12 @@ They therefore would not exhibit an abrupt sign change along the semi-major axis
 It is also possible to look for the sign change more directly through velocity residual maps \citep{teague2021,izquierdo2021}, but we found that this easily confuses the resulting signs of each kinematic feature as the residuals are very sensitive to the background model subtracted.
 Indeed, we found that even for simulations it is very challenging to correctly recover the sign of the perturbations accurately \citep[see Appendix~A of][for further detail]{calcino2022}.
 
-We do also report additional kinematic structures (the opaque crosses in Figure~\ref{fig:calcino_channels}) that do not seem to be explained by the planet wake.
-These features were also found by \citet{teague2021}, it is possible that they are the result of buoyancy spirals.
+We report additional kinematic structures (the opaque crosses in Figure~\ref{fig:calcino_channels}) that do not seem to be explained by the planet wake.
+These features were also found by \citet{teague2021}, and it is possible that they are the result of buoyancy spirals.
 Their location is relatively consistent with this model, as buoyancy spirals excited by the planet have much smaller opening angles than the planet wake \citep{bae2021}.
 Alternatively, the features could be due to the outer wake from a second embedded protoplanet orbiting at a smaller radius, as suggested by \citet{teague2018}.
 Indeed \citep{pinte2020} reported a velocity kink located in the gap of the outermost ring seen in continuum, which they interpreted as evidence for an embedded planet.
-Additional evidence for a kinematic planet signature in this region was found by \citet{teague2021}. 
+Additional evidence for the kinematic signature of a planet in this region was found by \citet{teague2021}. 
 
 \subsection{Estimating the Planet Mass}
 
@@ -216,7 +216,7 @@ but this does not determine either the mid-plane gas temperature or the scale he
 By assuming that the emission is optically thick, and thus $\mathrm{T_b}=\mathrm{T_{gas}}$, one may use the CO emission on both the upper and lower surfaces to determine the mid-plane temperature \citep{dullemond2020}.
 The aforementioned assumption is however not guaranteed due to molecular freeze-out onto dust grains.
 Mapping the spiral wake provides a natural way to measure the thermal mass directly and break the degeneracy.
-From \ref{eq:power_law_wake} we can see that the way shape depends on the disk aspect ratio $(H/r)_{\rm p}$.
+From \ref{eq:power_law_wake} we can see that the wake shape depends on the disk aspect ratio $(H/r)_{\rm p}$.
 Thus, in principle it should be possible to measure the planet mass directly from kinematic observations by fitting both the amplitude of the kinks and the shape of the wake.
 In practice this would require simultaneously fitting the kink amplitude, wake shape, emitting surface and density profile of the disk.
 This is a complex procedure and so is beyond the scope of this Letter.
@@ -239,7 +239,7 @@ Since this is the main region of concern here, temperature stratification is unl
 
 Finally, 3D wake propagation is known to deviate from the wake shape given in equation \ref{eq:power_law_wake}, even for relatively low mass planets.
 \citet{zhu2015} found through numerical modelling that the spiral arms in a locally isothermal disk are more tightly wound in the upper layers.
-The effect is captured in the SPH simulations we have performed, but not in the analytics nor in the wake shape projection.
+This effect is captured in the SPH simulations we have performed, but not in the analytics nor in the wake shape projection.
 It is interesting to note that this has the opposite effect to the temperature stratification, which should result in more open spirals.
 Shock heating may also effect the evolution of the wake, and is not included in our simulations.
 Treating the thermodynamics of the disk in more depth by calculating the temperature structure self-consistently and including shock heating would allow for these issues to be explored further, but is beyond the scope of this Letter.
@@ -255,14 +255,14 @@ This section presents part of \citet{verrios2022}, which is publicly available a
 \subsection{Introduction}
 
 The young star IM~Lupi is host to a large and spectacular circumstellar disk \citep{panic2009,avenhaus2018,cleeves2016,pinte2018}.
-Localised deviations from Keplerian motion were found across multiple velocity channels in $^12$CO line emission observations \citep{pinte2020} taken as part of DSHARP \cite{huang2018,andrews2018}.
-Higher spatial resolution observations from MAPS confirm the presence of these velocity kinks, which \citet{pinte2020} hypothesised to be induced by the gravitational disturbance from an embedded planet orbiting at $117$ au.
+Localised deviations from Keplerian motion were found across multiple velocity channels in $^{12}$CO line emission observations \citep{pinte2020} taken as part of DSHARP \citep{huang2018,andrews2018}.
+Higher spatial resolution observations from MAPS \citep{oberg2021} confirm the presence of these velocity kinks, which \citet{pinte2020} hypothesised to be induced by the gravitational disturbance from an embedded planet orbiting at $117$ au.
 This separation is too large to facilitate the detection of such a planet through traditional methods like radial velocities or transits, and the optically thick dust and gas material complicates direct imaging.
 
 Scattered light images of the disk reveal large, tightly-wound spiral structures in the disk surface \citep[see Figure~\ref{fig:im_lup};][]{avenhaus2018},
 while 1.25 mm continuum observations from DSHARP show also spiral arms and gaps in the dust-disk present in the mid-plane (see row 2 panel 1 of Figure~\ref{fig:maps_disks}; \citealt{huang2018}).
 Are these spirals caused by the embedded protoplanet?
-An alternative explanation if that they are formed through gravitational instabilities, which produce disordered flocculuent spirals and hence ``kinks everywhere'' \citep{hall2020}.
+An alternative explanation is that they are formed through gravitational instabilities, which produce disordered flocculuent spirals and hence ``kinks everywhere'' \citep{hall2020}.
 On the other hand, planets should produce velocity kinks only along the coherent one-armed planet wake.
 The gravitational instability requires that the disk is self-gravitating and so massive, which is not required by the planet model.
 
@@ -296,18 +296,18 @@ Refer to \citet{verrios2022} for further detail.
     \label{fig:verrios_v0}
 \end{figure}
 
-A key prediction of the embedded planet hypothesis is that the one-armed planet wake excited by the planet should create velocity kinks any time it spatially crosses a channel.
+A key prediction of the embedded planet hypothesis is that the one-armed planet wake excited by the planet should create velocity kinks any time it intersects a velocity channel.
 \citet{calcino2022} found that this may be used to trace the planet wake shape through kinematic observations.
 The presence of a coherent planet wake in the observations would provide evidence for the embedded planet model over gravitational instability.
 \citet{calcino2022} also found that the wake is best traced in the peak velocity map.
 
 Were therefore use spectrally collapsed both the MAPS $^{12}$CO observations \citep{oberg2021} and the synthetic observations from our SPH + radiation transfer model to create peak velocity maps.
 These are plotted in Figure~\ref{fig:verrios_v0}, with the data shown in the left panel, and the model in the right.
-We additionally calculated the expected wake shape using \ref{eq:power_law_wake} \citep{ogilvie2002,rafikov2002a}, and projected it to the emission surface determined by \citet{law2021a} following the method of \citet{calcino2022}.
+We additionally calculated the expected wake shape using equation \ref{eq:power_law_wake} \citep{ogilvie2002,rafikov2002a}, and projected it to the emission surface determined by \citet{law2021a} following the method of \citet{calcino2022}.
 This is shown in both panels (grey dashed line).
 The velocity perturbations, which manifest as distorted contours, are seen to trace the planet wake shape through the outer disk in both the model and the observations.
 The are particularly obvious in the second passage of the outer wake in the north side of the disk.
-In addition, the ``N-wave'' structure predicted by the semi-analytic models (\citealt{goodman2001}; \citealt{rafikov2002a}; \citetalias{bollati2021}) can be seen in the observations in that same region.
+In addition, the ``N-wave'' structure predicted by the semi-analytic models (\citealt{goodman2001}; \citealt{rafikov2002a}; \citetalias{bollati2021}) can be seen in the observations in the same region.
 
 We therefore confirm that the wake from the planet is visible in the peak velocity map of the $^{12}$CO observations, as predicted by the embedded planet model.
 

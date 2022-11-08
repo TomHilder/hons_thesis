@@ -4,8 +4,7 @@
 % Setup
 \documentclass[hidelinks,11pt,a4paper,onecolumn]{report}
 
-\usepackage[margin=20mm]{geometry}
-
+\usepackage[margin=20mm,headheight=14pt]{geometry}
 
 % Packages
 \usepackage[T1]{fontenc} %Allows more exotic characters to be displayed properly (eg, Đ)
@@ -54,9 +53,20 @@
 \newcommand{\appropto}{\mathrel{\vcenter{
   \offinterlineskip\halign{\hfil$##$\cr
     \propto\cr\noalign{\kern2pt}\sim\cr\noalign{\kern-2pt}}}}}
+
 \newenvironment{myquote}[1]%
   {\list{}{\leftmargin=#1\rightmargin=10pt}\item[]}%
     {\endlist}
+
+\makeatletter
+\renewcommand{\@chapapp}{}% Not necessary...
+\newenvironment{chapquote}[2][2em]
+  {\setlength{\@tempdima}{#1}%
+   \def\chapquote@author{#2}%
+   \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+   \itshape}
+  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+\makeatother
 
 % Citation Aliases
 \defcitealias{bollati2021}{B21}
@@ -81,11 +91,21 @@
     % ACKNOWLEDGEMENTS
     \input{chapters/Acknowledgements}
 
+    % PREFACE
+    \input{chapters/preface}
+
     % CONTENTS
-    \tableofcontents
+    %\tableofcontents
+    \begin{center}
+      {\Large \textbf{Contents}}
+    \end{center}
+    \makeatletter
+    \@starttoc{toc}
+    \makeatother
     \clearpage
 
     \pagenumbering{arabic}
+    \setcounter{footnote}{0} 
 
     \chapter{Introduction}
     \input{chapters/intro}
