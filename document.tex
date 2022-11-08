@@ -65,7 +65,12 @@
    \def\chapquote@author{#2}%
    \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
    \itshape}
-  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+   %{\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+   {\par\normalfont\hfill--\ \chapquote@author\hspace*{13mm}\par\bigskip}
+\makeatother
+
+\makeatletter
+\def\tableofcontents{\section*{\centering\Large Contents}\@starttoc{toc}}
 \makeatother
 
 % Citation Aliases
@@ -95,13 +100,13 @@
     \input{chapters/preface}
 
     % CONTENTS
-    %\tableofcontents
-    \begin{center}
-      {\Large \textbf{Contents}}
-    \end{center}
-    \makeatletter
-    \@starttoc{toc}
-    \makeatother
+    \tableofcontents
+    %\begin{center}
+    %  {\Large \textbf{Contents}}
+    %\end{center}
+    %\makeatletter
+    %\@starttoc{toc}
+    %\makeatother
     \clearpage
 
     \pagenumbering{arabic}
