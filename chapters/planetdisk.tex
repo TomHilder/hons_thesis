@@ -35,7 +35,7 @@ Indeed, the grand design spirals in M81 are thought to be the result of tidal-in
 Spiral arms similar to those found in galaxies have been observed in the disks around the stars HD~142529 \citep{christiaens2014}, MWC~758 \citep{benisty2015}, Elias~27 \citep{perez2016,huang2018}, IM~Lupi \citep{avenhaus2018,huang2018}, WaOph~6 \citep{huang2018}, HD~163296 \citep{calcino2022}, TW~Hya \citep{teague2022} and others \citep[and references therin]{dong2018}.
 Figure~\ref{fig:mwc758} shows the double-armed spiral of MWC~758 in scattered light.
 The origin of most of these spirals is still unknown \citep[e.g.][]{zhang2018}.
-Of particular interest to us here are kinematic detections of planets located inside dust gaps \citep{pinte2018a,pinte2019,pinte2020,teague2021,teague2022}, since they are very well explained by the planet wake scenario, as we will see.
+Of particular interest to us here are kinematic detections of planets located inside dust gaps \citep{pinte2018a,pinte2019,pinte2020,teague2021,teague2022}, since they are well explained by the planet wake scenario, as we will see.
 
 \begin{figure}
     \centering
@@ -88,7 +88,7 @@ If the trailing spiral arms seen in astrophysical disks are steady-state solutio
 \citet{lynden-bell1967} followed this argument to prove the \textit{anti-spiral} theorem, which states that if trailing spirals constitute a steady-state solution to time-reversible equations, then there necessarily exists an equivalent leading spiral solution.
 Thus the apparent ubiquity of trailing spirals in nature tells us that either the governing physics is not time-reversible, or the spirals are not true steady-state solutions.
 In the latter case spiral structure may be the result of a recent disturbance, or may be continuously regenerated for example by period tidal forcing.
-This mimics the failing of the Lin-Shu hypothesis for galaxies, where spiral structure turned out to be the response of the disk to disturbances.
+This mimics the failing of the Lin-Shu hypothesis for galaxies, where spiral structure turned out to be the response of the disk to disturbances \citep{julian1966}.
 In Section~\ref{sec:planet_forcing} we will see that the perturbations driven periodically by a gravitating body embedded in a circumstellar disk result in a trailing spiral structure.
 
 \section{The Linear Disk Response}
@@ -149,7 +149,7 @@ Substituting \eqref{eq:pertsig}-\eqref{eq:pertu} into Equations \eqref{eq:mom_eq
     \partial_t \delta v + \Omega \partial_\phi \delta v - 2 B \delta u &= - \frac{1}{r} \partial_\phi \left( \delta \Phi + \delta h  \right), \label{eq:mom_v_lin}
 \end{align}
 where we have also substituted $v_0=\Omega r$ and the second Oort constant $B = -r \partial_r \Omega / 2 -\Omega$, which is related to the epicyclic frequency as $\kappa^2 = -4 B \Omega$. 
-The linearised equation of continuity is obtained similarly from \eqref{eq:cont_2d}
+The linearised equation of continuity is obtained similarly from Equation~\eqref{eq:cont_2d}
 \begin{align}
     \partial_t \delta \Sigma + \frac{1}{r} \partial_r \left( r \Sigma_0 \delta u  \right) + \frac{\Sigma_0}{r} \partial_\phi \delta v + \Omega \partial_\phi \delta \Sigma. \label{eq:cont_lin}
 \end{align}
@@ -206,7 +206,7 @@ Substituting Equation~\eqref{eq:pitchangle} gives
     \frac{\lambda_r}{r} = \frac{2 \pi}{|rk|} =  \frac{2 \pi \tan \alpha}{m},
 \end{align}
 and so an equivalent condition for the tight-winding approximation is that $|rk| \gg 2 \pi$. 
-This equivalency however does not hold for very large $m$ since the right-hand side above can then approach zero regardless of $\alpha$, and is also invalid for $m = 0$ ie. purely radial perturbations.
+This equivalency however does not hold for very large $m$ since the right-hand side above can then approach zero regardless of $\alpha$, and is also invalid for $m = 0$ i.e. purely radial perturbations.
 
 \subsection{Perturbed potential under WKB}
 
@@ -353,7 +353,7 @@ Note that we will also ignore the contribution of $\delta \phi$ to $\Phi_{\rm p}
 \begin{figure}
     \centering
     \includegraphics[width = 0.95\textwidth]{figures/planet_components.pdf}
-    \caption{The first 9 Fourier components of the planet potential $\Phi_m(r,\phi) = V_m(r) \cos (m \phi)$, where the star is located at $(x,y) = (0,0)$ and the planet at $(1,0)$. The units are dimensionless such that $G=M_{\rm p}=1$. The Laplace coefficients $b_{1/2}^m$ were calculated using the \textsc{Python} package \textsc{PyLaplace}\protect\footnotemark}
+    \caption{The first 9 Fourier components of the planet potential $\Phi_m(r,\phi) = V_m(r) \cos (m \phi)$, where the star is located at $(x,y) = (0,0)$ and the planet at $(1,0)$. The units are dimensionless such that $G=M_{\rm p}=1$. The Laplace coefficients $b_{1/2}^m$ were calculated using the \textsc{Python} package \textsc{PyLaplace}\protect\footnotemark.}
     \label{fig:planet_fourier}
 \end{figure}
 
@@ -451,7 +451,7 @@ Assuming Keplerian rotation such that $\kappa=\Omega=\Omega_{\rm K}$, we can fin
     k^2 &= \frac{m^2 \left( \Omega - \Omega_{\rm p} \right)^2 - \kappa^2}{c^2}, \\
     &= \frac{m^2 \Omega_{\rm K}^2}{c^2} \frac{1}{r_{\rm p}^3} \left[ r^{3/2} - \left( r_{\rm L}^+ \right)^{3/2} \right] \left[ r^{3/2} - \left( r_{\rm L}^- \right)^{3/2} \right].
 \end{align}
-The tidal forcing of the planet results in density waves launched at the Lindblad resonances, with those launched at $r_{\rm L}^-$ and $r_{\rm L}^+$ propagating inwards and outwards through the disk respectively \citep{goldreich1978,goldreich1979}.
+The tidal forcing of the planet results in density waves launched at the Lindblad resonances, with those launched at $r_{\rm L}^-$ and $r_{\rm L}^+$ propagating inwards and outwards through the disk respectively \citep{goldreich1979,goldreich1980}.
 Figure~\ref{fig:wakes_m3} shows the shape of the $m=3$ spiral waves generated at the $r_{\rm L}^\pm (m=3)$ Lindblad resonances as they propagate away from the planet.
 The shape of these spirals is calculated as follows.
 \begin{figure}
@@ -586,7 +586,7 @@ Above we stated that nearby the planet the disturbance is weak enough that linea
 This certainly seems counter-intuitive at first glance, should the disturbance not be largest in the direct vicinity of the planet?
 This is explained by the fact that a stationary perturber cannot excite density waves in a subsonic flow \citep{landau1987}.
 Thus no waves are generated within some characteristic distance from the planet, an effect known as the \textit{torque cut-off} \citep{goldreich1980}.
-In a Keplerian disk this distance is $2H_{\rm p}/3$ (see equation \ref{eq:mach1_len}).
+In a Keplerian disk this distance is $2H_{\rm p}/3$ (see Equation~\ref{eq:mach1_len}).
 The Lindblad resonances within this region, where $m$ is large, are suppressed and therefore contribute minimally to the torque.
 In addition the resonances with very low $m$ are not effectively excited due to their distance from the planet.
 Indeed the dominant mode is of order $(H_{\rm p} / r_{\rm p})^{-1}$, as mentioned in Section~\ref{sec:planetwake}.
@@ -895,7 +895,7 @@ The opening criterion is given by \citep{kanagawa2015a}
 Hydrodynamical simulations have confirmed the ability of sub-thermal mass planets to open gaps \citep{duffell2013}.
 
 Finally, gap-opening occurs not only in the gas component of disks, but also the dust component.
-Dust gaps are actually far more pervasive observationally \citep[e.g.][]{almapartnership2015,andrews2016,isella2016,andrews2018,huang2018b}, since the gas structure of a disk is less straightforward to probe \citep{miotello2022}.
+Dust gaps are actually far more pervasive observationally \citep[e.g.][]{almapartnership2015,andrews2016,isella2016,andrews2018,huang2018b}, since the gas structure of a disk is less straightforward to probe \citep[see review by][]{miotello2022}.
 Dust gaps can be created through the mechanisms already discussed, since the grains will migrate to the pressure maxima induced at the edges of the gas gap \citep{paardekooper2004}.
 The large and weakly-coupled grains become trapped at these maxima.
 Smaller grains couple to the gas strongly and so flow with it into the vicinity of the planet before being accreted \citep{paardekooper2006,fouchet2007}.
