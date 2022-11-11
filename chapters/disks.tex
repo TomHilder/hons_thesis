@@ -1,9 +1,12 @@
 Before discussing the ways in which an embedded planet disturbs its host disk, we will first briefly outline physics underpinning accretion disks.
 This will be used to determine the structure of protoplanetary disks from a theoretical point of view.
-This will then be supplemented by a discussion of disk properties determined from observational studies, and of how these studies supplement and constrain the theoretical ideas.
+This will then be supplemented by a discussion of disk properties determined from observational studies, and of how these studies supplement and
+constrain the theoretical ideas.
 
-\section{Accretion Disk Physics}
+\section{Accretion Disks}
 
+After formation, young stars continue to grow in mass by accreting material from the inner edge of their disk.
+Protoplanetary disks are therefore also part of a larger class of astrophysical disks known as \textit{accretion disks}.
 The angular velocity $\Omega$ of a test particle orbiting in a Newtonian point mass potential is given by
 \begin{align}
     \Omega = \Omega_{\rm K} \equiv \sqrt{\frac{G M_\star}{r^3}}, \label{eq:point_pot}
@@ -102,7 +105,7 @@ Equation \ref{eq:vertical_hydro_eq} is solved by
 \end{align}
 where $\rho_0(r)$ is the density in the mid-plane at $z=0$, and we define the disk \textit{scale height}
 \begin{align}
-    H \equiv\frac{c}{\Omega_{\rm K}}.
+    H \equiv\frac{c}{\Omega_{\rm K}}. \label{eq:scale_height}
 \end{align}
 Equation \ref{eq:vertical_rho} expresses that the vertical density structure is essentially Gaussian, with a standard deviation given by the scale height $H$.
 We can also find the relationship between $\Sigma$ and $\rho$ for this structure by integrating equation \ref{eq:vertical_rho} over all $z$, giving
@@ -194,7 +197,6 @@ If we take $q=1/4$ as in section \ref{sec:disk_flaring}, then $\beta=1$ \citep{c
 The exponentially tapered power law picture for the surface density profile \ref{eq:exp_taper_dens}, combined with the vertically Gaussian density structure \ref{eq:vertical_rho}, provide the typical parameterisation used to fit the density structure of observed disks \citep{andrews2011,zhang2021}.
 The high-resolution MAPS survey found remarkably consistent best fitting parameters of $\beta=1$ and $\gamma=0.2$, with variation of only $\simeq20$\% and $\simeq10$\% respectively across the 5 disks in the sample.
 
-
 \section{Observed Properties}
 
 \subsection{Components}
@@ -250,10 +252,10 @@ Measurements of $M_\mathrm{g}$ via CO are unfortunately complicated by uncertain
 
 These measurements are crucial to understanding planet formation as they constrain the possible bodies that may be created from a disk as it continues to evolve.
 The \textit{Minimum Mass Solar Nebula} (MMSN) is the hypothesised disk that the solar system formed from, with just enough mass to create each of the planets \citep{weidenschilling1977b,hayashi1981}.
-Modern measurements place the MMSN at $M_\mathrm{s} \gtrsim 40 \, M_\oplus$, $M_\mathrm{g} \gtrsim 3000 \, M_\oplus$, where $M_\oplus$ is an Earth mass \citep[see review by][]{andrews2020}.
+Modern measurements place the MMSN at $M_\mathrm{s} \gtrsim 40 \, \mathrm{M_\oplus}$ (where $\mathrm{M_\oplus}$ is an Earth mass), $M_\mathrm{g} \gtrsim 3000 \, \mathrm{M_\oplus}$, where $\mathrm{M_\oplus}$ is an Earth mass \citep[see review by][]{andrews2020}.
 If planets are formed from protoplanetary disks then the mass of said disks should be comparable to, or larger than, the MMSN.
 Figure \ref{fig:disk_masses} shows the distribution of dust mass measurements for disks in the regions of Ophiuchus, Lupus, Upper Scorpius, Chamaeleon I, $\sigma$ Ori, IC 348 and Taurus \citep[and references therin]{cieza2019}, compared with the MMSN.
-Even in the youngest regions of the sample, fewer than $20\%$ of the disks contain a dust mass greater than the MMSN value of $M_\mathrm{s}\gtrsim 40 \, M_\oplus$.
+Even in the youngest regions of the sample, fewer than $20\%$ of the disks contain a dust mass greater than the MMSN value of $M_\mathrm{s}\gtrsim 40 \, \mathrm{M_\oplus}$.
 This result does not seem to be compatible with the known population of exoplanets, a conundrum known as the \textit{missing mass problem} \citep[e.g.]{najita2014}.
 
 One possible resolution to the missing mass problem is that protoplanetary disks are planet-hosting disks rather than planet-forming disks.

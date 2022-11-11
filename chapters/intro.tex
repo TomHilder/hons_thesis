@@ -1,99 +1,80 @@
 \section{Overview}
 
 This thesis is concerned with solving one of the principal problems in the field of planet formation, how can we detect newly-formed planets, and measure their properties?
-Answering this question is a vital step in constraining the various theoretical models of the planet formation process.
+Answering these question is a vital step in constraining the various theoretical models of the planet formation process.
 
-\begin{itemize}
-    \item Explain briefly star and disk formation. Define circumstellar disk and protoplanetary disk.
-    \item Explain briefly the properties of the disk. Define accretion disk.
-    \item Explain briefly models of planet formation, define protoplanet.
-\end{itemize}
+Stars and planets are born inside vast, interstellar clouds of gas and dust.
+Sometimes called ``stellar nurseries'', these regions make up less than one percent of the interstellar volume of the Milky Way galaxy \citep{ferriere2001}.
+Unlike the majority of the interstellar medium, which is ionised, the \textit{molecular clouds} of star-forming regions are composed primarily of gaseous H$_2$.
+The typical size and mass range of these clouds are $2$ -- $15$ $\rm{pc}$ and $10^3$ -- $10^5$ $\rm{M_\odot}$ respectively \citep{cambresy1999}, where $\rm{M_\odot}$ is a solar mass.
+Stars form as a result of the collapse of the cloud, either through gravitational instabilities \citep{jeans1902} or turbulent flows \citep{larson1981}.
 
-%Important clues for how planets are formed around young stars can be found in the structure of our own Solar System, namely in the difference between the mass and angular momentum distributions. 
-%The Sun contains $99.86 \%$ of the total mass in the Solar System, while the orbits of the planets contain $98.5 \%$ of the total angular momentum \citep[eg.][]{woolfson2000}.
-%This segregation proved to be a significant challenge for early models of the formation of the Solar System, eventually culminating in the idea that the planets must have formed from a vast disk of gas and dust surrounding the Sun \citep[see review by][]{edgeworth1949}.
+The Solar System contains clues for how planets are subsequently formed around newborn stars.
+The mass and angular momentum of the Sun and planets are segregated, with the Sun containing $99.86 \%$ of the total mass, and the orbits of the planets accounting for $98.5 \%$ of the total angular momentum \citep[e.g.][]{woolfson2000}.
+Accounting for this proved to be a significant challenge for early models of the Solar System's formation, eventually culminating in the idea that the planets must have formed from a disk of gas and dust surrounding the Sun \citep[see review by][]{edgeworth1949}.
+Such disks are known as \textit{circumstellar disks}, and they are a natural consequence of the star formation process; conservation of angular momentum prevents complete collapse, and instead a disk is formed \citep{terebey1984,shu1987}.
+The outward transport of angular momentum and inward transport of mass is then facilitated by stresses and instabilities that operate within the disk \citep{lynden-bell1974,pringle1981}.
+The disks found around young stars are thought to be the sites of planet formation, and are therefore known as \textit{protoplanetary disks}.
 
-%The birthplace of stars and planets are large interstellar clouds composed primarily of hydrogen gas, known as molecular clouds \citep[e.g.][]{larson2003}, which have typical sizes of $2$ -- $15$ $\rm{pc}$ and masses of $10^3$ -- $10^5$ $\rm{M_\odot}$ \citep{cambresy1999}. 
-%Before observational advances made in the past 30-40 years, our understanding of how stars and planets form in these clouds was essentially as follows.
-%The molecular cloud gradually collapses under its own gravity, resulting in the formation of overdense clumps \citep{norman1980}.
-%Continued collapse causes these dense regions of the cloud to become unstable to their self-gravity, leading to the fragmentation of the cloud and the formation of stellar cores \citep{jeans1902,larson1969,penston1969,shu1977}. 
-%During the collapse, conservation of angular momentum results in the formation of an accretion disk around the protostar \citep{terebey1984,shu1987}.
-%Centripetal acceleration resists further collapse against gravity in the disk plane, while collapse in the perpendicular direction proceeds basically unimpeded resulting in vertical hydrostatic equilibrium \citep{pringle1981}.
-%The resultant circumstellar disk, known at this stage of evolution as a protoplanetary disk, is then the site of planet formation.
+Protoplanetary disks have lifetimes on the order of a few Myr before they eventually disperse \citep[see review by][]{ercolano2017}.
+Planets are formed some time during this period, although the efficiency of planet formation is not well known \citep[see review by][]{helled2014}.
+\textit{Planetesimals} are formed in the disk through the repeated collision of dust and ice particles, resulting in the eventual formation of larger bodies.
+Terrestrial planets, and possibly the cores of gas and ice giants, are then thought to form through the subsequent accretion of planetesimals and the surrounding gas and dust \citep[e.g.][]{johansen2014}.
+Two competing models hope to explain giant planet formation, \textit{core accretion} \citep[CA;][]{lissauer1993,pollack1996,safronov1972} and \textit{gravitational instability} \citep[GI;][]{kuiper1951,cameron1978}.
+CA provides a good explanation for the observed composition of the planets in the Solar System, as well as the known correlation between stellar metallicity and giant planet occurrence.
+Notably, the formation timescale in this scenario is comparable to the lifetime of the disk.
+On the other hand, GI allows planets to form essentially immediately, while the star is still embedded in its envelope.
+However, it also faces challenges explaining the observed composition and correlations previously mentioned \citep[see review by][]{helled2014}.
+Therefore, detecting and measuring the properties of newly formed planets while they are still in their natal disks will provide key constraints on these models, and provide insights into the physics driving planet formation.
 
-\section{Protoplanet Detection}
-
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width = 0.98\textwidth]{figures/exoplanet.pdf}
-    \caption{}
-    %Planet-mass and semi-major axis plotted for all confirmed exoplanets and candidate protoplanets. Grey dots represent exoplanets detected through traditional means and the black squares represent the planets of the solar system. The coloured symbols all represent candidate planets detected through disk substructures, green spirals for spiral structures and blue dots for ring structures, or through kinematic signatures shown by the red lightning symbols. Plotted also are the regions of parameter space that each exoplanet detection method may probe \citep{diskdynamicscollaboration2020}.
-    \label{fig:exoplanets}
-\end{figure}
-
-%The first exoplanet was discovered in 1995 and was unlike anything found in the solar system.
-%51 Pegasi b is a ``hot Jupiter'', with a mass around half that of Jupiter, but completing its orbit in only 4 days.
-%This places it nearly 20 times closer to its star than the Sun is to the Earth \citep{mayor1995}. 
-%In the nearly 30 years since that landmark discovery the number of confirmed exoplanets has skyrocketed to 5044 \citep{nasa2022}.
-%The mass and orbital radius distribution of these planets is shown in Figure \ref{fig:exoplanets}.
-%Despite this success, the number of uncontroversially confirmed planets found still in the process of forming, called protoplanets, sits at an unimpressive total of two, both around PDS 70 \citep{keppler2018,haffert2019}, and observed through direct imaging in the near-infrared.
-%This lack of protoplanet detections is primarily because the most successful methods of exoplanet detection are unviable in the environment found around stars with ages up to a few Myr \citep{luhman2010}.
-%This environment consists of a vast disk of gas, primarily $\mathrm{H_2}$, and dust, surrounding the star \citep[eg.][]{armitage2010}.
-%Such disks are known as circumstellar disks, and those found around young stars are called protoplanetary disks.
-%
-%By far the most common exoplanet search methods are the transit method and radial velocity methods, with 3864 and 930 confirmed detections respectively.
-%The transit method, which relies on periodic dimming of the star's light from an obstructing planet, is hindered by the presence of optically thick material in the disk plane (although one has been found in the optically thin dust disk surrounding K2-33, see \citet{david2016}).
-%Moreover, radial velocity searches are made difficult by the high starspot and accretion activity of young stars, which makes disentangling possible signals of planets present in spectra very challenging \citep{desort2007}.
-%While there are three candidate detections for exoplanets in orbit around around V830 Tau \citep{donati2015} CI Tau \citep{johns-krull2016} and TAP 26 \citep{yu2017}, both TAP 26 and V830 Tau are weak-line T Tauri stars whose disks have already dissipated, and the V830 Tau and CI Tau detections are disputed \citep{damasso2020,donati2020}.
-
-%Detecting these hypothesised planets directly is a formidable task.
-%The most successful exoplanet detection methods by number of detections, the radial velocity and transit methods, are both unviable due to the presence of disk material.
-%Direct imaging on the other hand has seen some success, with two planets detected in the disk around PDS 70 \citep{keppler2018,haffert2019}.
-%Additional detections have been claimed in the disks of HD 100546 \citep{quanz2013}, HD 169242 \citep{biller2014}, LkCa15 \citep{sallum2015} and MWC 758 \citep{reggiani2018}.
-%However, each of these is disputed in the literature \citep{rameau2017,ligi2018,currie2019}.
-%The main difficulty is the possible confusion of disk material with a planet, since processing techniques can create spurious point sources from filamentary structures like arcs and spirals \citep[eg.][]{rameau2017}.
-%Recently a detection was claimed in the disk around AB Aurigae through direct imaging \citep{currie2022}.
-%Figure \ref{fig:ABAur} shows an image of AB Aurigae taken with the CHARIS integral field spectrograph on the Subaru telescope.
-%The green circle indicates the location of the proposed planet, clearly embedded in a large spiral structure.
-%This and other proposed detections raise the question for images of disks: when is a clump a disk structure, and when is it a planet?
-
-\section{Disk Substructures}
+\subsection{Protoplanet Detection}
 
 \begin{figure}
     \centering
-    \includegraphics[width = 0.9\textwidth]{figures/DSHARP.pdf}
+    \includegraphics[width = 0.98\textwidth]{figures/exoplanet.pdf}
+    \caption{Distribution of known exoplanet mass and orbital radii, coloured by detection method. Data taken from \textit{The Nasa Exoplanet Archive} \citep{nasa2022}.}
+    \label{fig:exoplanets}
+\end{figure}
+
+The first planet outside our own Solar System, called an \textit{exoplanet}, was discovered in 1995 by Michael Mayor and graduate student Didier Queloz.
+51 Pegasi b is a ``hot Jupiter'', with a mass of $\sim 0.5 \, \mathrm{M_J}$ and orbital period of $\sim 4$ days (where $\mathrm{M_J}$ is a Jupiter mass).
+This places it nearly 20 times closer to its star, than the Earth is to the Sun \citep{mayor1995}.
+In the nearly 30 years since that landmark discovery the number of confirmed exoplanets has skyrocketed to 5197 as of the time of writing \citep{nasa2022}.
+The mass and orbital radius distribution of these planets is shown in Figure \ref{fig:exoplanets}.
+Primarily, these detections have come from the transit and radial velocity methods.
+The transit method relies on measuring the period dimming of star light as the planet passes between the star and observer, while the radial velocity method measures the doppler-shift of emission lines due to the motion of the star around the system barycentre.
+Here, we are interested in the subset of exoplanets that have been detected while still embedded in their protoplanetary disks, so-called protoplanets.
+Unfortunately, despite the other successes of exoplanet surveys, the number of uncontroversially confirmed protoplanets sits at an unimpressive total of two.
+These are PDS~70 b and c, observed through direct imaging in the near-infrared \citep{keppler2018,haffert2019}.
+
+Detecting protoplanets is a formidable task, owing to their environment.
+The transit method is essentially unviable due to the presence of optically thick disk material in the system.
+On the other hand, radial velocity searches are hampered by the high starspot and accretion activity of young stars, which complicates disentangling planet signals present in spectra \citep{desort2007}.
+Furthermore, protoplanetary disks can have radii of hundreds of au \citep[e.g.][]{tripathi2017}, and so many protoplanets may sit outside the region of parameter space detectable by this methods anyway (see Figure~\ref{fig:exoplanets}).
+Another popular technique, direct imaging (DI), is able to detect planets at these separations, but is not sensitive to planet masses under a few $\mathrm{M_J}$ \citep{jorquera2021}.
+However DI has still seen some successes, the two aforementioned confirmed planets in the disk of PDS~70, as well as a host of further claimed detections in the disks of HD 100546 \citep{quanz2013}, HD 169242 \citep{biller2014}, LkCa15 \citep{sallum2015}, MWC 758 \citep{reggiani2018} and AB Aurigae \citep{currie2022}. Each of these are disputed in the literature \citep{rameau2017,ligi2018,currie2019} with the exception of PDS~70 b and c\footnote{AB Aurigae b is also currently not disputed in the literature but as of this writing the claimed detection is only 8 months old.}.
+The main difficulty with DI the possible confusion of disk material with a planet, since processing techniques can create spurious point sources from filamentary substructures like arcs and spirals \citep[eg.][]{rameau2017}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.7\textwidth]{figures/DSHARP.pdf}
     \caption{Continuum images taken at 1.5 mm of the 20 protoplanetary disks in the DSHARP program. The colour scale has been stretched to increase the contrast. \citep{andrews2018}. Substructures are evident in each disk. Notable examples include: the thin and wide rings in AS 209 and HD 163296, spiral arms in IM Lup and Elias 2-27, and a bright arc in HD 143006.}
     \label{fig:DSHARP}
 \end{figure}
 
-%The abundant and diverse collection of substructures found in high resolution images of protoplanetary disks constitutes further evidence for early planet formation.
-%Figure \ref{fig:DSHARP} shows continuum images taken as part of the Disk Substructures at High Angular Resolution Project (DSHARP) \citep{andrews2018}.
-%All 20 of the disks exhibit some sort of substructure, including bright and dark rings, spiral arms and bright arcs.
-%As we will discuss in section \ref{sec:interactions}, each of these features can be explained as arising from dynamical interactions between the disk and embedded protoplanets.
-%
-%Additional substructures in disks may be due to multiple star system interactions.
-%It is clear that many stars form in binaries, with a disk around either each individual star or both together, with the latter known as a circumbinary disk \citep{white2001,akeson2014,akeson2019}.
-%Observations show that many circumbinary disks have dark cavities where there is no emission, with the inner disk region presumably cleared of material from tidal interactions between the stars \citep{andrews2011}.
-%Furthermore, disks have been observed containing misaligned inner disks, bridges and streams of material, all of which may be indicative of close encounters between stars and their disks \citep{dai2015,takami2018,rodriguez2018,cuello2019}.
-%
-%The evidence clearly does not support the picture of star and planet formation presented in sections \ref{sec:siteplanet} and \ref{sec:acc_disks}, where stars form individually, each star forms a disk, and later planets form in this disk. 
-%Instead, it seems more likely that the process is significantly less ordered. 
-%The modern understanding of star formation supports this picture.
-%Many stars form together from local overdensities in the molecular cloud, caused by both gravitational contraction and turbulent flows \citep{larson1981,lada2003}.
-%This environment is dynamic and chaotic, with many interactions between the newly formed stars. These interactions determine the properties of the resultant population \citep{bate2003,bate2012}.
-%The disks that form within this environment are then subject to the same interactions.
-%Figure \ref{fig:bate_disk_pop} shows 8 examples of disks formed in a large 3D hydrodynamical simulation with radiation, performed as part of a protostellar disk synthesis study by \citet{bate2018}.
-%They find a diverse range of young disks; circumbinary disks, bridges between disks, misaligned disks, and disks with large spiral arms.
-%If planets do form early and are already present in the protoplanetary stage, they must then begin forming soon after the disk has formed and the star is still embedded in its envelope as discussed in section \ref{sec:substructure}.
-%
-%Verifying these ideas relies on confirming that interactions between the disk and protoplanets are responsible for observed disk substructures, as alternative driving mechanisms have been suggested that do not involve planets.
-%These include (but are not limited to): snow-lines \citep{kretke2007}, self-induced dust traps \citep{gonzalez2017} and the magnerotational instability \citep{simon2014}.
+\subsection{Disk Substructures}
+
+The difficulty in looking for embedded planets directly motivates studying the interactions between embedded planets and their host disk, in hopes of observationally identifying signatures induced by the planet.
+The foundations of our theoretical models for the interaction between a disk and an embedded gravitating body were developed in the late 70s by Peter Goldreich and Scott Tremaine, who were hoping to understand how Saturn's moons induce the spiral and concentric ring substructures within its rings \citep{goldreich1980}.
+With the advent of the Atacama Large Millimetre Array (ALMA), we have begun to resolve the surfaces of protoplanetary disks at high resolution, and there we find evidence of the same kinds of interactions as those between Saturn's rings and moons.
+Figure \ref{fig:DSHARP} shows continuum observations of 20 disks taken as part of the Disk Substructures at High Angular Resolution Project (DSHARP) \citep{andrews2018}.
+All of the disks imaged show some sort of substructure, including bright and dark rings, spiral arms and bright arcs.
+While alternative mechanisms have been suggested to drive such structures \citep[e.g.][]{kretke2007,simon2014,gonzalez2017}, the most popular explanation is that they are driven by embedded planets \citep{dipierro2015,dong2015b,bae2017,fedele2017,fedele2018,zhang2018}.
+The observations provide evidence for early planet formation \citep{dipierro2015}, but they are far from a smoking gun due to the numerous proposed mechanisms that may create substructures in the absence of planets.
+This thesis is concerned with disentangling these explanations, and confirming the presence of planets by instead looking for the characteristic way in which they perturb the velocity field of the disk.
+That is, through observations of the disk \textit{kinematics}.
 
 \section{Kinematic Observations}
-
-\note{define ALMA, DSHARP and MAPS please. Also Jupiter mass, solar mass, Earth mass, moment maps, peak velocity, peak intensity.}
 
 \begin{figure}
     \centering
@@ -102,30 +83,79 @@ Answering this question is a vital step in constraining the various theoretical 
     \label{fig:channels}
 \end{figure}
 
+The we may probe the kinematics of a disk by measuring the Doppler shift of spectral line emission from different molecules and their isotopologues\footnote{Isotopologues are molecules that are different only by the isotopes of their atomic components.}.
+Such data come in the form of channel maps, which make up a data cube that has two spatial dimensions and one frequency dimension.
+As it is the Doppler-shift of the line that is measured, the frequency dimension is equivalent to a velocity dimension.
+Thus, taking a velocity slice of the cube yields an image of all the material in the disk moving with the same line-of-sight velocity relative to the observer.
+The frequency dimension is equivalent to velocity, and so in each frequency slice we find an image of all the material with the same line-of-sight velocity.
+Figure \ref{fig:channels} shows velocity channels of $^{12}$CO $J=2-1$ rotational line emission from HD 163296, imaged with ALMA \citep{andrews2018}.
+The observations show the expected butterfly shape that is characteristic of Keplerian rotation \citep{degregorio-monsalvo2013}.
+Note also that since $^{12}$CO line emission occurs at multiple scale heights, there is a top and bottom surface in each image.
+Since velocity channels probe the material moving at a certain line-of-sight velocity, the maximum emission in each channel should trace an iso-velocity contour.
+These iso-velocity contours are the lines of constant line-of-sight velocity, and they should be continuous and smoothly varying for Keplerian rotation.
+
 \begin{figure}
     \centering
     \includegraphics[width = 0.98\textwidth]{figures/HD163296_channels.pdf}
-    \caption{A close view of 12 km/s velocity channel of HD 163296 \citep{andrews2018}, highlighting the velocity kink found by \citet{pinte2018a} Comparing the middle and right panels, we see how the line of maximum emission deviates from the iso-velocity contour expected from pure Keplerian rotation. \citep{diskdynamicscollaboration2020}.}
+    \caption{A close view of the $12 \,\mathrm{km/s}$ velocity channel of HD 163296 \citep{andrews2018}, highlighting the velocity kink found by \citet{pinte2018a} Comparing the middle and right panels, we see how the line of maximum emission deviates from the iso-velocity contour expected from pure Keplerian rotation. \citep{diskdynamicscollaboration2020}.}
     \label{fig:velocity_kink}
 \end{figure}
 
-%Kinematic data from spectral line emission comes in the form of channel maps. 
-%These are data cubes, with two spatial dimensions corresponding to the sky plane, and one frequency dimension.
-%The frequency dimension is equivalent to velocity, and so in each frequency slice we find an image of all the material with the same line-of-sight velocity.
-%Figure \ref{fig:channels} shows velocity channels of $^{12}$CO emission from HD 163296, imaged with ALMA \citep{andrews2018}.
-%The observations show the expected butterfly shape that is characteristic of Keplerian rotation \citep{degregorio-monsalvo2013}.
-%Note also that since $^{12}$CO line emission occurs at multiple scale heights, there is a top and bottom surface in each image.
+Figure~\ref{fig:velocity_kink} shows a zoomed in view of one of the channels in HD~163296, highlighting the localised deviation from Keplerian rotation first found by \citet{pinte2018a}.
+Such deviations are called ``velocity kinks'', and \citet{pinte2018a} found that it matched the expected signature that should be produced by the gravitational disturbance of an embedded planet \citep{perez2015}.
+Through hydrodynamical modelling and radiation transfer simulations, \citet{pinte2018a} showed that the density waves generated by such a planet can accurately recreate the observed kink.
+A comparison of their simulations with the observations is shown in Figure~\ref{fig:pinte2018_hydro}.
+A similar velocity kinks was also found in the disk of HD~97048, and again detailed simulations show that a planet of a few $\mathrm{M_J}$ is capable of recreating the observations \citep{pinte2019}.
+A follow up survey of the disks in the DSHARP sample found kinks in 8 out of 18 disks \citep{pinte2020}.
+Importantly, in the case of all the aforementioned disks, all of the candidate protoplanets lie within an observed dust gap or at the end of a spiral arm detected in continuum emission \citep{huang2018b,huang2018,pinte2020}.
 
-%Since velocity channels probe the material moving at a certain line-of-sight velocity, the maximum emission in each channel should trace an iso-velocity contour.
-%These iso-velocity contours are the lines of constant line-of-sight velocity, and they should be continuous and smoothly varying for Keplerian rotation.
-%\citet{pinte2018a} found deviations from this smooth iso-velocity contour in ALMA data of the disk around HD 163296 \citep{degregorio-monsalvo2013,isella2016}, as pictured in Figure \ref{fig:velocity_kink}.
-%This deviation has been dubbed a ``velocity kink'', and the authors found that it matched the expected signature that would be induced by a massive perturbing body as found by \citet{perez2015}.
-%Numerical modelling showed that an embedded protoplanet of $3 - 5 \, M_\mathrm{J}$ (where $M_\mathrm{J}$ is a Jupiter mass) is able to accurately reproduce the observed channels. %, as shown in Figure \ref{fig:synthetic_channels} \citep{pinte2018a}.
-%This is picture is supported by \citet{teague2018} who traced the gas pressure in the disk and found a best fit compatible with that found by \citep{pinte2018a}.
-%\citet{pinte2019} also detected a velocity kink in CO observations of HD 97048, and used similar modelling to show that a planet of a few $M_\mathrm{J}$ is able to explain the observations.
-%Importantly, the models for the embedded planets in both the HD 163296 and HD 97048 disks place the planet \textit{inside} observed dust gaps, providing strong evidence that the gaps are in fact carved by planets.
-%Tentative detections of kinematic signatures have also been found in CI Tau \citep{rosotti2021} and 8 of 18 disks observed in the DSHARP program \citep{andrews2018,pinte2020}.
-%The detections in the DSHARP disks all correspond to locations in a dust gap.
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.98\textwidth]{figures/pinte_2018_sims_channels.pdf}
+    \caption{Comparison of $^{12}$CO ALMA observations (top row) with the synthetic channel maps created from 3D hydrodynamical simulations of planet-disk interactions by \citet{pinte2018a}. The synthetic images were convolved with a Gaussian to match the beam size of the observations.}
+    \label{fig:pinte2018_hydro}
+\end{figure}
 
-%Another piece of kinematic evidence for protoplanets is the ``doppler-flip'' that occurs across the planet location, due to the change in sign in the velocity perturbation \citep{perez2018a}. 
-%\citet{casassus2019} and \citet{perez2020} found evidence for a doppler-flip in the disk of HD 100546, although they conclude that the induced deviations may be too large to be explained by a planet.
+Further kinematic evidence for planets has been found through using the channels maps to calculate the velocity field of the disk, and then subtracting the best-fitting background rotation to generate residuals.
+\citet{casassus2019} and \citet{perez2020} used this technique to identify a ``Doppler flip'' in the disk of HD~100546, where the velocity abruptly changes sign over the planet location.
+Furthermore, the high angular resolution gas observations taken as part of the Molecules with ALMA at Planet-forming Scales (MAPS) survey have allowed for detailed mapping of the kinematics disks around HD~163296 and MWC~480, with multiple spiral and arc structures detected \citep{teague2021}.
+A similar analysis was performed with ALMA observations of TW~Hya, with the authors claiming the detection of one large, coherent spiral structure \citep{teague2022}.
+
+Such kinematic observations provide support for the planet-disk interaction picture for disk substructures. Furthermore, they allow for the constraint of the planet mass through modelling of such interactions, as shown by \citet{pinte2018a,pinte2019}.
+However, the computational cost of full 3D hydrodynamical simulations prohibits their use as part of a robust fitting procedure.
+While statistical tools have recently shown promise in detecting and constraining planets through kinematics \citep{izquierdo2021,izquierdo2022}, it would be valuable to do this through the physics of the interaction.
+
+\subsection{Semi-Analytic Models}
+
+Recently, \citet{bollati2021a} developed a theoretical framework for understanding velocity kinks through the creation of semi-analytic models of the planet wake.
+This work was based on the linear theory for the density waves excited in a disk by a gravitation body \citep{goldreich1980}, as well a weakly non-linear theory for subsequent steepening into shock waves \citep{goodman2001,rafikov2002a}.
+In their view, velocity kinks are caused by these density waves perturbing the velocities of the disk, and they found that measuring the amplitude of the kinks should provide the necessary information needed to recover the planet mass.
+However, the mass obtained is in units that are very sensitive to the temperature structure of the disk, and so a robust planet mass measurement requires a tight constrain of this structure.
+They also found that velocity kinks arise due to the intersection of the planet wake and the velocity channels, and that these kinks are spread throughout the disk.
+Since at the time kinks were thought to be localised nearby the planet \citep{pinte2018a,pinte2019,pinte2020}, Bollati suggested that viscous damping may suppress the amplitude of the wave as it travels through the disk.
+
+In \citet{calcino2022}, we found that the HD~163296 is indeed host to many velocity kinks far from the proposed planet location by using high resolution data from the Molecules with ALMA at Planet-Forming Scales program \citep[MAPS;][]{oberg2021}.
+Using this, we traced the outer planet wake through the disk, directly confirming the presence of a Lindblad planet wake for the first time.
+Figure \ref{fig:wake_channel} shows how this wake gives rise to the observed velocity kinks as it passes through the velocity channel.
+This work thus showed that the wake-crossing interpretation of velocity kinks of \citet{bollati2021a} is indeed correct, and that there is no need for any damping.
+Importantly, the shape of the wake depends on the disk temperature, and so mapping the wake constrains the temperature structure of the disk, and so determines the unit for the planet mass.
+
+Taken together the work presented in \citet{bollati2021a} and \citet{calcino2022} provide the necessary ideas needed to recover a planet mass from observations of disk kinematics, by measuring both the amplitudes of velocity kinks, and the shape of the planet wake.
+This thesis builds on their work, by taking further steps towards the creation of a fitting procedure to do just this.
+
+The structure of the thesis is as follows:
+\begin{itemize}
+    \item Chapter 2 discusses the properties and structure of protoplanetary disks, from both a theoretical and observational point of view.
+    \item Chapter 3 provides a theoretical overview of the planet-disk interaction, as well as the particular ideas behind the semi-analytic models.
+    \item Chapter 4 presents our Python package for generating models of the planet wake excited by a planet embedded in a disk, and discusses our numerous improvements over the methods of \citet{bollati2021a}.
+    \item Chapter 5 presents an application of the semi-analytic models in conjunction with hydrodynamical models, to map the planet wake in kinematic observations of HD~163296.
+    \item Chapter 6 presents two further applications of the models, for kinematic planet detection in the disks of HD~169142 and IM~Lupi.
+    \item Chapter 7 presents our preliminary work on developing a fitting procedure to recover planet masses from kinematic observations using the semi-analytic models.
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.95\textwidth]{figures/labeled_channel.pdf}
+    \caption{Comparison of one of the velocity channels of HD 163296 observed as part of the MAPS program \citep{oberg2021}, with the analytic model \citep{bollati2021} of the proposed planet wake created by \citet{calcino2022}. The observed kinks on each side of the disk are well explained by the crossing of the planet wake with the channel, as in \citet{bollati2021}.}
+    \label{fig:wake_channel}
+\end{figure}

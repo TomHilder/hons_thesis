@@ -8,6 +8,7 @@
 
 % Packages
 \usepackage[T1]{fontenc} %Allows more exotic characters to be displayed properly (eg, Đ)
+%\usepackage{mathptmx}
 \usepackage{lmodern} %Makes T1 not ugly on a PDF viewer.
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -26,6 +27,7 @@
 \usepackage{enumitem}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{quotchap}
 
 \PassOptionsToPackage{hyphens}{url}
 
@@ -39,7 +41,8 @@
 \rhead[]{\leftmark}
 
  % customise hyperlinks
-\hypersetup{allbordercolors=.9 .9 .9}
+%\hypersetup{allbordercolors=.9 .9 .9}
+\hypersetup{colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 
 % custom commands
 \renewcommand{\floatpagefraction}{.8}
@@ -114,20 +117,23 @@
 
     \chapter{Introduction}
     \input{chapters/intro}
-
-    \chapter{Protoplanetary Disks}
+ 
+    \chapter{Protoplanetary Disks} \label{ch:disks}
     \input{chapters/disks}
 
-    \chapter{The Planet-Disk Interaction}
+    \chapter{The Planet-Disk Interaction} \label{ch:planetdisk}
     \input{chapters/planetdisk}
 
     \chapter{Semi-Analytic Models of Planet Wakes} \label{ch:wake_models}
     \input{chapters/wakesmodels}
 
-    \chapter{Mapping the Planet Wake in HD~163296 with Kinematics} \label{ch:wake_mapping}
-    \input{chapters/wakesmapping}
+    %\chapter{Mapping the Planet Wake in HD~163296 with Kinematics} \label{ch:wake_mapping}
+    %\input{chapters/wakesmapping}
 
-    \chapter{Quantitative Measurements of the Wake}
+    \chapter{HD~169142 and IM~Lupi: Applications of the Models} \label{ch:HD169_IMLUP}
+    \input{chapters/applications}
+
+    \chapter{Quantitative Measurements of the Wake} \label{ch:fitting}
     \input{chapters/fitting}
 
     \chapter{Conclusion}
@@ -136,7 +142,8 @@
     \appendix
     \input{chapters/appendix}
 
-    \bibliographystyle{mnras.bst}
+    %\bibliographystyle{mnras.bst}
+    \bibliographystyle{klunamed.bst}
     \bibliography{disks.bib}
 
 \end{document}
