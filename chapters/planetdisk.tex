@@ -9,7 +9,7 @@ These ideas also provide the necessary foundation that will allow us to go on to
 \begin{figure}
     \centering
     \includegraphics[width = 0.7\textwidth]{figures/M81.jpeg}
-    \caption{Long exposure image of Messier 81 taken through a 20 inch telescope by astrophotographer \citet{adler2015}, taken with LRGB filters and a Hydrogen-$\alpha$ filter that was assigned to red. Overall 20 hours of exposures were taken.}
+    \caption{Long exposure image of Messier 81 taken through a 20 inch telescope by astrophotographer Michael Adler with LRGB filters, and a Hydrogen-$\alpha$ filter that was assigned to red. Overall 20 hours of exposures were taken. Image taken from \url{https://commons.wikimedia.org/wiki/File:Bode\%27s_Galaxy.jpg}.}
     \label{fig:M81}
 \end{figure}
 
@@ -94,13 +94,14 @@ In Section~\ref{sec:planet_forcing} we will see that the perturbations driven pe
 \section{The Linear Disk Response}
 
 Before determining how the periodic forcing of the planet potential perturbs the disk, we must first determine how the disk responds to some small, generic disturbance.
-The 2D inviscid equations of momentum and continuity expressed in terms of surface density are given by \citep{landau1959}
+The 2D inviscid equations of momentum and continuity expressed in terms of surface density are given by \citep{landau1987}
 \begin{align}
     &\partial_t u + u \partial_r u + \frac{v}{r} \partial_\phi u - \frac{v^2}{r} = - \partial_r \Phi - \frac{1}{\Sigma} \partial_r P, \label{eq:mom_eq_u} \\ 
     &\partial_t v + u \partial_r v + \frac{v}{r} \partial_\phi v - \frac{uv}{r} = - \frac{1}{r} \partial_\phi \Phi - \frac{1}{r\Sigma} \partial_\phi P, \label{eq:mom_eq_v} \\
-    &\partial_t \Sigma + \frac{1}{r} \partial_r (r \Sigma u) + \frac{1}{r} \partial_\phi (\Sigma v) = 0. 
+    &\partial_t \Sigma + \frac{1}{r} \partial_r (r \Sigma u) + \frac{1}{r} \partial_\phi (\Sigma v) = 0,
     \label{eq:cont_2d}
 \end{align}
+where $u$ and $v$ are the radial and azimuthal velocity components\footnote{Later we will use the same symbols to denote perturbations, but it should be clear which we mean from context.}.
 Assuming a polytropic equation of state
 \begin{align}
     P = K \Sigma^\gamma,
@@ -352,9 +353,11 @@ Note that we will also ignore the contribution of $\delta \phi$ to $\Phi_{\rm p}
 \begin{figure}
     \centering
     \includegraphics[width = 0.95\textwidth]{figures/planet_components.pdf}
-    \caption{The first 9 Fourier components of the planet potential $\Phi_m(r,\phi) = V_m(r) \cos (m \phi)$, where the star is located at $(x,y) = (0,0)$ and the planet at $(1,0)$. The units are dimensionless such that $G=M_{\rm p}=1$. The Laplace coefficients $b_{1/2}^m$ were calculated using the \textsc{Python} package \textsc{PyLaplace} \citep{paardekooper2019a}}
+    \caption{The first 9 Fourier components of the planet potential $\Phi_m(r,\phi) = V_m(r) \cos (m \phi)$, where the star is located at $(x,y) = (0,0)$ and the planet at $(1,0)$. The units are dimensionless such that $G=M_{\rm p}=1$. The Laplace coefficients $b_{1/2}^m$ were calculated using the \textsc{Python} package \textsc{PyLaplace}\protect\footnotemark}
     \label{fig:planet_fourier}
 \end{figure}
+
+\footnotetext{\url{https://github.com/SijmeJan/pylaplace}}
 
 From Equation~\eqref{eq:fourier_planet} we find the following derivatives
 \begin{align}
@@ -581,7 +584,7 @@ The remainder of this section is dedicated to outlining the linear wake generati
 
 Above we stated that nearby the planet the disturbance is weak enough that linear theory is sufficient to describe wake generation provided the planet is not too large.
 This certainly seems counter-intuitive at first glance, should the disturbance not be largest in the direct vicinity of the planet?
-This is explained by the fact that a stationary perturber cannot excite density waves in a subsonic flow \citep{landau1959}.
+This is explained by the fact that a stationary perturber cannot excite density waves in a subsonic flow \citep{landau1987}.
 Thus no waves are generated within some characteristic distance from the planet, an effect known as the \textit{torque cut-off} \citep{goldreich1980}.
 In a Keplerian disk this distance is $2H_{\rm p}/3$ (see equation \ref{eq:mach1_len}).
 The Lindblad resonances within this region, where $m$ is large, are suppressed and therefore contribute minimally to the torque.
@@ -649,7 +652,7 @@ We are obviously interested in accounting for these aspects and so we will large
 After the wake is generated, it propagates away from the planet.
 At distances $\gg l_{\rm p}$ the contribution of the planet potential becomes negligible.
 However unlike in the shearing sheet, we must now consider the evolution of $\Sigma$ and $c$ with radius, as well as the global geometry of the disk.
-Rewriting the 2D inviscid fluid Equations \eqref{eq:mom_eq_u}-\eqref{eq:cont_2d} in a rotating frame such that the planet is stationary at $\phi=\phi_{\rm p}$, and $\phi$ is defined such that $\Omega>0$, we obtain \citep{landau1959}
+Rewriting the 2D inviscid fluid Equations \eqref{eq:mom_eq_u}-\eqref{eq:cont_2d} in a rotating frame such that the planet is stationary at $\phi=\phi_{\rm p}$, and $\phi$ is defined such that $\Omega>0$, we obtain \citep{landau1987}
 \begin{align}
     &v_r \partial_r v_r + \frac{v_\phi}{r} \partial_\phi v_r - \frac{v_\phi^2}{r} = - \partial_r \Phi - \frac{1}{\Sigma} \partial_r P + 2 \Omega_{\rm p} v_\phi + \Omega_{\rm p}^2 r, \label{eq:mom_eq_u_pl} \\ 
     &v_r \partial_r v_\phi + \frac{v}{r} \partial_\phi v_\phi - \frac{v_r v_\phi}{r} = - \frac{1}{r} \partial_\phi \Phi - \frac{1}{r\Sigma} \partial_\phi P - 2 \Omega_{\rm p} v_r, \label{eq:mom_eq_v_pl} \\
@@ -689,7 +692,7 @@ and results in the transformation of the Equations \eqref{eq:weak_pert_1} - \eqr
     &\partial_\phi v + u \partial_\xi v + \frac{c^2}{\Delta \Omega r \Sigma} \partial_\phi \Sigma = - \frac{1}{\Delta \Omega r} \left( 2 B r u +uv \right), \label{eq:phi_xi_v} \\
     &\partial_\phi \Sigma + u \partial_\xi \Sigma + \Sigma \partial_\xi u = -\frac{1}{\Delta \Omega r} \left( \Sigma u + v \partial_\phi \Sigma + \Sigma \partial_\phi v \right). \label{eq:phi_xi_sigma}
 \end{align}
-The left-hand side of the equations above are similar to the usual system of equations that describe the motion of a one-dimensional isentropic gas \citep{landau1959}, except that we have an azimuthal coordinate $\phi$ in place of the time coordinate $t$ and the $\xi$ coordinate in place of the spatial coordinate $x$.
+The left-hand side of the equations above are similar to the usual system of equations that describe the motion of a one-dimensional isentropic gas \citep{landau1987}, except that we have an azimuthal coordinate $\phi$ in place of the time coordinate $t$ and the $\xi$ coordinate in place of the spatial coordinate $x$.
 We exploit this similarity to simplify the above equations using the \textit{method of characteristics}.
 the 1D isentropic gas flow system possesses two \textit{Riemann invariants} that are each conserved along a curve in the $xt$ plane.
 These curves are called the \textit{characteristics}.
@@ -765,7 +768,7 @@ Burger's equation generically produces shocks from smooth waveforms due to the c
 Figure~\ref{fig:wake_profiles_GR01} shows the evolution of the wave profile taken at different $t$ values.
 We see that at the edge of the linear regime the waveform is initially smooth.
 As the wake evolves away from the planet its amplitude decays but areas above and below $\chi=0$ steepen and form two shocks, one moving in the $+\eta$ direction and one moving in the $-\eta$ direction.
-The resultant waveform is called an \textit{N-wave} \citep{landau1959}.
+The resultant waveform is called an \textit{N-wave} \citep{landau1987}.
 \citet{goodman2001} found numerically that the shock forms at 
 \begin{align}
     t_{\rm shock} = t_0 + 0.79 \left( \frac{M_{\rm p}}{M_1} \right)^{-1},
@@ -815,7 +818,7 @@ See in particular Sections 5.1, 5.2 and 8.1 of \citet{cimerman2021} for greater 
 
 \subsection{Asymptotic planet mass scaling} \label{sec:asymptotic_N_wave}
 
-While the AMF is no longer conserved in the dissipative wake evolution regime, Burger's equation does encode the perfect conservation of a quantity both before and after shock formation, which is the area under the curve $\chi$ \citep{landau1959,whitham1999}.
+While the AMF is no longer conserved in the dissipative wake evolution regime, Burger's equation does encode the perfect conservation of a quantity both before and after shock formation, which is the area under the curve $\chi$ \citep{landau1987,whitham1999}.
 We will show that physically this corresponds to conservation of mass in the disk.
 The area $\mathcal{A}$ under the curve at a ``time'' $t$ is given by
 \begin{align}
