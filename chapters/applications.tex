@@ -1,5 +1,5 @@
 
-Here we present two examples of work, led by others, that has already been done making use of the models and ideas developed in chapters~\ref{ch:wake_models} and \ref{ch:wake_mapping}.
+Here we present two examples of work, led by others, that has already been done making use of the models and ideas developed in chapters~\ref{ch:wake_models} and \citep{calcino2022}.
 In the first, we apply the semi-analytic models to test the hypothesis that the kinematic arc detected in the disk of  HD~169142 is caused by a planet wake.
 The second uses the linear wake theory to map the planet wake in the disk of IM Lupi through the peak velocity map from kinematic observations.
 
@@ -21,18 +21,18 @@ This paper presents ALMA band 6 observations of the circumstellar disk around HD
 We imaged the $^{12}$CO, $^{13}$CO and C$^{18}$O $J=2-1$ spectral lines at a resolution of $0.167 \, \mathrm{km/s}$, taking into account the Hanning Smoothing caused by the correlator.
 The obtained angular resolutions of $0.07"$ and $0.1"$ allowed us resolve both density and kinematic substructures in the gas. Here, we will focus on the $^{12}$CO observations and on modelling the kinematics with the analytics.
 
-\subsection{Observations and Analysis} \label{sec:obs_analysis_garg}
+\subsection{Observations and analysis} \label{sec:obs_analysis_garg}
 
 We imaged the $J=2-1$ line transitions of $^{12}$CO, $^{13}$CO and C$^{18}$O using ALMA band~6 observations from projects [2015.1.00490.S] and [2016.1.00344.S].
 For details of the self-calibration and data reduction process, see \citet{garg2022}.
 
-From equation \ref{eq:rot_eq_full}, the rotation velocity of the gas in a pressure-supported disk is given by 
+From Equation~\eqref{eq:rot_eq_full}, the rotation velocity of the gas in a pressure-supported disk is given by 
 \begin{align}
     \frac{v_{\rm gas}^2}{r} &= \frac{G M_\star r}{\left( r^2 + z^2  \right)^{3/2}} + \frac{1}{\rho_{\rm gas}} \partial_r P_{\rm gas}, \label{eq:gas_rotation}
 \end{align}
 where the first term is the typical Keplerian rotation and the second is the contribution by the radial pressure gradient.
 As discussed in section \ref{sec:disk_rotation}, the second term typically results in sub-Keplerian motions.
-To find kinematic substructures in the data, we wish remove the background motions of the disk associated with equation \ref{eq:gas_rotation} to isolate only the deviations from the bulk flow.
+To find kinematic substructures in the data, we wish remove the background motions of the disk associated with Equation~\eqref{eq:gas_rotation} to isolate only the deviations from the bulk flow.
 As a first step, we compute peak velocity $v_0$ maps by spectrally collapsing the data cube using the \textsc{Python} package \textsc{bettermoments} \citep{teague2018a}.
 We chose specifically to use the \textit{Gaussian} method since it provides also the velocity error for each pixel $\delta v_0$ and has minimal statistical uncertainty \citep{yu2021}.
 
@@ -44,7 +44,7 @@ The data used in the fit were also restricted to within $1.5"$ from the centre o
 The inner $0.2"$, equal to twice the beam width, was also exclude to avoid any bias resulting from beam smearing in the inner disk.
 From fitting the $^{12}$CO data, we found best-fitting model parameters of $\mathrm{PA} = 5.33^\circ$, $M_\star = 1.47 \, \mathrm{M_\odot}$, and $v_{\rm syst} = 6.897 \, \mathrm{km/s}$.
 
-To account for the pressure term of equation \ref{eq:gas_rotation}, we need the radial pressure gradient $\partial_r P_{\rm gas}(r)$.
+To account for the pressure term of Equation~\eqref{eq:gas_rotation}, we need the radial pressure gradient $\partial_r P_{\rm gas}(r)$.
 Assuming an ideal gas equation of state, the pressure is given by 
 \begin{align}
     P_{\rm gas}(r) = n_{\rm gas} k_{\rm B} T(r),
@@ -53,7 +53,7 @@ where $n_{\rm gas}$ is the gas number density, $k_{\rm B}$ is Boltzmann's consta
 We calculated $n_{\rm gas}$ and $T(r)$ from the azimuthally averaged gas column density and brightness temperature profiles respectively, see \citet{garg2022} for further detail.
 
 Finally, we made use of the best-fitting Keplerian rotation model, plus the radial pressure gradient, to subtract the bulk rotation from the peak velocity maps of the data to create kinematic residuals.
-The result is shown in Figure \ref{fig:garg_arc}, along with the associated statistical significance.
+The result is shown in Figure~\ref{fig:garg_arc}, along with the associated statistical significance.
 We detect a kinematic excess of angular extent $\sim 105^\circ$ and magnitude $\sim 75 \, \mathrm{m/s}$ on the north side of the disk.
 The excess is located between the $26$ au and $59$ au dust rings thus has a radial extent of approximately $30$ au.
 The kinematic arc feature was however not detected in $^{13}$CO and C$^{18}$O, which may owe to the lower integration time of those observations, or may reflect that the rotation nearer to the mid-plane is less perturbed.
@@ -65,7 +65,7 @@ The kinematic arc feature was however not detected in $^{13}$CO and C$^{18}$O, w
     \label{fig:garg_arc}
 \end{figure}
 
-\subsection{Semi-Analytical Modelling} \label{sec:garg_analytics}
+\subsection{Semi-analytical modelling} \label{sec:garg_analytics}
 
 Notably, the feature we detected overlaps with the point source found in \citet{gratton2019} at a PA of $43.8^\circ$ and radial separation of $38$ au.
 If the point source is a indeed a planet, perhaps the kinematic arc is associated with the velocity perturbations induced by the tidal forcing of the planet.
@@ -85,8 +85,8 @@ The resultant channel maps had a channel spacing of $32 \, \mathrm{m/s}$, and th
 
 To create sky-plane velocity residuals, the cubes were collapsed spectrally in the same way as for the observations.
 This whole process was then repeated except for models with no planet, and residuals were calculated as the different between the two velocity maps.
-These residuals are presented in Figure \ref{fig:garg_analytics}.
-Comparing these with Figure \ref{fig:garg_arc}, we see that in neither case do the analytic models recreate the arc found observationally.
+These residuals are presented in Figure~\ref{fig:garg_analytics}.
+Comparing these with Figure~\ref{fig:garg_arc}, we see that in neither case do the analytic models recreate the arc found observationally.
 The $1 \, \mathrm{M_J}$ planet model contains kinematic deviations that are far smaller than those observed.
 On the other hand, the $10 \, \mathrm{M_J}$ produces residuals that while similar in amplitude, differ from the observations in shape, location and sign.
 Of the two models, the $10 \, \mathrm{M_J}$ is more compatible with the observations but it still performs poorly.
@@ -99,12 +99,12 @@ The planet wake in the mid-plane is expected to be dominated by radial motions \
 A significant limitation to the analysis performed here is the accuracy of the \textsc{wakeflow} models nearby the planet.
 Given the disk aspect ratio and central star mass, the thermal mass is only $\sim 0.5 \, \mathrm{M_J}$.
 Thus the two models we have used here contain planets of masses $2 \, M_{\rm th}$ and $20 \, M_{\rm th}$.
-In both of these cases the perturbations calculated close to the planet will be overestimated (\citeauthor{fasanoinprep.}, in prep.).
+In both of these cases the perturbations calculated close to the planet will be overestimated (Fasano et al., in prep.).
 Unfortunately, in this case that is the region we are specifically interested in.
 It is therefore only reasonable to interpret these results as upper bounds on the size of the perturbations that may be induced by the planet mass in each model.
 We thus conclude that to explain the kinematic excess we have detected in the disk through our model requires a embedded planet of no more than $10 \, \mathrm{M_J}$.
 %Planet masses were chosen based off the depth of the gas gap observed at $r=38$ au.
-%Equation \ref{eq:kanagawa_gap_depth} relates the gap depth $\Sigma_{\rm p} / \Sigma_0$ to the aspect ratio $(H/r)_{\rm p}$, effective viscosity $\alpha$ and planet mass $M_{\rm p} / M_\star$.
+%Equation \eqref{eq:kanagawa_gap_depth} relates the gap depth $\Sigma_{\rm p} / \Sigma_0$ to the aspect ratio $(H/r)_{\rm p}$, effective viscosity $\alpha$ and planet mass $M_{\rm p} / M_\star$.
 %Taking our measured value of $\Sigma_{\rm p} / \Sigma_0 \approx 0.13$ in combination with  
 %$(H/r)_{\rm p}=0.08$, and $\alpha=10^{-3}$ \citep{mulders2012,ansdell2018} gives an approximate planet mass of $\sim$
 \begin{figure}
@@ -136,10 +136,13 @@ The gravitational instability requires that the disk is self-gravitating and so 
 In this letter we investigated whether an embedded planet can produce both the observed spiral structures and the observed kinematic features.
 Here, we present the portion of the letter concerned with tracing the planet wake in the kinematics, similarly to in \citet{calcino2022}.
 
-\subsection{Simulated Model}
+\subsection{Simulated model}
 
 We used the \textsc{phantom} SPH code \citep{price2018} to create models of the interaction between the disk of IM Lupi and an embedded planet.
-A disk of mass $0.01 \, \mathrm{M_\odot}$ was modelled using ten million SPH particles, set to initially follow the density profile given in equation~\ref{eq:sigma_phantom}.
+A disk of mass $0.01 \, \mathrm{M_\odot}$ was modelled using ten million SPH particles, set to initially follow the density profile
+\begin{align}
+    \Sigma (r) \propto \left(\frac{r}{r_\mathrm{p,i}}\right)^{-p} \exp \left[-\left(\frac{r}{r_{\rm c}}\right)^{2-p}\right], \label{eq:sigma_phantom}
+\end{align}
 We used $p=0.48$ \citep{pinte2018} and $r_{\rm c}=150$ au.
 We assumed a locally isothermal equation of state with $c \propto r^{-0.31}$, and a disk aspect ratio of $H/r=0.129$ at $r=100$ au.
 The central star was modelled as a sink particle \citep{bate1995}, with a mass of $1.12 \, \mathrm{M_\odot}$ \citep{andrews2018} and an accretion radius of $1$ au.
@@ -151,10 +154,10 @@ The planet was modelled as a non-accreting sink particle with a softened gravita
 This was done to minimise the fast migration and large mass growth that an accreting particle would experience due to the large number of SPH particles.
 We performed simulations with varying planet masses of $2, \, 3, \, 5$ and $7\, \mathrm{M_J}$, although we will only discuss the $2 \, \mathrm{M_J}$ model here.
 
-Radiation transfer was then performed on the SPH models using \textsc{mcfost} \citep{pinte2006,pinte2009} following a similar method to that outlined in sections~\ref{sec:garg_analytics} and \ref{sec:calcino_hydro}.
+Radiation transfer was then performed on the SPH models using \textsc{mcfost} \citep{pinte2006,pinte2009} following a similar method to that outlined in Section~\ref{sec:garg_analytics}.
 Refer to \citet{verrios2022} for further detail.
 
-\subsection{Tracing the Wake}
+\subsection{Tracing the wake}
 
 \begin{figure}
     \centering
@@ -164,13 +167,15 @@ Refer to \citet{verrios2022} for further detail.
 \end{figure}
 
 A key prediction of the embedded planet hypothesis is that the one-armed planet wake excited by the planet should create velocity kinks any time it intersects a velocity channel.
-\citet{calcino2022} found that this may be used to trace the planet wake shape through kinematic observations.
+In \citet{calcino2022}, we found that this may be used to trace the planet wake shape through kinematic observations.
 The presence of a coherent planet wake in the observations would provide evidence for the embedded planet model over gravitational instability.
-\citet{calcino2022} also found that the wake is best traced in the peak velocity map.
+We also found that the wake is best traced in the peak velocity map.
 
 Were therefore use spectrally collapsed both the MAPS $^{12}$CO observations \citep{oberg2021} and the synthetic observations from our SPH + radiation transfer model to create peak velocity maps.
+Unlike the peak velocity maps from Section~\ref{sec:hd169}, we did not use a higher order method.
+Instead, we just used the standard method \citep[e.g.][]{casa2022} of taking the velocity of the channel each pixel is brightest in, giving a discretised map.
 These are plotted in Figure~\ref{fig:verrios_v0}, with the data shown in the left panel, and the model in the right.
-We additionally calculated the expected wake shape using equation \ref{eq:power_law_wake} \citep{ogilvie2002,rafikov2002a}, and projected it to the emission surface determined by \citet{law2021a} following the method of \citet{calcino2022}.
+We additionally calculated the expected wake shape using Equation~\eqref{eq:power_law_wake} \citep{ogilvie2002,rafikov2002a}, and projected it to the emission surface determined by \citet{law2021a} following the method of \citet{calcino2022}.
 This is shown in both panels (grey dashed line).
 The velocity perturbations, which manifest as distorted contours, are seen to trace the planet wake shape through the outer disk in both the model and the observations.
 The are particularly obvious in the second passage of the outer wake in the north side of the disk.

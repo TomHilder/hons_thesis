@@ -7,7 +7,7 @@ Additionally, in Section~\ref{sec:mirror_residuals}, we present a method for loc
 \section{Peak velocity fitting} \label{sec:v0_fitting}
 
 As shown in \citet{calcino2022}, the planet wake manifests in the peak velocity ($v_0$) map generated from molecular line emission observations as spatially correlated deviations from the expected smooth iso-velocity contour.
-We additionally created synthetic $v_0$ maps by projecting semi-analytic models of the planet wake plus background rotation (Equation~\ref{eq:rot_eq_full}) to a the emitting layer of the disk, and then calculating the line-of-sight velocities in the disk.
+We additionally created synthetic $v_0$ maps by projecting semi-analytic models of the planet wake plus background rotation (Equation~\eqref{eq:rot_eq_full}) to a the emitting layer of the disk, and then calculating the line-of-sight velocities in the disk.
 Here, we will take the same approach to generating $v_0$ maps, but we will fit them onto the observed peak velocities.
 The advantage of fitting in this way instead of first subtracting a best-fitting model for the background rotation and fitting to the residuals is two-fold.
 First, creating residuals in this way is known to easily confuse the sign of the perturbations due to the high sensitivity to the background model (see the Appendix of \citealt{calcino2022}).
@@ -28,14 +28,14 @@ We then calculate the background velocity $v_{\phi,\mathrm{0}}$ for the disk at 
 \begin{align}
     v_{\phi,\mathrm{0}}(r,z) = \sqrt{\frac{G M_\star}{r}} \left[ - \left(p + 2q\right) \left( \frac{H}{r} \right)^2 + \left( 1-2q \right) + \frac{2qr}{\sqrt{r^2 + z^2}}\right]^{1/2}, \label{eq:omega_wf_ps_full}
 \end{align}
-which is just Equation~\ref{eq:omega_wf_ps} rewritten as a velocity.
+which is just Equation~\eqref{eq:omega_wf_ps} rewritten as a velocity.
 $p$ and $q$ determine the amount of pressure support in the disk, where $\rho \propto r^{-p}$ and $c \propto r^{-q}$ as usual.
 $M_\star$ is the mass of the central star.
 The scale height $H$ is calculated using
 \begin{align}
     H(r) = H_{\rm ref} \left( \frac{r}{r_{\rm ref}} \right)^{\frac{3}{2} - q},
 \end{align}
-which comes from Equation~\ref{eq:scale_height}.
+which comes from Equation~\eqref{eq:scale_height}.
 Thus $q$, $p$, $H_{\rm ref}$ and $M_\star$ are model parameters that determine the background rotation of the disk.
 
 Next, the planet perturbations are calculated by calling \textsc{wakeflow} using the aforementioned parameters, as well as the planet mass $M_{\rm p}$ and orbital radius $r_{\rm p}.$
@@ -120,9 +120,9 @@ We see that for the rotation parameters, both $M_\star$ and $H_{\rm ref}/r$ find
 These both compatible with the expected values from the literature, differing by less than 5\% in each case \citep{pinte2018a}.
 However the $p$ and $q$ indices are both constrained very poorly and neither find a minimum.
 This is perhaps not surprising when considering that changing either of this has little effect on our model, as they merely change the background rotation very slightly as part of the pressure gradient term.
-The aspect ratio $H/r$ is also only responsible for the pressure correction, but since it is squared in Equation~\ref{eq:omega_wf_ps_full} it has a larger effect.
+The aspect ratio $H/r$ is also only responsible for the pressure correction, but since it is squared in Equation~\eqref{eq:omega_wf_ps_full} it has a larger effect.
 It therefore seems unlikely that $p$, $q$ and $H/r$ could be disentangled from fitting purely our background model.
-However, both $H/r$ and $q$ are both responsible for determining the shape of the wake once we add a planet (see Equation \ref{eq:power_law_wake}), which may allow us to constrain them more effectively.
+However, both $H/r$ and $q$ are both responsible for determining the shape of the wake once we add a planet (see Equation~\ref{eq:power_law_wake}), which may allow us to constrain them more effectively.
 
 \begin{figure}
     \centering
