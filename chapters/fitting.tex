@@ -288,7 +288,10 @@ Extracting the perturbations associated with the wake in this way is valuable be
 It does however come with some important caveats, the first of which is a positional ambiguity in the features identified in the map shown in Figure~\ref{fig:mirror_M8}.
 Since the residuals on each half of the disk are found by subtracting the other half, features that show up as positive residuals on one side of the disk will also show up as negative residuals on the other side.
 One could obtain the symmetric partner of Figure~\ref{fig:mirror_M8} by taking instead the lowest intensity value in each channel from the mirror residuals cube.
-\note{finish section}
+
+Finally, it is not clear how this method may be used to extract velocity information, which is ultimately what we need to determine the planet mass.
+We found that attempting to create a peak velocity map from the mirror residuals cube resulted in essentially just noise, and concluded that it is not very useful.
+This is probably not surprising since the velocity of the channel where a particular pixel is brightest is not very meaningful for a pixel where there are no asymmetric features.
 
 
 %\begin{itemize}
