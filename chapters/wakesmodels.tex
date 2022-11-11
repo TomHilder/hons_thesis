@@ -217,6 +217,13 @@ While \citet{cimerman2021} performed a numerical validation of the models for th
 In Fasano et al. (in prep.) we will present detailed comparisons between simulations performed with the smoothed particle hydrodynamics (SPH) code \textsc{phantom} \citep{price2018} and the semi-analytic models, in the high mass regime with planet masses $\gtrsim M_{\rm th}$.
 We will summarise the main findings of that work here.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.98\textwidth]{figures/comp_as_prof_out_high.png}
+    \caption{Comparison between SPH (left) and semi-analytic (right) solutions for the perturbations induced by a $3.87 \, M_{\rm th}$ planet with orbital radius $r_{\rm p}=95.7 \, \mathrm{au}$. Wake profiles taken as slices of constant $t$, or equivalently $r$ are shown. The radial velocity, azimuthal velocity and density perturbations shown from top to bottom. The colourbar indicates the $t$ coordinate for each profile, as well as the physical distance $d$ from the planet location. Figure taken from Fasano et al. (in prep.).}
+    \label{fig:profile_comparison}
+\end{figure}
+
 For planet masses greater than $M_{\rm th}$, the linear solution is no longer valid as the wake should shock before it is fully formed \citep{goodman2001}.
 It is then impossible to spatially separate the wake evolution neatly into the linear and non-linear regimes.
 Ignoring this issue and calculating the semi-analytic models as usual introduces a few issues that we found to be discrepant with the simulation results.
@@ -224,13 +231,6 @@ Firstly, the wake structure in the linear box does not match that of the simulat
 A sharp spatial discontinuity is also formed at the boundary between the linear and non-linear regimes, since the very large linear perturbation initial condition results in rapid shock formation in the non-linear regime.
 This discontinuity is visible in Figure~\ref{fig:2_0mth}, and is more extreme for the radial velocity perturbations than for the azimuthal velocity or density perturbations.
 We also found an additional discontinuity over the box edge in the amplitude of the velocity perturbations, with the perturbation just outside the linear box being far greater than that just inside.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width = 0.98\textwidth]{figures/comp_as_prof_out_high.png}
-    \caption{Comparison between SPH (left) and semi-analytic (right) solutions for the perturbations induced by a $3.87 \, M_{\rm th}$ planet with orbital radius $r_{\rm p}=95.7 \, \mathrm{au}$. Wake profiles taken as slices of constant $t$, or equivalently $r$ are shown. The radial velocity, azimuthal velocity and density perturbations shown from top to bottom. The colourbar indicates the $t$ coordinate for each profile, as well as the physical distance $d$ from the planet location. Figure taken from Fasano et al. (in prep.).}
-    \label{fig:profile_comparison}
-\end{figure}
 
 However, moving away from the planet and deeper into the non-linear regime, the agreement between the analytical and simulated models improves.
 Figure~\ref{fig:profile_comparison} shows the outer wake profile as it evolves in $t$ for $3.87 \, M_{\rm th}$, compared between both models.
@@ -322,6 +322,16 @@ This is as simple as substituting Equation~\eqref{eq:psi_exact} into Equations \
     u(\chi) &= -2 \frac{c_0}{\gamma - 1} \left[ \left( \frac{2}{\gamma + 1} \frac{\chi}{g(r)} +1  \right)^{(\psi-1)/2} -1 \right] \label{eq:u_chi_new} \\
     v(\chi) &\approx \frac{c_0}{\Delta\Omega r} u (\chi). \label{eq:v_chi_new} 
 \end{align}
+Figures \ref{fig:0_5mth}, \ref{fig:1_0mth} and \ref{fig:2_0mth} show a comparison of the velocities calculated from the above with those calculated to first order in $\psi$, for planet masses of $0.5, 1.0$ and $2.0 \, M_{\rm th}$ respectively. 
+These are the same models as those used to create Figure~\ref{fig:psi_comparison}. 
+The plots are centred on the planet location, and they show that even for the lowest mass case the amplitude discontinuity is improved significantly for the radial perturbations by the new extraction using Equation~\eqref{eq:u_chi_new}. 
+This affect is increasingly significant for the more massive planets as can been seen in the $1.0$ and $2.0 \, M_{\rm th}$ cases. The azimuthal velocity case is however minimally affected. 
+It is unclear why the radial perturbation is improved while the azimuthal perturbation is not.
+However the derivation for $u(\psi)$ in \citet{rafikov2002a} comes from the conservation of the Riemann invariant $R_+$, while $v(\psi)$ is found in terms of $u$ by taking Equation~\eqref{eq:phi_xi_v} and the terms $u \partial_\phi v$ and $u v / (\Delta \Omega r)$.
+We conjecture that these terms are also important for larger mass planets, and that they could be responsible for the lack of improvement in the $v$ mapping.
+
+Due to the reduction in the amplitude discontinuity, Equations \eqref{eq:u_chi_new} and \eqref{eq:v_chi_new} are used to calculate the velocity perturbations in the non-linear regime in \textsc{wakeflow}. 
+
 \begin{figure}
     \centering
     \includegraphics[width = 0.7\textwidth]{figures/0_5_mth.pdf}
@@ -340,15 +350,6 @@ This is as simple as substituting Equation~\eqref{eq:psi_exact} into Equations \
     \caption{As in Figure~\ref{fig:2_0mth}, except for a planet mass of $2.0 \, M_{\rm th}$. We see that the amplitude discontinuity is again significantly improved for the radial velocities, while unaffected or even slightly worse for the azimuthal velocities.}
     \label{fig:2_0mth}
 \end{figure}
-Figures \ref{fig:0_5mth}, \ref{fig:1_0mth} and \ref{fig:2_0mth} show a comparison of the velocities calculated from the above with those calculated to first order in $\psi$, for planet masses of $0.5, 1.0$ and $2.0 \, M_{\rm th}$ respectively. 
-These are the same models as those used to create Figure~\ref{fig:psi_comparison}. 
-The plots are centred on the planet location, and they show that even for the lowest mass case the amplitude discontinuity is improved significantly for the radial perturbations by the new extraction using Equation~\eqref{eq:u_chi_new}. 
-This affect is increasingly significant for the more massive planets as can been seen in the $1.0$ and $2.0 \, M_{\rm th}$ cases. The azimuthal velocity case is however minimally affected. 
-It is unclear why the radial perturbation is improved while the azimuthal perturbation is not.
-However the derivation for $u(\psi)$ in \citet{rafikov2002a} comes from the conservation of the Riemann invariant $R_+$, while $v(\psi)$ is found in terms of $u$ by taking Equation~\eqref{eq:phi_xi_v} and the terms $u \partial_\phi v$ and $u v / (\Delta \Omega r)$.
-We conjecture that these terms are also important for larger mass planets, and that they could be responsible for the lack of improvement in the $v$ mapping.
-
-Due to the reduction in the amplitude discontinuity, Equations \eqref{eq:u_chi_new} and \eqref{eq:v_chi_new} are used to calculate the velocity perturbations in the non-linear regime in \textsc{wakeflow}. 
 
 %\section{Implications --- Non-Localised Velocity Kinks}
 %
